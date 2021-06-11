@@ -35,4 +35,16 @@ public class Funcionario {
   public void setSalario(double salario) {
     this.salario = salario;
   }
+  
+  @Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Funcionario) {
+			Funcionario funcionarioParametroDado = (Funcionario) obj;
+			
+			if(funcionarioParametroDado.getId() == this.id) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
