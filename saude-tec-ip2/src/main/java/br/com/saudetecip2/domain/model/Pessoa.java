@@ -8,6 +8,11 @@ public class Pessoa {
   private String cpf;
   private LocalDate dataDeNascimento;
   
+  public Pessoa(String nome, String cpf, LocalDate dataDeNascimento) {
+    this.nome = nome;
+    this.cpf = cpf;
+    this.dataDeNascimento = dataDeNascimento;
+  }
   
   public String getNome() {
     return nome;
