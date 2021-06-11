@@ -32,7 +32,10 @@ public class CadastrarAlunoService {
   }
   
   public void removerAluno(Aluno aluno) {
-    
+    Aluno alunoExistente = alunoRepository.findByNome(aluno.getNome());
+    if(alunoExistente != null && alunoExistente.equals(aluno)) {
+    	alunoRepository.delete(aluno);
+    }
     
    
   }
