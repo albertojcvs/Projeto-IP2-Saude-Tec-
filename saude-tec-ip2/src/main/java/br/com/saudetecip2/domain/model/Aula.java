@@ -35,5 +35,4 @@ public class Aula {
   public void setTipoDeAula(TipoDeAula tipoDeAula) {
     this.tipoDeAula = tipoDeAula;
   }
-  
 }
