@@ -1,15 +1,25 @@
 package br.com.saudetecip2.domain.model;
 
+import java.time.LocalDate;
+
 import br.com.saudetecip2.domain.enums.CargoFuncionario;
 import br.com.saudetecip2.domain.enums.StatusDoFuncionario;
 
-public class Funcionario {
+public class Funcionario extends Pessoa {
 
   private int id;
   private CargoFuncionario cargo;
   private StatusDoFuncionario statusDoFuncionario;
   private double salario;
   
+  public Funcionario(String nome, String cpf, LocalDate dataDeNascimento,
+		 CargoFuncionario cargo, StatusDoFuncionario status, double salario) {
+	  super(nome,cpf,dataDeNascimento);
+	  
+	  this.cargo = cargo;
+	  this.statusDoFuncionario = status;
+	  this.salario = salario;
+  }
   
   public int getId() {
     return id;
