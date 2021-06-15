@@ -89,4 +89,12 @@ public class Aula {
 	public void setTipoDeAula(TipoDeAula tipoDeAula) {
 		this.tipoDeAula = tipoDeAula;
 	}
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Aula) {
+			Aula aulaParametro  = (Aula) obj;
+			return this.id.equals(aulaParametro.getId()); 
+		}
+		return  false;
+	}
 }

@@ -7,7 +7,7 @@ import br.com.saudetecip2.domain.enums.StatusDoFuncionario;
 
 public class Funcionario extends Pessoa {
 
-  private int id;
+  private Long id;
   private CargoFuncionario cargo;
   private StatusDoFuncionario statusDoFuncionario;
   private double salario;
@@ -21,10 +21,10 @@ public class Funcionario extends Pessoa {
 	  this.salario = salario;
   }
   
-  public int getId() {
+  public Long getId() {
     return id;
   }
-  public void setId(int id) {
+  public void setId(Long id) {
     this.id = id;
   }
   public CargoFuncionario getCargo() {
