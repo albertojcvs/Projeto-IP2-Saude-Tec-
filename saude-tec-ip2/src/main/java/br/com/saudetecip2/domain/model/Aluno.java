@@ -28,7 +28,15 @@ public class Aluno extends Pessoa{
   }
 
   
- 
+ @Override
+	public boolean equals(Object obj) {
+	 	if(obj instanceof Aluno) {
+	 		Aluno alunoParametro = (Aluno) obj;
+	 		
+	 		return alunoParametro.getCpf() == this.getCpf();
+	 	}
+	 	return false;
+ }
   
   
 
