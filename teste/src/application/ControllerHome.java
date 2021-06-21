@@ -9,7 +9,7 @@ public class ControllerHome {
 
 	  @FXML
 	    private Text mainText;
-
+	 
 	
 	    @FXML
 	    private Button mainButton;
