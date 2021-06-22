@@ -28,7 +28,7 @@ public class SaudeTecIp2Application extends Application {
 	
 	public static void main(String[] args) {
 		//SpringApplication.run(SaudeTecIp2Application.class, args);
-		System.out.println();
+		
 		launch(args);
 		
 	}
