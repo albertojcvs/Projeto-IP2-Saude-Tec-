@@ -31,7 +31,7 @@ public class LoginAlunoController {
     
     private void irParaHome() {
     	try {
-    		Parent telaHome = FXMLLoader.load(getClass().getResource("/views/HomeView.fxml"));
+    		Parent telaHome = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
     		botaoVoltar.getScene().setRoot(telaHome);
     	}
     	catch(Exception e) {

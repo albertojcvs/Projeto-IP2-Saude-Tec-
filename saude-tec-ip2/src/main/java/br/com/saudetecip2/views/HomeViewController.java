@@ -8,7 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-
+import javafx.scene.layout.BorderPane;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -35,9 +35,10 @@ public class HomeViewController implements Initializable {
 	    		System.out.println("Erro!!!\n"+e);
 	    	}
 	    }
-	    @FXML
+	    @SuppressWarnings("restriction")
+		@FXML
 	    void onBotaoAreaAlunoClicked(MouseEvent event) {
-	    	irParaLoginAluno();
+	    		irParaLoginAluno();
 	    }
 	    
 	@Override
