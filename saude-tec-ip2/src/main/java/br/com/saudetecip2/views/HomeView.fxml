@@ -23,9 +23,9 @@
                   <Cursor fx:constant="DISAPPEAR" />
                </cursor>
             </Pane>
-            <Pane layoutY="174.0" prefHeight="630.0" prefWidth="1000.0">
+            <Pane layoutY="174.0" prefHeight="640.0" prefWidth="800.0">
                <children>
-                  <Button layoutX="583.0" layoutY="226.0" mnemonicParsing="false" prefHeight="123.0" prefWidth="342.0" text="Área do Funcionario" textAlignment="CENTER">
+                  <Button fx:id="areaFuncionario" layoutX="583.0" layoutY="226.0" mnemonicParsing="false" onMouseClicked="#chamarTelaFuncionario" prefHeight="123.0" prefWidth="342.0" text="Área do Funcionario" textAlignment="CENTER">
                      <font>
                         <Font name="Gabriola" size="42.0" />
                      </font>

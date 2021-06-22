@@ -12,13 +12,15 @@ import javafx.stage.Stage;
 
 @SpringBootApplication
 public class SaudeTecIp2Application extends Application {
-
+	
+	private static Stage stage;
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		
+		stage = primaryStage;
 		BorderPane root = FXMLLoader.load(getClass().getResource("views/HomeView.fxml"));
 
-		Scene scene = new Scene(root, 1000,630);
+		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
