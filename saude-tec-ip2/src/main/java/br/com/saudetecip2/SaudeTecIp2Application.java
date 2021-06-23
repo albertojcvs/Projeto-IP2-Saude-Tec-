@@ -22,7 +22,7 @@ public class SaudeTecIp2Application extends Application {
 		//BorderPane root = FXMLLoader.load(getClass().getResource("views/TelaFuncionarioView.fxml"));
 		Parent root = FXMLLoader.load(getClass().getResource("views/TelaFuncionarioView.fxml"));
 
-		Scene scene = new Scene(root);
+		Scene scene = new Scene(root); 
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
