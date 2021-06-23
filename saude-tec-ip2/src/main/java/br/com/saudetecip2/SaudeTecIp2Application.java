@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -18,7 +19,8 @@ public class SaudeTecIp2Application extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		stage = primaryStage;
-		BorderPane root = FXMLLoader.load(getClass().getResource("views/HomeView.fxml"));
+		//BorderPane root = FXMLLoader.load(getClass().getResource("views/TelaFuncionarioView.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("views/TelaCadastrarAlunoView.fxml"));
 
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
