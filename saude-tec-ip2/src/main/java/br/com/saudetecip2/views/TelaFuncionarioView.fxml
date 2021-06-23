@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+
+<AnchorPane prefHeight="600.0" prefWidth="720.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="br.com.saudetecip2.views.TelaFuncionarioController">
+   <children>
+      <Text fx:id="txtTitulo" layoutX="188.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tela de Funcionário">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnCadastrar" layoutX="514.0" layoutY="353.0" mnemonicParsing="false" onMouseClicked="#cadastrar" prefHeight="55.0" prefWidth="143.0" text="Quero me Cadastrar" />
+      <Button fx:id="btnLogin" layoutX="92.0" layoutY="298.0" mnemonicParsing="false" onMouseClicked="#logar" prefHeight="55.0" prefWidth="96.0" text="Login" />
+      <Button fx:id="btnVoltarParaHome" layoutX="537.0" layoutY="442.0" mnemonicParsing="false" onMouseClicked="#voltarParaHome" prefHeight="55.0" prefWidth="96.0" text="Voltar" />
+      <TextField fx:id="campoID" layoutX="188.0" layoutY="211.0" />
+      <Label fx:id="lbID" layoutX="105.0" layoutY="215.0" text="ID" />
+      <Label fx:id="lbSenha" layoutX="97.0" layoutY="248.0" text="Senha" />
+      <PasswordField fx:id="campoSenha" layoutX="188.0" layoutY="244.0" />
+   </children>
 </AnchorPane>
-

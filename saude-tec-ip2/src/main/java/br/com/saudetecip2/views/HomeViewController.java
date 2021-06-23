@@ -24,6 +24,12 @@ public class HomeViewController implements Initializable {
 	    @FXML
 	    void chamarTelaFuncionario(MouseEvent event) {
 	    	System.out.println("Botão clicado.");
+	    	try{
+	    		Parent componente = FXMLLoader.load(getClass().getResource("TelaFuncionarioView.fxml"));
+	    		areaFuncionario.getScene().setRoot(componente);
+	    	} catch(Exception e) {
+	    		System.out.println("Erro!");
+	    	}
 	    	
 	    } 
 	    
