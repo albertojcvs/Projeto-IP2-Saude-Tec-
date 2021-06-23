@@ -8,6 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
@@ -24,13 +27,27 @@ public class TelaFuncionarioController implements Initializable{
 
 	    @FXML
 	    private Button btnVoltarParaHome;
+	    
+	    @FXML
+	    private TextField campoID;
+
+	    @FXML
+	    private Label lbID;
+
+	    @FXML
+	    private Label lbSenha;
+
+	    @FXML
+	    private PasswordField campoSenha;
+
 
 	    @FXML
 	    void cadastrar(MouseEvent event) {
 	    	System.out.println("Cadastrar");
 	    	try {
-	    		Parent componente = FXMLLoader.load(getClass().getResource("TelaCadastrarAlunoView.fxml"));
-	    		btnCadastrar.getScene().setRoot(componente);
+	    		//Parent componente = FXMLLoader.load(getClass().getResource("TelaCadastrarAlunoView.fxml"));
+	    		//tem que ir pra tela de gerente
+	    		//btnCadastrar.getScene().setRoot(componente);
 	    	}catch(Exception e) {
 	    		
 	    	}
@@ -39,6 +56,8 @@ public class TelaFuncionarioController implements Initializable{
 	    @FXML
 	    void logar(MouseEvent event) {
 	    	System.out.println("Login");
+	    	System.out.println(campoID.getText());
+	    	System.out.println(campoSenha.getText());
 
 	    }
 
