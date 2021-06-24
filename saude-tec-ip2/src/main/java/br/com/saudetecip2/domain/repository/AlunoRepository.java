@@ -6,4 +6,5 @@ import br.com.saudetecip2.domain.model.Aluno;
 public interface AlunoRepository extends JpaRepository<Aluno, Long> {
 
   Aluno findByNome(String nome);
+  Aluno findByIdAndSenha(Long id, String senha);
 }

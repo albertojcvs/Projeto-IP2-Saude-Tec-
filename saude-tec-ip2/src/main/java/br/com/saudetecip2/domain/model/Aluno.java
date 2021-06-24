@@ -9,9 +9,11 @@ public class Aluno extends Pessoa{
  
   private StatusDaMensalidadeDoAluno statusDaMensalidadeDoAluno;
   
-  public Aluno(Long id, StatusDaMensalidadeDoAluno statusDaMensalidadeDoAluno, String nome, String cpf, LocalDate dataDeNascimento) {
+  private String senha;
+  public Aluno(Long id, StatusDaMensalidadeDoAluno statusDaMensalidadeDoAluno, String nome, String cpf, LocalDate dataDeNascimento,String senha) {
     super(nome, cpf, dataDeNascimento);
-    
+    this.senha = senha;
+    this.statusDaMensalidadeDoAluno = statusDaMensalidadeDoAluno;
   }
   
   public Long getId() {
@@ -27,6 +29,12 @@ public class Aluno extends Pessoa{
     this.statusDaMensalidadeDoAluno = statusDaMensalidadeDoAluno;
   }
 
+  public String getSenha() {
+	return senha;
+}
+  public void setSenha(String senha) {
+	this.senha = senha;
+}
   
  @Override
 	public boolean equals(Object obj) {

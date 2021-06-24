@@ -1,5 +1,8 @@
 package br.com.saudetecip2.views;
 
+import java.io.IOException;
+
+import br.com.saudetecip2.exceptions.CampoDeLoginInvalidoException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,8 +25,14 @@ public class LoginAlunoController {
 	private Button botaoEntrar;
 
 	@FXML
-	void onBotaoEntrarClicked(MouseEvent event) {
-
+	void onBotaoEntrarClicked(MouseEvent event) throws CampoDeLoginInvalidoException{
+		String idAluno = campoIdAluno.getText();
+		String senha = campoSenha.getText();
+		
+		
+		if(idAluno.equals("") || senha.equals("")) {
+			throw new CampoDeLoginInvalidoException();
+		}
 	}
 
 	@FXML
