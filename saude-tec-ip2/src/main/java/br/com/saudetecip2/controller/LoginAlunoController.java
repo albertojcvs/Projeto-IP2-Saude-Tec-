@@ -23,10 +23,17 @@ public class LoginAlunoController {
 	
 	private LoginAlunoController() {}
 	
-	
+	public Aluno getAlunoLogado() {
+		return alunoLogado;
+	}
 	
 	public void fazerLogin(Long idAluno, String senhaAluno) throws ErroLoginAlunoException {
-		fazerLoginAlunoService.fazerLogin(idAluno, senhaAluno);
+		Aluno aluno = fazerLoginAlunoService.fazerLogin(idAluno, senhaAluno);
+		if(aluno == null) {
+			throw new ErroLoginAlunoException() ;
+		}
+		
+		alunoLogado = aluno;
 	}
 	
 	public void fazerLogout() {
