@@ -20,9 +20,6 @@ public class TelaFuncionarioController implements Initializable{
 	    private Text txtTitulo;
 
 	    @FXML
-	    private Button btnCadastrar;
-
-	    @FXML
 	    private Button btnLogin;
 
 	    @FXML
@@ -41,23 +38,15 @@ public class TelaFuncionarioController implements Initializable{
 	    private PasswordField campoSenha;
 
 
-	    @FXML
-	    void cadastrar(MouseEvent event) {
-	    	System.out.println("Cadastrar");
-	    	try {
-	    		//Parent componente = FXMLLoader.load(getClass().getResource("TelaCadastrarAlunoView.fxml"));
-	    		//tem que ir pra tela de gerente
-	    		//btnCadastrar.getScene().setRoot(componente);
-	    	}catch(Exception e) {
-	    		
-	    	}
-	    }
+	  
 
 	    @FXML
 	    void logar(MouseEvent event) {
 	    	System.out.println("Login");
 	    	System.out.println(campoID.getText());
 	    	System.out.println(campoSenha.getText());
+	    	System.out.println("Voltar");
+	    	//a depender de seu cargo, ao logar, vai para sua respectiva tela.
 
 	    }
 
