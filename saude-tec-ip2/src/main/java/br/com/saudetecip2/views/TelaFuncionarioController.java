@@ -3,6 +3,8 @@ package br.com.saudetecip2.views;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import br.com.saudetecip2.controller.LoginFuncionarioController;
+import br.com.saudetecip2.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,7 +17,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 public class TelaFuncionarioController implements Initializable{
-
+	
+	private LoginFuncionarioController loginFuncionarioController= LoginFuncionarioController.getInstace();
 	  @FXML
 	    private Text txtTitulo;
 
@@ -42,6 +45,16 @@ public class TelaFuncionarioController implements Initializable{
 
 	    @FXML
 	    void logar(MouseEvent event) {
+	    	
+	    	
+	    	String idFuncionario = campoID.getText();
+	    	String senha = campoSenha.getText();
+	    	
+	    	if(idFuncionario.equals("") || senha.equals("")) {
+	    		Utils.mostrarAlerta("Algum dos campos está vazio!");
+	    	}else if(!Utils.checarSeStringContemApenasNumeros(senha)) {
+	    		Utils.mostrarAlerta("O ID só aceita números!");
+	    	}
 	    	System.out.println("Login");
 	    	System.out.println(campoID.getText());
 	    	System.out.println(campoSenha.getText());
