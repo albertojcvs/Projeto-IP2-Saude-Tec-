@@ -1,5 +1,36 @@
 package br.com.saudetecip2.controller;
 
-public class AlunoController {
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import br.com.saudetecip2.domain.model.Aluno;
+import br.com.saudetecip2.domain.service.CadastrarAlunoService;
+
+public class AlunoController {
+	
+	@Autowired
+	CadastrarAlunoService alunoService;
+	
+	
+	public void adicionarAluno(Aluno aluno) {
+		alunoService.cadastrarAluno(aluno);
+	}
+	
+	public void removerAluno(Aluno aluno) {
+		alunoService.removerAluno(aluno);
+	}
+	
+	public void atualizarAluno(Aluno aluno) {
+		alunoService.atualizarAluno(aluno);
+	}
+	
+	public List<Aluno> buscarTodosAlunos(){
+		return alunoService.buscarAlunos();
+	}
+	public Aluno buscarAluno(Aluno aluno) throws IOException {
+		return alunoService.buscarAluno(aluno);
+	}
 }

@@ -22,10 +22,6 @@ public class FazerLoginAlunoService {
 		return aluno;
 		
 	}
-	
-	public void fazerLogout() {
-		
-	}
-	
+
 	
 }

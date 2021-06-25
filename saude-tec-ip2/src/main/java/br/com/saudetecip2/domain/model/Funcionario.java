@@ -11,16 +11,23 @@ public class Funcionario extends Pessoa {
   private CargoFuncionario cargo;
   private StatusDoFuncionario statusDoFuncionario;
   private double salario;
+  private String senha;
   
   public Funcionario(String nome, String cpf, LocalDate dataDeNascimento,
-		 CargoFuncionario cargo, StatusDoFuncionario status, double salario) {
+		 CargoFuncionario cargo, StatusDoFuncionario status, double salario,String senha) {
 	  super(nome,cpf,dataDeNascimento);
-	  
+	  this.senha = senha;
 	  this.cargo = cargo;
 	  this.statusDoFuncionario = status;
 	  this.salario = salario;
   }
   
+  public String getSenha() {
+	return senha;
+}
+  public void setSenha(String senha) {
+	this.senha = senha;
+}
   public Long getId() {
     return id;
   }
