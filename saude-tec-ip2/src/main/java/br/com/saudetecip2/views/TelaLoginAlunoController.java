@@ -5,6 +5,7 @@ import java.io.IOException;
 import br.com.saudetecip2.controller.LoginAlunoController;
 import br.com.saudetecip2.exceptions.CampoDeLoginInvalidoException;
 import br.com.saudetecip2.exceptions.ErroLoginAlunoException;
+import br.com.saudetecip2.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -33,30 +34,29 @@ public class TelaLoginAlunoController {
 
 	@FXML
 	void onBotaoEntrarClicked(MouseEvent event) {
-		final String regexSoNumeros = "^[0-9]*$";
 
 		String idAluno = campoIdAluno.getText();
 		String senha = campoSenha.getText();
 
 		if (idAluno.equals("") || senha.equals("")) {
-			mostrarAlerta("Algum dos campos está vazio!");
-		} else if (!(senha.matches(regexSoNumeros))) {
-			mostrarAlerta("O ID só aceita numéros!");
+			Utils.mostrarAlerta("Algum dos campos está vazio!");
+		} else if (!Utils.checarSeStringContemApenasNumeros(senha)) {
+			Utils.mostrarAlerta("O ID só aceita numéros!");
 		} else {
 			try {
 				loginAlunoController.fazerLogin(new Long(idAluno), senha);
+				Parent telaAluno = FXMLLoader.load(getClass().getResource("AreaAluno.fxml"));
+				botaoEntrar.getScene().setRoot(telaAluno);
 			} catch (ErroLoginAlunoException e) {
-				mostrarAlerta("O ID e/ou a senha estão incorretos!");
+				Utils.mostrarAlerta("O ID e/ou a senha estão incorretos!");
+			} catch (Exception e) {
+				System.out.println("Erro!" + e);
 			}
 		}
 
 	}
 
-	private void mostrarAlerta(String mensagem) {
-		Alert alertaErro = new Alert(AlertType.NONE, mensagem, ButtonType.OK);
-		alertaErro.setTitle("Erro!");
-		alertaErro.showAndWait();
-	}
+
 
 	@FXML
 	void onBotaoVoltarClicked(MouseEvent event) {
