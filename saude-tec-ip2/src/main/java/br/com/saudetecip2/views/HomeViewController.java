@@ -35,10 +35,10 @@ public class HomeViewController implements Initializable {
 	    
 	    private void irParaLoginAluno() {	    	
 	    	try {
-	    		Parent novaTela = FXMLLoader.load(getClass().getResource("LoginAluno.fxml"));
+	    		Parent novaTela = FXMLLoader.load(getClass().getResource("TelaLoginAluno.fxml"));
 	    		botaoAreaAluno.getScene().setRoot(novaTela);
 	    	}catch(Exception e) {
-	    		System.out.println("Erro!!!\n"+e);
+	    		System.out.println("erro"+ e);
 	    	}
 	    }
 	    @SuppressWarnings("restriction")
