@@ -1,19 +1,46 @@
 package br.com.saudetecip2.domain.model;
 
-import java.time.LocalDate;
+import java.sql.Date;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotNull;
 
+
+@MappedSuperclass
 public class Pessoa {
 
-  private String nome;
-  private String cpf;
-  private LocalDate dataDeNascimento;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
   
-  public Pessoa(String nome, String cpf, LocalDate dataDeNascimento) {
+  @Column(length = 55)
+  @NotNull
+  private String nome;
+  
+  @Column(length = 15)
+  @NotNull
+  private String cpf;
+  
+  @NotNull
+  private Date dataDeNascimento;
+  
+  public Pessoa(String nome, String cpf, Date dataDeNascimento) {
     this.nome = nome;
     this.cpf = cpf;
     this.dataDeNascimento = dataDeNascimento;
   }
   
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
   public String getNome() {
     return nome;
   }
@@ -26,10 +53,10 @@ public class Pessoa {
   public void setCpf(String cpf) {
     this.cpf = cpf;
   }
-  public LocalDate getDataDeNascimento() {
+  public Date getDataDeNascimento() {
     return dataDeNascimento;
   }
-  public void setDataDeNascimento(LocalDate dataDeNascimento) {
+  public void setDataDeNascimento(Date dataDeNascimento) {
     this.dataDeNascimento = dataDeNascimento;
   }
   

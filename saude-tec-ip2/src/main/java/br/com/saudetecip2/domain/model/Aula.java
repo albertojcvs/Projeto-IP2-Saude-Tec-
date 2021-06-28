@@ -1,27 +1,47 @@
 package br.com.saudetecip2.domain.model;
 
-import java.time.LocalDate;
+import java.sql.Date;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import br.com.saudetecip2.domain.enums.TipoDeAula;
 import br.com.saudetecip2.domain.enums.TipoDeTreino;
 
+@Entity
+@Table(name = "aula")
 public class Aula {
 
-  private int id;
-  private LocalDate data;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+  
+  @NotNull
+  private Date dataAula;
+  
+  @NotNull
+  @Enumerated(EnumType.STRING)
   private TipoDeTreino tipoDeTreino;
+  
+  @NotNull
+  @Enumerated(EnumType.STRING)
   private TipoDeAula tipoDeAula;
   
-  public int getId() {
+  public Long getId() {
     return id;
   }
-  public void setId(int id) {
+  public void setId(Long id) {
     this.id = id;
   }
-  public LocalDate getData() {
-    return data;
+  public Date getData() {
+    return dataAula;
   }
-  public void setData(LocalDate data) {
-    this.data = data;
+  public void setData(Date dataAula) {
+    this.dataAula = dataAula;
   }
   public TipoDeTreino getTipoDeTreino() {
     return tipoDeTreino;

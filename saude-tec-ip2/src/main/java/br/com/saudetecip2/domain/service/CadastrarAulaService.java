@@ -2,6 +2,7 @@ package br.com.saudetecip2.domain.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import br.com.saudetecip2.domain.model.Aula;
 import br.com.saudetecip2.domain.repository.AulaRepository;
 
 @Service
