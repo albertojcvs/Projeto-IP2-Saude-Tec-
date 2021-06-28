@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.com.saudetecip2.domain.model.Aluno;
 import br.com.saudetecip2.domain.repository.AlunoRepository;
+import br.com.saudetecip2.exceptions.AlunoNaoExisteException;
 
 @Service
 public class CadastrarAlunoService {
@@ -47,8 +48,16 @@ public class CadastrarAlunoService {
     if(alunoExistente != null && alunoExistente.equals(aluno)) {
     	alunoRepository.delete(aluno);
     }
-    
-   
+  }
+  
+  public void removerAluno(Long id) throws AlunoNaoExisteException {
+	  Aluno alunoParaRemover = alunoRepository.getById(id);
+	  
+	  if(alunoParaRemover == null) {
+		  throw new AlunoNaoExisteException();
+	  }
+	  
+	  alunoRepository.delete(alunoParaRemover);
   }
   
   public Aluno buscarAluno(Aluno aluno) throws IOException {
@@ -59,6 +68,7 @@ public class CadastrarAlunoService {
      return student;
      
   }
+  
   
   public List<Aluno> buscarAlunos(){
 	  return alunoRepository.findAll();

@@ -10,140 +10,212 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
 
+import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import br.com.saudetecip2.controller.FuncionarioController;
+import br.com.saudetecip2.domain.enums.CargoFuncionario;
+import br.com.saudetecip2.domain.enums.StatusDoFuncionario;
+import br.com.saudetecip2.domain.model.Funcionario;
+import br.com.saudetecip2.exceptions.FuncionarioJaExisteException;
+import br.com.saudetecip2.utils.Utils;
 import javafx.fxml.Initializable;
 
 public class TelaGerenteController implements Initializable {
-	 
-	 	ObservableList<String> cargos = FXCollections.observableArrayList("Professor", "Gerente", "Atendente", "OutroCargo");
+
+	ObservableList<String> cargos = FXCollections.observableArrayList("Professor", "Gerente", "Atendente",
+			"OutroCargo");
+
+	private FuncionarioController funcionarioController = new FuncionarioController();
+
+	@FXML
+	private Text txtTitulo;
+
+	@FXML
+	private Label lbCadastrarFuncionario;
+
+	@FXML
+	private Label lbNome;
+
+	@FXML
+	private Label lbCPF;
+
+	@FXML
+	private Label lbNascimento;
+
+	@FXML
+	private Label lbCargo;
+
+	@FXML
+	private TextField campoNome;
+
+	@FXML
+	private TextField campoCPF;
+
+	@FXML
+	private TextField campoSenha;
+
+	@FXML
+	private TextField campoSalario;
+
+	@FXML
+	private DatePicker campoDataNasc;
+
+	@FXML
+	private ChoiceBox<String> campoCargo;
+
+	@FXML
+	private Button btCadastrarFuncionario;
+
+	@FXML
+	private Button btnDemitir;
+
+	@FXML
+	private Button btnagendarAula;
+
+	@FXML
+	private Button btnRemoverAula;
+
+	@FXML
+	private Button btnAddAlunoNaAula;
+
+	@FXML
+	private Button btnRemoverAlunoDaAula;
+
+	@FXML
+	private Button btnMatricularAluno;
+
+	@FXML
+	private Button btnRemoverAluno;
+
+	@FXML
+	private Button btnVoltar;
+
+	@FXML
+	void voltarParaTelaFuncionario(MouseEvent event) {
+		try {
+			Parent componente = FXMLLoader.load(getClass().getResource("TelaFuncionarioView.fxml"));
+			btnVoltar.getScene().setRoot(componente);
+		} catch (Exception e) {
+
+		}
+
+	}
+
+	void irParaTela(String caminho) {
+		try {
+			Parent telaFxml = FXMLLoader.load(getClass().getResource(caminho));
+			Scene cenaTela = new Scene(telaFxml);
+			Stage novaTela = new Stage();
+			novaTela.setScene(cenaTela);
+			txtTitulo.getScene().getRoot().setDisable(true);
+			novaTela.showAndWait();
+			txtTitulo.getScene().getRoot().setDisable(false);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
-	    @FXML
-	    private Text txtTitulo;
+	@FXML
+	void AddAlunoNaAula(MouseEvent event) {
+		System.out.println("Adicionar aluno na aula");
+	}
 
-	    @FXML
-	    private Label lbCadastrarFuncionario;
+	@FXML
+	void RemoverAlunoDaAula(MouseEvent event) {
+		System.out.println("Remover aluno da aula");
+	}
 
-	    @FXML
-	    private Label lbNome;
+	@FXML
+	void agendarAula(MouseEvent event) {
+		System.out.println("Agendar aula");
+	}
 
-	    @FXML
-	    private Label lbCPF;
+	@FXML
+	void demitirFuncionario(MouseEvent event) {
+		irParaTela("TelaRemoverFuncionario.fxml");
+	}
 
-	    @FXML
-	    private Label lbNascimento;
+	@FXML
+	void matricularAluno(MouseEvent event) {
+		irParaTela("TelaAdicionarAluno.fxml");
+	}
 
-	    @FXML
-	    private Label lbCargo;
+	@FXML
+	void removerAluno(MouseEvent event) {
+		irParaTela("TelaRemoverAluno.fxml");
+	}
 
-	    @FXML
-	    private TextField campoNome;
+	@FXML
+	void removerAula(MouseEvent event) {
+		System.out.println("remover aula");
+	}
 
-	    @FXML
-	    private TextField campoCPF;
+	private CargoFuncionario converterDeStringParaCargoFuncionario(String cargoString) {
+		if (cargoString == "Gerente") {
+			return CargoFuncionario.GERENTE;
+		}
+		if (cargoString == "Professor") {
+			return CargoFuncionario.PROFESSOR;
+		}
+		if (cargoString == "Atendente") {
+			return CargoFuncionario.ATENDENTE;
+		}
+		return CargoFuncionario.OUTRO_CARGO;
 
-	    @FXML
-	    private DatePicker campoDataNasc;
+	}
 
-	    @FXML
-	    private ChoiceBox<String> campoCargo;
+	private void limparCamposDeCasdatroDeFuncionario() {
+		campoNome.setText("");
+		campoSenha.setText("");
+		campoSalario.setText("");
+		campoCPF.setText("");
+		campoDataNasc.setValue(null);
+		campoCargo.setValue("Professor");
+	}
 
-	    @FXML
-	    private Button btCadastrarFuncionario;
-	    
-	    @FXML
-	    private Button btnDemitir;
+	@FXML
+	void cadastrarFuncionario(MouseEvent event) {
+		String nome = campoNome.getText();
+		String cpf = campoCPF.getText();
+		LocalDate dataNascimento = campoDataNasc.getValue();
+		CargoFuncionario cargo = converterDeStringParaCargoFuncionario(campoCargo.getValue());
+		String senha = campoSenha.getText();
+		String salario = campoSalario.getText();
 
-	    @FXML
-	    private Button btnagendarAula;
+		if (nome.equals("") || cpf.equals("") || dataNascimento == null || senha.equals("") || salario.equals("")) {
+			Utils.mostrarAlerta("Algum dos campos está vazio!");
+		} else if (!(Utils.checarSeStringContemApenasNumeros(cpf))
+				|| !(Utils.checarSeStringContemApenasNumeros(campoSalario.getText()))) {
+			Utils.mostrarAlerta("Apenas numeros são aceitos nos campo de CPF e senha!");
+		} else {
+			try {
+				Funcionario novoFuncionario = new Funcionario(nome, cpf, dataNascimento, cargo,
+						StatusDoFuncionario.CONTRATADO, Double.parseDouble(salario), senha);
 
-	    @FXML
-	    private Button btnRemoverAula;
+				funcionarioController.cadastrarFuncionario(novoFuncionario);
+				limparCamposDeCasdatroDeFuncionario();
 
-	    @FXML
-	    private Button btnAddAlunoNaAula;
-
-	    @FXML
-	    private Button btnRemoverAlunoDaAula;
-
-	    @FXML
-	    private Button btnMatricularAluno;
-
-	    @FXML
-	    private Button btnRemoverAluno;
-	    
-	    @FXML
-	    private Button btnVoltar;
-	    
-	    @FXML
-	    void voltarParaTelaFuncionario(MouseEvent event) {
-	    	try {
-	    		Parent componente = FXMLLoader.load(getClass().getResource("TelaFuncionarioView.fxml"));
-	    		btnVoltar.getScene().setRoot(componente);
-	    	}catch(Exception e) {
-	    		
-	    	}
-
-	    }
-
-
-	    @FXML
-	    void AddAlunoNaAula(MouseEvent event) {
-	    	System.out.println("Adicionar aluno na aula");
-	    }
-
-	    @FXML
-	    void RemoverAlunoDaAula(MouseEvent event) {
-	    	System.out.println("Remover aluno da aula");
-	    }
-
-	    @FXML
-	    void agendarAula(MouseEvent event) {
-	    	System.out.println("Agendar aula");
-	    }
-
-	    @FXML
-	    void demitirFuncionario(MouseEvent event) {
-	    	System.out.println("Demitir funcionário");
-	    }
-
-	    @FXML
-	    void matricularAluno(MouseEvent event) {
-	    	System.out.println("Matricular aluno");
-	    }
-
-	    @FXML
-	    void removerAluno(MouseEvent event) {
-	    	System.out.println("remover aluno");
-	    }
-
-	    @FXML
-	    void removerAula(MouseEvent event) {
-	    	System.out.println("remover aula");
-	    }
-	    
-	    @FXML
-	    void cadastrarFuncionario(MouseEvent event) {
-	    	System.out.println(campoNome.getText());
-	    	System.out.println(campoCPF.getText());
-	    	System.out.println(campoDataNasc.getValue());
-	    	System.out.println(campoCargo.getValue());
-	    	
-	    }
-	    
-	
-
+			} catch (FuncionarioJaExisteException e) {
+				Utils.mostrarAlerta(e.getMessage());
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		campoCargo.setValue("Professor");
 		campoCargo.setItems(cargos);
-		
 	}
 
 }

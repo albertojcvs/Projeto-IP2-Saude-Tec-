@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.saudetecip2.domain.model.Aluno;
 import br.com.saudetecip2.domain.service.CadastrarAlunoService;
+import br.com.saudetecip2.exceptions.AlunoNaoExisteException;
 
 public class AlunoController {
 	
@@ -21,6 +22,9 @@ public class AlunoController {
 	
 	public void removerAluno(Aluno aluno) {
 		alunoService.removerAluno(aluno);
+	}
+	public void removerAluno(Long id) throws AlunoNaoExisteException {
+		alunoService.removerAluno(id);
 	}
 	
 	public void atualizarAluno(Aluno aluno) {

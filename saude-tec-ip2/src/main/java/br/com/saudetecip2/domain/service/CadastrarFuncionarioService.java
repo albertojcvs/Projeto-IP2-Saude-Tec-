@@ -34,7 +34,18 @@ public class CadastrarFuncionarioService {
 			throw new FuncionarioNaoExisteException();
 		}
 
-		funcionarioRepository.delete(funcionario);
+		funcionarioRepository.delete(funcionarioParaRemover);
+
+	}
+
+	public void removerFuncionario(Long id) throws FuncionarioNaoExisteException {
+		Funcionario funcionarioParaRemover = funcionarioRepository.getById(id);
+
+		if (funcionarioParaRemover == null) {
+			throw new FuncionarioNaoExisteException();
+		}
+
+		funcionarioRepository.delete(funcionarioParaRemover);
 
 	}
 

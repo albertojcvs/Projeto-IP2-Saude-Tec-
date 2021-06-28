@@ -10,32 +10,58 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="br.com.saudetecip2.views.TelaGerenteController">
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saudetecip2.views.TelaGerenteController">
    <children>
-      <Text fx:id="txtTitulo" layoutX="188.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Área do Gerente">
+      <Text fx:id="txtTitulo" layoutX="358.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Área do Gerente">
          <font>
-            <Font size="29.0" />
+            <Font size="41.0" />
          </font>
       </Text>
-      <Label fx:id="lbCadastrarFuncionario" layoutX="53.0" layoutY="112.0" text="Cadastrar Funcionário" />
-      <Label fx:id="lbNome" layoutX="25.0" layoutY="148.0" text="Nome :" />
-      <Label fx:id="lbCPF" layoutX="25.0" layoutY="191.0" text="CPF :" />
-      <Label fx:id="lbNascimento" layoutX="20.0" layoutY="232.0" text="Nacimento :" />
-      <Label fx:id="lbCargo" layoutX="25.0" layoutY="274.0" text="Cargo :" />
-      <TextField fx:id="campoNome" layoutX="119.0" layoutY="144.0" prefHeight="26.0" prefWidth="180.0" />
-      <TextField fx:id="campoCPF" layoutX="119.0" layoutY="178.0" prefHeight="26.0" prefWidth="180.0" />
-      <DatePicker fx:id="campoDataNasc" layoutX="116.0" layoutY="228.0" />
-      <ChoiceBox fx:id="campoCargo" layoutX="119.0" layoutY="269.0" prefHeight="28.0" prefWidth="180.0" />
-      <Button fx:id="btCadastrarFuncionario" layoutX="25.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#cadastrarFuncionario" text="Cadastrar Funcionário" />
-      <Line endX="-147.0" endY="251.0" layoutX="485.0" layoutY="130.0" startX="-147.0" startY="-40.0" />
-      <Button fx:id="btnDemitir" layoutX="398.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#demitirFuncionario" text="Demitir Funcionário" />
-      <Button fx:id="btnagendarAula" layoutX="400.0" layoutY="132.0" mnemonicParsing="false" onMouseClicked="#agendarAula" text="Agendar Aula" />
-      <Button fx:id="btnRemoverAula" layoutX="399.0" layoutY="175.0" mnemonicParsing="false" onMouseClicked="#removerAula" text="Remover Aula" />
-      <Button fx:id="btnAddAlunoNaAula" layoutX="400.0" layoutY="216.0" mnemonicParsing="false" onMouseClicked="#AddAlunoNaAula" text="Adicionar aluno na aula" />
-      <Button fx:id="btnRemoverAlunoDaAula" layoutX="400.0" layoutY="258.0" mnemonicParsing="false" onMouseClicked="#RemoverAlunoDaAula" text="Remover aluno de aula" />
-      <Button fx:id="btnMatricularAluno" layoutX="398.0" layoutY="297.0" mnemonicParsing="false" onMouseClicked="#matricularAluno" text="Matricular Aluno" />
-      <Button fx:id="btnRemoverAluno" layoutX="395.0" layoutY="338.0" mnemonicParsing="false" onMouseClicked="#removerAluno" text="Remover Aluno" />
-      <Button fx:id="btnVoltar" layoutX="534.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#voltarParaTelaFuncionario" text="Voltar" />
+      <Label fx:id="lbCadastrarFuncionario" layoutX="150.0" layoutY="207.0" prefHeight="28.0" prefWidth="186.0" text="Cadastrar Funcionário">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
+      <Label fx:id="lbNome" layoutX="43.0" layoutY="262.0" text="Nome :">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <Label fx:id="lbCPF" layoutX="43.0" layoutY="305.0" text="CPF :">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <Label fx:id="lbNascimento" layoutX="43.0" layoutY="350.0" text="Nacimento :">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <Label fx:id="lbCargo" layoutX="43.0" layoutY="388.0" text="Cargo :">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <TextField fx:id="campoNome" layoutX="208.0" layoutY="269.0" prefHeight="26.0" prefWidth="180.0" />
+      <TextField fx:id="campoCPF" layoutX="208.0" layoutY="312.0" prefHeight="26.0" prefWidth="180.0" />
+      <DatePicker fx:id="campoDataNasc" layoutX="208.0" layoutY="354.0" prefHeight="26.0" prefWidth="180.0" />
+      <ChoiceBox fx:id="campoCargo" layoutX="208.0" layoutY="394.0" prefHeight="26.0" prefWidth="180.0" />
+      <Button fx:id="btCadastrarFuncionario" layoutX="219.0" layoutY="556.0" mnemonicParsing="false" onMouseClicked="#cadastrarFuncionario" prefHeight="39.0" prefWidth="169.0" text="Cadastrar Funcionário" />
+      <Line endX="-147.0" endY="424.0" layoutX="634.0" layoutY="253.0" startX="-147.0" startY="-40.0" />
+      <Button fx:id="btnDemitir" layoutX="659.0" layoutY="263.0" mnemonicParsing="false" onMouseClicked="#demitirFuncionario" prefHeight="40.0" prefWidth="200.0" text="Demitir Funcionário" />
+      <Button fx:id="btnagendarAula" layoutX="537.0" layoutY="358.0" mnemonicParsing="false" onMouseClicked="#agendarAula" prefHeight="40.0" prefWidth="200.0" text="Agendar Aula" />
+      <Button fx:id="btnRemoverAula" layoutX="774.0" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#removerAula" prefHeight="40.0" prefWidth="200.0" text="Remover Aula" />
+      <Button fx:id="btnAddAlunoNaAula" layoutX="537.0" layoutY="443.0" mnemonicParsing="false" onMouseClicked="#AddAlunoNaAula" prefHeight="40.0" prefWidth="200.0" text="Adicionar aluno na aula" />
+      <Button fx:id="btnRemoverAlunoDaAula" layoutX="772.0" layoutY="443.0" mnemonicParsing="false" onMouseClicked="#RemoverAlunoDaAula" prefHeight="40.0" prefWidth="200.0" text="Remover aluno de aula" />
+      <Button fx:id="btnMatricularAluno" layoutX="537.0" layoutY="538.0" mnemonicParsing="false" onMouseClicked="#matricularAluno" prefHeight="40.0" prefWidth="200.0" text="Matricular Aluno" />
+      <Button fx:id="btnRemoverAluno" layoutX="772.0" layoutY="538.0" mnemonicParsing="false" onMouseClicked="#removerAluno" prefHeight="40.0" prefWidth="200.0" text="Remover Aluno" />
+      <Button fx:id="btnVoltar" layoutX="878.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#voltarParaTelaFuncionario" prefHeight="40.0" prefWidth="78.0" text="Voltar" />
+      <Label fx:id="lbCargo1" layoutX="43.0" layoutY="434.0" text="Sálario:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="campoSalario" layoutX="208.0" layoutY="437.0" prefHeight="26.0" prefWidth="180.0" />
+      <Label fx:id="lbCargo11" layoutX="46.0" layoutY="483.0" text="Senha:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="campoSenha" layoutX="208.0" layoutY="486.0" prefHeight="26.0" prefWidth="180.0" />
    </children>
 </AnchorPane>
