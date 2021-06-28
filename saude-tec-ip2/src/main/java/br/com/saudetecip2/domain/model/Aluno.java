@@ -1,6 +1,6 @@
 package br.com.saudetecip2.domain.model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,23 +12,25 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import br.com.saudetecip2.domain.enums.StatusDaMensalidadeDoAluno;
 
-@Entity
-@Table(name = "alunos")
 public class Aluno extends Pessoa{
   
-  @NotNull
-  @Enumerated(EnumType.STRING)
-  @Column(length = 8)
+  private Long id;
+ 
   private StatusDaMensalidadeDoAluno statusDaMensalidadeDoAluno;
   
-  
-  
-  public Aluno( String nome, String cpf, Date dataDeNascimento, StatusDaMensalidadeDoAluno statusDaMensalidadeDoAluno ) {
+  private String senha;
+  public Aluno(Long id, StatusDaMensalidadeDoAluno statusDaMensalidadeDoAluno, String nome, String cpf, LocalDate dataDeNascimento,String senha) {
     super(nome, cpf, dataDeNascimento);
+    this.senha = senha;
     this.statusDaMensalidadeDoAluno = statusDaMensalidadeDoAluno;
   }
   
-  
+  public Long getId() {
+    return id;
+  }
+  public void setId(Long id) {
+    this.id = id;
+  }
   public StatusDaMensalidadeDoAluno getStatusDaMensalidade() {
     return statusDaMensalidadeDoAluno;
   }
@@ -36,8 +38,22 @@ public class Aluno extends Pessoa{
     this.statusDaMensalidadeDoAluno = statusDaMensalidadeDoAluno;
   }
 
+  public String getSenha() {
+	return senha;
+}
+  public void setSenha(String senha) {
+	this.senha = senha;
+}
   
- 
+ @Override
+	public boolean equals(Object obj) {
+	 	if(obj instanceof Aluno) {
+	 		Aluno alunoParametro = (Aluno) obj;
+	 		
+	 		return alunoParametro.getCpf() == this.getCpf();
+	 	}
+	 	return false;
+ }
   
   
 

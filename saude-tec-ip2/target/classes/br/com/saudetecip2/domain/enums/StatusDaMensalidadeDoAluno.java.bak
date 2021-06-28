@@ -1,0 +1,14 @@
+package br.com.saudetecip2.domain.enums;
+
+import javax.persistence.Embeddable;
+
+
+public enum StatusDaMensalidadeDoAluno {
+<<<<<<< HEAD
+
+  PAGO, NAO_PAGO
+=======
+	PAGO,
+	NAO_PAGO
+>>>>>>> c48012b822aee4c14ed7d1a417d4ed5e3ec69685
+}

@@ -15,6 +15,7 @@ import br.com.saudetecip2.domain.enums.StatusDoFuncionario;
 @Table(name = "funcionarios")
 public class Funcionario extends Pessoa {
 
+  
   @NotNull
   @Column(length = 11)
   @Enumerated(EnumType.STRING)
@@ -27,17 +28,30 @@ public class Funcionario extends Pessoa {
   
   @NotNull
   private double salario;
+  @NotNull
+  private String senha;
   
-  public Funcionario(String nome, String cpf, Date dataDeNascimento,
-		 CargoFuncionario cargo, StatusDoFuncionario status, double salario) {
+  public Funcionario(String nome, String cpf, LocalDate dataDeNascimento,
+		 CargoFuncionario cargo, StatusDoFuncionario status, double salario, String senha) {
 	  super(nome,cpf,dataDeNascimento);
-	  
+	  this.senha = senha;
 	  this.cargo = cargo;
 	  this.statusDoFuncionario = status;
 	  this.salario = salario;
   }
   
- 
+  public int getId() {
+    return id;
+  }
+  public void setId(int id) {
+    this.id = id;
+  }
+  public String getSenha() {
+	return senha;
+}
+  public void setSenha(String senha) {
+	this.senha = senha;
+}
   public CargoFuncionario getCargo() {
     return cargo;
   }
@@ -56,5 +70,16 @@ public class Funcionario extends Pessoa {
   public void setSalario(double salario) {
     this.salario = salario;
   }
-}
   
+  @Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Funcionario) {
+			Funcionario funcionarioParametroDado = (Funcionario) obj;
+			
+			if(funcionarioParametroDado.getId() == this.id) {
+				return true;
+			}
+		}
+		return false;
+	}
+}

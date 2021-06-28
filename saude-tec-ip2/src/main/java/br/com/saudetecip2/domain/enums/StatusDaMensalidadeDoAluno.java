@@ -4,6 +4,6 @@ import javax.persistence.Embeddable;
 
 
 public enum StatusDaMensalidadeDoAluno {
-
-  PAGO, NAO_PAGO
+	PAGO,
+	NAO_PAGO
 }

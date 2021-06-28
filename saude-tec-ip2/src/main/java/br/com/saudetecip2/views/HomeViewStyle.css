@@ -1,0 +1,23 @@
+.header{
+
+
+}
+
+.header-text{
+    -fx-fill: #00ff00b2; 
+}
+
+.button{
+-fx-background-color: #fff0;
+-fx-border-radius: 20px;
+-fx-border-color:#00ADA0;
+-fx-border-width:5px;
+-fx-text-fill:#00ff00b2;
+-fx-cursor: hand;
+}
+.button:hover{
+    -fx-border-color:#00ad70;
+}
+.body{
+    -fx-background-color: linear-gradient(to bottom,#004052, #002234);
+}
