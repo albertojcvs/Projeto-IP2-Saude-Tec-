@@ -43,4 +43,4 @@ public class CadastrarAulaService {
 		return aulaRepository.findAll();
 		}
 	}
-}
+

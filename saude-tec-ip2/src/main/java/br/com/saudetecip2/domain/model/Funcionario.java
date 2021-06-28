@@ -28,10 +28,12 @@ public class Funcionario extends Pessoa {
   
   @NotNull
   private double salario;
+ 
   @NotNull
+  @Column(length = 20)
   private String senha;
   
-  public Funcionario(String nome, String cpf, LocalDate dataDeNascimento,
+  public Funcionario(String nome, String cpf, Date dataDeNascimento,
 		 CargoFuncionario cargo, StatusDoFuncionario status, double salario, String senha) {
 	  super(nome,cpf,dataDeNascimento);
 	  this.senha = senha;
@@ -40,12 +42,7 @@ public class Funcionario extends Pessoa {
 	  this.salario = salario;
   }
   
-  public int getId() {
-    return id;
-  }
-  public void setId(int id) {
-    this.id = id;
-  }
+
   public String getSenha() {
 	return senha;
 }
@@ -71,15 +68,5 @@ public class Funcionario extends Pessoa {
     this.salario = salario;
   }
   
-  @Override
-	public boolean equals(Object obj) {
-		if(obj instanceof Funcionario) {
-			Funcionario funcionarioParametroDado = (Funcionario) obj;
-			
-			if(funcionarioParametroDado.getId() == this.id) {
-				return true;
-			}
-		}
-		return false;
-	}
+
 }

@@ -1,5 +1,6 @@
 package br.com.saudetecip2.domain.model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,23 +15,18 @@ import br.com.saudetecip2.domain.enums.StatusDaMensalidadeDoAluno;
 
 public class Aluno extends Pessoa{
   
-  private Long id;
+ 
  
   private StatusDaMensalidadeDoAluno statusDaMensalidadeDoAluno;
   
   private String senha;
-  public Aluno(Long id, StatusDaMensalidadeDoAluno statusDaMensalidadeDoAluno, String nome, String cpf, LocalDate dataDeNascimento,String senha) {
+  public Aluno(Long id, StatusDaMensalidadeDoAluno statusDaMensalidadeDoAluno, String nome, String cpf, Date dataDeNascimento,String senha) {
     super(nome, cpf, dataDeNascimento);
     this.senha = senha;
     this.statusDaMensalidadeDoAluno = statusDaMensalidadeDoAluno;
   }
   
-  public Long getId() {
-    return id;
-  }
-  public void setId(Long id) {
-    this.id = id;
-  }
+ 
   public StatusDaMensalidadeDoAluno getStatusDaMensalidade() {
     return statusDaMensalidadeDoAluno;
   }

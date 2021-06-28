@@ -1,5 +1,6 @@
 package br.com.saudetecip2.views;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import br.com.saudetecip2.controller.AlunoController;

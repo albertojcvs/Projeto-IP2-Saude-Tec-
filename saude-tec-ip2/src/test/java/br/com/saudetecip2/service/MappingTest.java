@@ -19,13 +19,13 @@ public class MappingTest {
   
   @Test
   public void testeInsert() {
-    Date date = Date.valueOf(LocalDate.now());
-    StatusDaMensalidadeDoAluno status = StatusDaMensalidadeDoAluno.NAO_PAGO;
-    Aluno alunoTeste = new Aluno("Pedro Moreira", "15165145122", date, status );
-    System.out.println(alunoTeste.getStatusDaMensalidade());
-    System.out.println(alunoTeste.getNome());
-    System.out.println("status: " + status);
-    alunoRepository.save(alunoTeste);
+//    Date date = Date.valueOf(LocalDate.now());
+//    StatusDaMensalidadeDoAluno status = StatusDaMensalidadeDoAluno.NAO_PAGO;
+//    Aluno alunoTeste = new Aluno("Pedro Moreira", "15165145122", date, status);
+//    System.out.println(alunoTeste.getStatusDaMensalidade());
+//    System.out.println(alunoTeste.getNome());
+//    System.out.println("status: " + status);
+//    alunoRepository.save(alunoTeste);
     
   }
 
