@@ -32,4 +32,7 @@ public class LoginFuncionarioController {
 		funcionarioLogado = null;
 	}
 	
+	public Funcionario getFuncionarioLogado() {
+		return funcionarioLogado;
+	}
 }

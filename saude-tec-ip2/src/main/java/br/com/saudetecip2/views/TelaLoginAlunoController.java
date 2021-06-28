@@ -40,7 +40,7 @@ public class TelaLoginAlunoController {
 
 		if (idAluno.equals("") || senha.equals("")) {
 			Utils.mostrarAlerta("Algum dos campos está vazio!");
-		} else if (!Utils.checarSeStringContemApenasNumeros(senha)) {
+		} else if (!(Utils.checarSeStringContemApenasNumeros(senha))) {
 			Utils.mostrarAlerta("O ID só aceita numéros!");
 		} else {
 			try {
