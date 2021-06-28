@@ -30,7 +30,7 @@ public class LoginAlunoController {
 	public void fazerLogin(Long idAluno, String senhaAluno) throws ErroLoginAlunoException {
 		Aluno aluno = fazerLoginAlunoService.fazerLogin(idAluno, senhaAluno);
 		if(aluno == null) {
-			throw new ErroLoginAlunoException() ;
+			throw new ErroLoginAlunoException();
 		}
 		
 		alunoLogado = aluno;

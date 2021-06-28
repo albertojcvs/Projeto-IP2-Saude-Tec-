@@ -1,20 +1,21 @@
 package br.com.saudetecip2.domain.model;
 
-import java.sql.Date;
+
+import java.sql.Timestamp;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import br.com.saudetecip2.domain.enums.TipoDeAula;
 import br.com.saudetecip2.domain.enums.TipoDeTreino;
 import br.com.saudetecip2.exceptions.AlunoJaMarcadoNaAulaException;
 import br.com.saudetecip2.exceptions.AlunoNaoEstaMarcadoNaAulaException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+
+@Entity
 public class Aula {
 	
 	@Id
@@ -22,7 +23,7 @@ public class Aula {
 	private Long id;
 	
 	@NotNull
-	private LocalDateTime data;
+	private Timestamp data;
 	
 	@NotNull
   	@Enumerated(EnumType.STRING)
@@ -32,15 +33,17 @@ public class Aula {
   	@Enumerated(EnumType.STRING)
 	private TipoDeAula tipoDeAula;
 	
-	private Funcionario professor;
+	@NotNull
+	private Long professor_id;
+	
 	private ArrayList<Aluno> alunos;
 
-	public Aula(LocalDateTime data, TipoDeAula tipoDeAula, TipoDeTreino tipoDeTreino, Funcionario professor,
+	public Aula(Timestamp data, TipoDeAula tipoDeAula, TipoDeTreino tipoDeTreino, Long professor_id,
 			ArrayList<Aluno> alunos) {
 		this.data = data;
 		this.tipoDeAula = tipoDeAula;
 		this.tipoDeTreino = tipoDeTreino;
-		this.professor = professor;
+		this.professor_id = professor_id;
 		this.alunos = alunos;
 	}
 
@@ -68,12 +71,12 @@ public class Aula {
 
 	}
 
-	public Funcionario getProfessor() {
-		return professor;
+	public Long getProfessor() {
+		return professor_id;
 	}
 
-	public void setProfessor(Funcionario professor) {
-		this.professor = professor;
+	public void setProfessor(Long professor_id) {
+		this.professor_id = professor_id;
 	}
 
 	public Long getId() {
@@ -84,11 +87,11 @@ public class Aula {
 		this.id = id;
 	}
 
-	public LocalDateTime getData() {
+	public Timestamp getData() {
 		return data;
 	}
 
-	public void setData(LocalDateTime data) {
+	public void setData(Timestamp data) {
 		this.data = data;
 	}
 

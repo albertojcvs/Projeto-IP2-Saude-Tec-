@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -186,7 +187,7 @@ public class TelaGerenteController implements Initializable {
 	void cadastrarFuncionario(MouseEvent event) {
 		String nome = campoNome.getText();
 		String cpf = campoCPF.getText();
-		LocalDate dataNascimento = campoDataNasc.getValue();
+		Date dataNascimento = Date.valueOf(campoDataNasc.getValue()) ;
 		CargoFuncionario cargo = converterDeStringParaCargoFuncionario(campoCargo.getValue());
 		String senha = campoSenha.getText();
 		String salario = campoSalario.getText();
