@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import br.com.saudetecip2.domain.model.Aluno;
 import br.com.saudetecip2.domain.service.CadastrarAlunoService;
 import br.com.saudetecip2.exceptions.AlunoNaoExisteException;
 
+@Controller
 public class AlunoController {
 	
 	@Autowired

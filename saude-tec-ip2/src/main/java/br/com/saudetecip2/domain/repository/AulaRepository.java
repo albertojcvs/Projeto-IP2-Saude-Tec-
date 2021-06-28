@@ -9,5 +9,5 @@ import br.com.saudetecip2.domain.model.Funcionario;
 
 @Repository
 public interface AulaRepository extends JpaRepository<Aula, Long> {
-	Aula findByDataAndProfessor(LocalDateTime data, Funcionario professor);
+//	Aula findByDataAndProfessor(LocalDateTime data, Funcionario professor);
 }

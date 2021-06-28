@@ -1,11 +1,17 @@
 package br.com.saudetecip2.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.sql.Date;
+import java.time.LocalDate;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import br.com.saudetecip2.domain.enums.StatusDaMensalidadeDoAluno;
 import br.com.saudetecip2.domain.model.Aluno;
 import br.com.saudetecip2.domain.service.FazerLoginAlunoService;
 import br.com.saudetecip2.exceptions.ErroLoginAlunoException;
 
+@Controller
 public class LoginAlunoController {
 	@Autowired
 	private FazerLoginAlunoService fazerLoginAlunoService;
@@ -28,7 +34,10 @@ public class LoginAlunoController {
 	}
 	
 	public void fazerLogin(Long idAluno, String senhaAluno) throws ErroLoginAlunoException {
-		Aluno aluno = fazerLoginAlunoService.fazerLogin(idAluno, senhaAluno);
+		
+		System.out.println(idAluno + " | "+ senhaAluno);
+//		Aluno aluno = fazerLoginAlunoService.fazerLogin(idAluno, senhaAluno);
+		Aluno aluno = new Aluno(new Long(1),StatusDaMensalidadeDoAluno.PAGO,"Alberto", "1111111",Date.valueOf(LocalDate.of(2001, 06, 16)),"123");
 		if(aluno == null) {
 			throw new ErroLoginAlunoException();
 		}

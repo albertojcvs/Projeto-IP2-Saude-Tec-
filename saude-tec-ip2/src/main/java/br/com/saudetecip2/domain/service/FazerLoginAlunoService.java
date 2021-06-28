@@ -14,8 +14,8 @@ public class FazerLoginAlunoService {
 	AlunoRepository alunoRepository;
 	
 	public Aluno fazerLogin(Long idAluno,String senhaAluno) throws ErroLoginAlunoException {
-	  
-	  
+		
+		System.out.println(idAluno +" | "+ senhaAluno);
 		Aluno aluno = alunoRepository.findByIdAndSenha(idAluno, senhaAluno);
 		
 		if(aluno == null) {
