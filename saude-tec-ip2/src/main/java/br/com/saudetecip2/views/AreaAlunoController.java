@@ -6,9 +6,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import br.com.saudetecip2.controller.LoginAlunoController;
+import br.com.saudetecip2.domain.enums.StatusDaMensalidadeDoAluno;
 import br.com.saudetecip2.domain.model.Aluno;
 import br.com.saudetecip2.domain.model.Aula;
 
@@ -35,7 +38,6 @@ public class AreaAlunoController implements Initializable {
 	    @Override
 	    public void initialize(URL location, ResourceBundle resources) {
 	    	alunoLogado = loginAlunoController.getAlunoLogado();
-	    	textoIDAluno.setText(alunoLogado.getId().toString());
 	    	textoNomeAluno.setText(alunoLogado.getNome());
 	    }
 }

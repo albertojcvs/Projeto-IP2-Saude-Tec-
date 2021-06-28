@@ -50,7 +50,8 @@ public class TelaLoginAlunoController {
 			} catch (ErroLoginAlunoException e) {
 				Utils.mostrarAlerta("O ID e/ou a senha estão incorretos!");
 			} catch (Exception e) {
-				System.out.println("Erro!" + e);
+//				System.out.println("Erro!" + e);
+				e.printStackTrace();
 			}
 		}
 

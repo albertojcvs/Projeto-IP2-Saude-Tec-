@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import br.com.saudetecip2.domain.model.Aula;
 import br.com.saudetecip2.domain.service.CadastrarAulaService;
 import br.com.saudetecip2.exceptions.AulaJaExisteException;
 import br.com.saudetecip2.exceptions.AulaNaoExisteException;
 
+
+@Controller
 public class Aulacontroller {
 
 	@Autowired

@@ -16,14 +16,14 @@ public class CadastrarAulaService {
 	@Autowired
 	AulaRepository aulaRepository;
 	
-	public void cadastrarAula(Aula aula)throws AulaJaExisteException {
-		Aula aulaExistente = aulaRepository.findByDataAndProfessor(aula.getData(), aula.getProfessor());
-			
-		if (aulaExistente != null) {
-			throw new AulaJaExisteException();
-		}
-		aulaRepository.save(aula);
-	}
+//	public void cadastrarAula(Aula aula)throws AulaJaExisteException {
+//		Aula aulaExistente = aulaRepository.findByDataAndProfessor(aula.getData(), aula.getProfessor());
+//			
+//		if (aulaExistente != null) {
+//			throw new AulaJaExisteException();
+//		}
+//		aulaRepository.save(aula);
+//	}
 	public void removerAula(Aula aula) throws AulaNaoExisteException {
 		Optional<Aula> aulaExistente = aulaRepository.findById(aula.getId());
 		if (aulaExistente == null) {
