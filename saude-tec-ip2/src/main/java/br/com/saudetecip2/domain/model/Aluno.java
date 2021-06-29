@@ -22,6 +22,10 @@ public class Aluno extends Pessoa {
 
 	@NotNull
 	private String senha;
+
+	public Aluno() {
+	}
+
 	public Aluno(Long id, StatusDaMensalidadeDoAluno statusDaMensalidadeDoAluno, String nome, String cpf,
 			Date dataDeNascimento, String senha) {
 		super(nome, cpf, dataDeNascimento);

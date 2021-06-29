@@ -32,7 +32,7 @@ public class Pessoa {
     this.cpf = cpf;
     this.dataDeNascimento = dataDeNascimento;
   }
-  
+  public Pessoa() {}
   public Long getId() {
     return id;
   }
