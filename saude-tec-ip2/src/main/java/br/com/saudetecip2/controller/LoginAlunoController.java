@@ -36,8 +36,7 @@ public class LoginAlunoController {
 	public void fazerLogin(Long idAluno, String senhaAluno) throws ErroLoginAlunoException {
 		
 		System.out.println(idAluno + " | "+ senhaAluno);
-//		Aluno aluno = fazerLoginAlunoService.fazerLogin(idAluno, senhaAluno);
-		Aluno aluno = new Aluno(new Long(1),StatusDaMensalidadeDoAluno.PAGO,"Alberto", "1111111",Date.valueOf(LocalDate.of(2001, 06, 16)),"123");
+		Aluno aluno = fazerLoginAlunoService.fazerLogin(idAluno, senhaAluno);
 		if(aluno == null) {
 			throw new ErroLoginAlunoException();
 		}
