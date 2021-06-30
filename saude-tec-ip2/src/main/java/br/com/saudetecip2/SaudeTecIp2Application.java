@@ -18,7 +18,7 @@ public class SaudeTecIp2Application extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		stage = primaryStage;
-		Parent root = FXMLLoader.load(getClass().getResource("views/HomeView.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("views/TelaGerenteView.fxml"));
 
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
@@ -27,7 +27,7 @@ public class SaudeTecIp2Application extends Application {
 	}
 	
 	public static void main(String[] args) {
-		SpringApplication.run(SaudeTecIp2Application.class, args);
+		//SpringApplication.run(SaudeTecIp2Application.class, args);
 		
 		launch(args);
 		
