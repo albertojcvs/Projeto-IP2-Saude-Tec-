@@ -15,7 +15,7 @@ import br.com.saudetecip2.exceptions.ErroLoginAlunoException;
 public class LoginAlunoController {
 	@Autowired
 	private FazerLoginAlunoService fazerLoginAlunoService;
-	
+	private Aluno aluno01 = new Aluno(new Long(01),StatusDaMensalidadeDoAluno.PAGO,"Andre","4444444",Date.valueOf(LocalDate.of(2002, 04, 30)),"123");
 	private static LoginAlunoController instance;
 	private Aluno alunoLogado;
 	
@@ -37,10 +37,15 @@ public class LoginAlunoController {
 		
 		System.out.println(idAluno + " | "+ senhaAluno);
 //		Aluno aluno = fazerLoginAlunoService.fazerLogin(idAluno, senhaAluno);
-		Aluno aluno = new Aluno(new Long(1),StatusDaMensalidadeDoAluno.PAGO,"Alberto", "1111111",Date.valueOf(LocalDate.of(2001, 06, 16)),"123");
-		if(aluno == null) {
+		Aluno aluno;
+		if(idAluno.equals(new Long(1))) {
+			aluno = aluno01;
+		}else {
 			throw new ErroLoginAlunoException();
 		}
+//		if(aluno == null) {
+//			throw new ErroLoginAlunoException();
+//		}
 		
 		alunoLogado = aluno;
 	}

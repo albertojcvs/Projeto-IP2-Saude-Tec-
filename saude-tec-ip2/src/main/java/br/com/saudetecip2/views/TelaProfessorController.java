@@ -1,5 +1,6 @@
 package br.com.saudetecip2.views;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -15,6 +16,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 
 import javafx.fxml.Initializable;
 
@@ -28,7 +31,10 @@ public class TelaProfessorController implements Initializable{
 
 	    @FXML
 	    private Button btnVerAulasAgendadas;
-
+	    
+	    @FXML
+	    private Button botaoSair;
+	    
 	    @FXML
 	    private Tab opAgendarAula;
 
@@ -94,6 +100,17 @@ public class TelaProfessorController implements Initializable{
 	    	
 	    }
 
+	    @FXML
+	    void onBotaoSairClicked() {
+	    	try { 
+				Parent novaTela = FXMLLoader.load(getClass().getResource("TelaFuncionarioView.fxml"));
+				botaoSair.getScene().setRoot(novaTela);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    }
+	    
 	    @FXML
 	    void agendarAula(MouseEvent event) {
 	        	

@@ -5,35 +5,29 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saudetecip2.views.TelaAtendenteController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saudetecip2.views.TelaAtendenteController">
    <children>
-      <Text layoutX="268.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Área de Atendente" wrappingWidth="463.13671875">
+      <Text layoutX="212.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Área de Atendente" wrappingWidth="405.13671875">
          <font>
-            <Font size="55.0" />
+            <Font size="48.0" />
          </font>
       </Text>
-      <Button fx:id="botaoAdicionarAluno" layoutX="68.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#onBotaoAdicionarAlunoClicked" prefHeight="57.0" prefWidth="164.0" text="Adionar aluno">
+      <Button fx:id="botaoAdicionarAluno" layoutX="168.0" layoutY="307.0" mnemonicParsing="false" onMouseClicked="#onBotaoAdicionarAlunoClicked" prefHeight="57.0" prefWidth="164.0" text="Adicionar aluno">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="botaoRemoverAluno" layoutX="68.0" layoutY="394.0" mnemonicParsing="false" onMouseClicked="#onBotaoRemoverAlunoClicked" prefHeight="57.0" prefWidth="164.0" text="RemoverAluno">
+      <Button fx:id="botaoRemoverAluno" layoutX="168.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#onBotaoRemoverAlunoClicked" prefHeight="57.0" prefWidth="164.0" text="RemoverAluno">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="botaoAgendarAula" layoutX="402.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#onBotaoAgendarAulaClicked" prefHeight="57.0" prefWidth="164.0" text="Agendar Aula">
+      <Button fx:id="botaoAbrirControleDeAula" layoutX="415.0" layoutY="307.0" mnemonicParsing="false" onMouseClicked="#onAbrirControleDeAulaClicked" prefHeight="57.0" prefWidth="164.0" text="Abrir Controle de Aula" textAlignment="CENTER" wrapText="true">
          <font>
-            <Font size="18.0" />
+            <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="botaoAdicionarAlunoEmAula" layoutX="402.0" layoutY="390.0" mnemonicParsing="false" onMouseClicked="#onbotaoAdiocionarAlunoEmAulaClicked" prefHeight="66.0" prefWidth="164.0" text="Adicionar aluno em aula" textAlignment="CENTER" wrapText="true">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="botaoMudarStatusMensalidade" layoutX="719.0" layoutY="342.0" mnemonicParsing="false" onMouseClicked="#onBotaoMudarStatusMensalidadeClicked" prefHeight="66.0" prefWidth="180.0" text="Mudar status da mensalidade do aluno" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="botaoMudarStatusMensalidade" layoutX="407.0" layoutY="402.0" mnemonicParsing="false" onMouseClicked="#onBotaoMudarStatusMensalidadeClicked" prefHeight="66.0" prefWidth="180.0" text="Mudar status da mensalidade do aluno" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="16.0" />
          </font>
@@ -48,7 +42,7 @@
             <Font size="39.0" />
          </font>
       </Text>
-      <Button fx:id="botsaoSair" layoutX="899.0" layoutY="30.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="67.0" text="Sair">
+      <Button fx:id="botsaoSair" layoutX="698.0" layoutY="45.0" mnemonicParsing="false" onMouseClicked="#onBotaoSairClicked" prefHeight="42.0" prefWidth="67.0" text="Sair">
          <font>
             <Font size="16.0" />
          </font>
