@@ -1,6 +1,10 @@
 package br.com.saudetecip2.views;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -10,7 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.scene.input.MouseEvent;
 
-public class TelaControleDeAulaController {
+public class TelaControleDeAulaController implements Initializable{
 
     @FXML
     private Tab opAgendarAula;
@@ -94,5 +98,11 @@ public class TelaControleDeAulaController {
     void removerAula(MouseEvent event) {
 
     }
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
