@@ -20,7 +20,7 @@ public class SaudeTecIp2Application extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		stage = primaryStage;
-		Parent root = FXMLLoader.load(getClass().getResource("views/TelaAtendente.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("views/HomeView.fxml"));
 
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);

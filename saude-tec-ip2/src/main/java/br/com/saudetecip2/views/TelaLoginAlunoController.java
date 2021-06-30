@@ -52,10 +52,10 @@ public class TelaLoginAlunoController {
 			Utils.mostrarAlerta("O ID só aceita numéros!");
 		} else {
 			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("AreaAluno.fxml"));
-				loader.setControllerFactory(springContext::getBean);
+//				FXMLLoader loader = new FXMLLoader(getClass().getResource("AreaAluno.fxml"));
+//				loader.setControllerFactory(springContext::getBean);
 				loginAlunoController.fazerLogin(new Long(idAluno), senha);
-				Parent telaAluno = loader.load();
+				Parent telaAluno = FXMLLoader.load(getClass().getResource("AreaAluno.fxml"));
 				botaoEntrar.getScene().setRoot(telaAluno);
 			} catch (ErroLoginAlunoException e) {
 				Utils.mostrarAlerta("O ID e/ou a senha estão incorretos!");
