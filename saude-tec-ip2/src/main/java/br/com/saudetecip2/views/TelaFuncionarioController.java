@@ -59,10 +59,10 @@ public class TelaFuncionarioController implements Initializable {
 			irParaTela("TelaAtendente.fxml");
 		}
 		if (cargo == CargoFuncionario.GERENTE) {
-			irParaTela("TelaGerente.fxml");
+			irParaTela("TelaGerenteView.fxml");
 		}
 		if (cargo == CargoFuncionario.PROFESSOR) {
-			irParaTela("TelaProfessor.fxml");
+			irParaTela("TelaProfessorView.fxml");
 		}
 
 	}
@@ -86,7 +86,7 @@ public class TelaFuncionarioController implements Initializable {
 			} catch (ErroLoginFuncionarioException e) {
 				Utils.mostrarAlerta("O ID e/ou a senha estão incorretos!");
 			} catch (Exception e) {
-				System.out.print("Erro!");
+				e.printStackTrace();
 			}
 		}
 	}
