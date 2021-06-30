@@ -79,17 +79,6 @@ public class TelaGerenteController implements Initializable {
 	@FXML
 	private Button btnDemitir;
 
-	@FXML
-	private Button btnagendarAula;
-
-	@FXML
-	private Button btnRemoverAula;
-
-	@FXML
-	private Button btnAddAlunoNaAula;
-
-	@FXML
-	private Button btnRemoverAlunoDaAula;
 
 	@FXML
 	private Button btnMatricularAluno;
@@ -99,6 +88,16 @@ public class TelaGerenteController implements Initializable {
 
 	@FXML
 	private Button btnVoltar;
+	
+	@FXML
+	private Button btnControleDeAula;
+	
+	   @FXML
+	    void controlarAula(MouseEvent event) {
+		   irParaTela("TelaControleDeAula.fxml");
+	    }
+
+
 
 	@FXML
 	void voltarParaTelaFuncionario(MouseEvent event) {
@@ -125,20 +124,7 @@ public class TelaGerenteController implements Initializable {
 		}
 	}
 	
-	@FXML
-	void AddAlunoNaAula(MouseEvent event) {
-		System.out.println("Adicionar aluno na aula");
-	}
-
-	@FXML
-	void RemoverAlunoDaAula(MouseEvent event) {
-		System.out.println("Remover aluno da aula");
-	}
-
-	@FXML
-	void agendarAula(MouseEvent event) {
-		System.out.println("Agendar aula");
-	}
+	
 
 	@FXML
 	void demitirFuncionario(MouseEvent event) {
@@ -155,10 +141,7 @@ public class TelaGerenteController implements Initializable {
 		irParaTela("TelaRemoverAluno.fxml");
 	}
 
-	@FXML
-	void removerAula(MouseEvent event) {
-		System.out.println("remover aula");
-	}
+
 
 	private CargoFuncionario converterDeStringParaCargoFuncionario(String cargoString) {
 		if (cargoString == "Gerente") {

@@ -19,7 +19,7 @@ public class Aulacontroller {
 	CadastrarAulaService aulaService;
 
 	public void criarAula(Aula aula) throws AulaJaExisteException {
-		aulaService.cadastrarAula(aula);
+		//aulaService.cadastrarAula(aula);
 	}
 
 	public void deletarAula(Aula aula) throws AulaNaoExisteException {
