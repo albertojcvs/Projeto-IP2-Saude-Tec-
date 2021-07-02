@@ -19,7 +19,11 @@ public class AlunoController {
 	
 	
 	public void adicionarAluno(Aluno aluno) {
+		System.out.println("no controller:");
+		System.out.println(aluno.getCpf());
 		alunoService.cadastrarAluno(aluno);
+		System.out.println("no controller:");
+		System.out.println(aluno.getCpf());
 	}
 	
 	public void removerAluno(Aluno aluno) {

@@ -46,13 +46,17 @@ public class TelaAdicionarAlunoController {
     	String senha = campoSenha.getText();
     	Date dataNascimento = Date.valueOf(campoDataNascimento.getValue());
     	
+    	System.out.println("na tela adicionar aluno controller:");
+    	System.out.println(nome);
+    	System.out.println(cpf);
+    	
     	if(nome.equals("") ||  senha.equals("")|| cpf.equals("")||dataNascimento == null) {
     		Utils.mostrarAlerta("Algum dos campos está vazio!");
     	}else if(!(Utils.checarSeStringContemApenasNumeros(cpf))) {
     		Utils.mostrarAlerta("Cpf só pode ter números!");
     	}else {
     		Aluno novoAluno = new Aluno(null,StatusDaMensalidadeDoAluno.PAGO,nome,cpf,dataNascimento,senha);
-    		alunoController.adicionarAluno(novoAluno);
+    		alunoController.adicionarAluno(novoAluno); //erro aqui
     		Utils.mostrarAlerta("Novo aluno Adicionado");
     		limparCampos();
     	}
