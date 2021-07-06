@@ -66,7 +66,6 @@ public class TelaAtendenteController implements Initializable {
 			
 			botsaoSair.getScene().setRoot(telaFuncionario);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -87,8 +86,8 @@ public class TelaAtendenteController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-//		funcionarioLogado = loginFuncionarioController.getFuncionarioLogado();
-//		textoNomeDoFuncionario.setText(funcionarioLogado.getNome());
+		funcionarioLogado = loginFuncionarioController.getFuncionarioLogado();
+		textoNomeDoFuncionario.setText(funcionarioLogado.getNome());
 	}
 
 }

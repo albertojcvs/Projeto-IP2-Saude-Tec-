@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -11,63 +9,42 @@
 <?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saudetecip2.views.AreaAlunoController">
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-   </top>
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="14.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aluno:">
+            <Text layoutX="14.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aluno:">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <Text fx:id="textoNomeAluno" layoutX="108.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Nome do aluno&quot;">
+            <Text fx:id="textoNomeAluno" layoutX="108.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Nome do aluno&quot;">
                <font>
                   <Font size="30.0" />
-               </font>
-            </Text>
-            <Text layoutX="827.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:">
-               <font>
-                  <Font size="34.0" />
-               </font>
-            </Text>
-            <Text fx:id="textoIDAluno" layoutX="886.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;0001&quot;">
-               <font>
-                  <Font size="34.0" />
                </font>
             </Text>
             <TableView fx:id="tabelaDeAulasAgendadas" layoutY="340.0" prefHeight="435.0" prefWidth="1000.0">
               <columns>
-                <TableColumn prefWidth="151.0" text="Data" />
-                <TableColumn prefWidth="320.0" text="Professor" />
-                  <TableColumn minWidth="0.0" prefWidth="218.0" text="Tipo de Aula" />
-                  <TableColumn minWidth="0.0" prefWidth="310.0" text="Tipo de Treino" />
+                <TableColumn fx:id="colunaData" prefWidth="151.0" text="Data" />
+                <TableColumn fx:id="colunaProfessor" prefWidth="320.0" text="Professor" />
+                  <TableColumn fx:id="colunaTipoDeAula" minWidth="0.0" prefWidth="218.0" text="Tipo de Aula" />
+                  <TableColumn fx:id="colunaTipoDeTreino" minWidth="0.0" prefWidth="310.0" text="Tipo de Treino" />
               </columns>
             </TableView>
-            <Text layoutX="265.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aulas agendadas">
+            <Text layoutX="287.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aulas agendadas">
                <font>
                   <Font size="57.0" />
                </font>
             </Text>
+            <Text layoutX="319.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Área do Aluno">
+               <font>
+                  <Font size="57.0" />
+               </font>
+            </Text>
+            <Button fx:id="botaoSair" layoutX="877.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#onBotaoSaiarClicked" prefHeight="39.0" prefWidth="94.0" text="Sair">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </center>
