@@ -39,4 +39,8 @@ public class AlunoController {
 	public Aluno buscarAluno(Aluno aluno) throws IOException {
 		return alunoService.buscarAluno(aluno);
 	}
+	
+	public Aluno buscarAluno(String cpf ) throws AlunoNaoExisteException {
+		return alunoService.buscarAluno(cpf);
+	}
 }
