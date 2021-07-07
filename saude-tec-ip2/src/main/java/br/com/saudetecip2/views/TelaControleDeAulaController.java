@@ -16,6 +16,7 @@ import br.com.saudetecip2.controller.AlunoController;
 import br.com.saudetecip2.controller.Aulacontroller;
 import br.com.saudetecip2.controller.FuncionarioController;
 import br.com.saudetecip2.domain.enums.CargoFuncionario;
+import br.com.saudetecip2.domain.enums.StatusDoFuncionario;
 import br.com.saudetecip2.domain.enums.TipoDeAula;
 import br.com.saudetecip2.domain.enums.TipoDeTreino;
 import br.com.saudetecip2.domain.model.Aluno;
@@ -272,7 +273,6 @@ public class TelaControleDeAulaController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		List<Funcionario> professores = funcionarioController.buscarFuncionariosPorCargo(CargoFuncionario.PROFESSOR);
-
 		for (Funcionario funcinario : professores) {
 			mapaEntreIdENomeDeProdessor.put(funcinario.getNome(), funcinario.getId());
 		}
