@@ -28,7 +28,10 @@ public class TelaProfessorController implements Initializable{
 	
 	  @FXML
 	    private Text txtTitulo;
-
+	  
+	  private Text textoNome;
+	  
+	  
 	    @FXML
 	    private Button btnVerAulasAgendadas;
 	    

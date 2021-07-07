@@ -121,7 +121,7 @@
                            </font>
                         </Label>
                         <TextField fx:id="campoCpfAlunoDeRemover" layoutX="223.0" layoutY="38.0" />
-                        <TextField fx:id="campoIDAulaDeemover" layoutX="223.0" layoutY="90.0" />
+                        <TextField fx:id="campoIDAulaDeRemover" layoutX="223.0" layoutY="90.0" />
                         <Button fx:id="btnRemoverAlunoDaAula" layoutX="335.0" layoutY="198.0" mnemonicParsing="false" onMouseClicked="#removerAlunoDaAula" prefHeight="50.0" prefWidth="210.0" text="Remover aluno da aula">
                            <font>
                               <Font size="18.0" />

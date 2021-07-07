@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import br.com.saudetecip2.domain.enums.StatusDaMensalidadeDoAluno;
 import br.com.saudetecip2.domain.model.Aluno;
 import br.com.saudetecip2.domain.repository.AlunoRepository;
 import br.com.saudetecip2.exceptions.AlunoNaoExisteException;
@@ -70,11 +72,22 @@ public class CadastrarAlunoService {
 			throw new IOException("Erro!");
 		}
 		return student;
-
 	}
 
 	public List<Aluno> buscarAlunos() {
 		return alunoRepository.findAll();
+	}
+	
+	public void mudarStatusDaMensalidadeDoAluno(String cpf,StatusDaMensalidadeDoAluno statusDaMensalidade) throws AlunoNaoExisteException {
+		Aluno aluno =  alunoRepository.findByCpf(cpf);
+		
+		if(aluno == null) {
+			throw new AlunoNaoExisteException();
+		}
+		
+		aluno.setStatusDaMensalidade(statusDaMensalidade);
+		
+		alunoRepository.save(aluno);
 	}
 
 }
