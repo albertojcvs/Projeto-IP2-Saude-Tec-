@@ -3,10 +3,12 @@ package br.com.saudetecip2.views;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Observable;
 import java.util.ResourceBundle;
 
 import br.com.saudetecip2.controller.AlunoController;
@@ -18,6 +20,8 @@ import br.com.saudetecip2.domain.enums.TipoDeTreino;
 import br.com.saudetecip2.domain.model.Aluno;
 import br.com.saudetecip2.domain.model.Aula;
 import br.com.saudetecip2.domain.model.Funcionario;
+import br.com.saudetecip2.exceptions.AlunoJaMarcadoNaAulaException;
+import br.com.saudetecip2.exceptions.AlunoNaoEstaMarcadoNaAulaException;
 import br.com.saudetecip2.exceptions.AlunoNaoExisteException;
 import br.com.saudetecip2.exceptions.AulaJaExisteException;
 import br.com.saudetecip2.exceptions.AulaNaoExisteException;
@@ -97,10 +101,10 @@ public class TelaControleDeAulaController implements Initializable {
 	private Label lbIDAula1;
 
 	@FXML
-	private TextField campoIDAluno;
+	private TextField campoCpfAlunoDeRemover;
 
 	@FXML
-	private TextField campoIDAula1;
+	private TextField campoIDAulaDeRemover;
 
 	@FXML
 	private Button btnRemoverAlunoDaAula;
@@ -124,20 +128,22 @@ public class TelaControleDeAulaController implements Initializable {
 
 		if (cpfAluno.equals("") || idAula.equals("")) {
 			Utils.mostrarAlerta("Os campos devem ser preenchidos!");
-		}else {
+		} else {
 			try {
 				Aula aula = aulaController.buscarAula(new Long(idAula));
 				Aluno aluno = alunoController.buscarAluno(cpfAluno);
-				
-				aula.getAlunos().add(aluno);
-				
+
+				aula.adicionarAluno(aluno);
+
 			} catch (AlunoNaoExisteException e) {
-				
+
 				Utils.mostrarAlerta(e.getMessage());
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (AulaNaoExisteException e) {
+				Utils.mostrarAlerta(e.getMessage());
+			} catch (AlunoJaMarcadoNaAulaException e) {
 				Utils.mostrarAlerta(e.getMessage());
 			}
 		}
@@ -154,8 +160,14 @@ public class TelaControleDeAulaController implements Initializable {
 		String hora = campoHora.getText();
 		String minutos = campoMinutos.getText();
 
-		if (campoDataAgendarAula.getValue() == null || hora.equals("") || minutos.equals("")) {
+		if (campoDataAgendarAula.getValue() == null || hora.equals("") || minutos.equals("") || professor.equals("")
+				|| tipoAula == null || tipoTreino == null) {
 			Utils.mostrarAlerta("Algum dos campos está vazio");
+		} else if (campoDataAgendarAula.getValue().compareTo(LocalDate.now()) < 0) {
+			Utils.mostrarAlerta("A data não pode ser menor que a data de hoje");
+		} else if (Integer.valueOf(hora) > 23 || Integer.valueOf(hora) < 0 || Integer.valueOf(minutos) > 59
+				|| Integer.valueOf(minutos) < 0) {
+			Utils.mostrarAlerta("O valores de hora ou minutos não podem ser aceitos");
 		} else {
 			try {
 				dataAula = Timestamp.valueOf(LocalDateTime.of(campoDataAgendarAula.getValue(),
@@ -171,6 +183,30 @@ public class TelaControleDeAulaController implements Initializable {
 
 	@FXML
 	void removerAlunoDaAula(MouseEvent event) {
+
+		String cpfAluno = campoCpfAlunoDeRemover.getText();
+		String idAula = campoIDAulaDeRemover.getText();
+
+		if (cpfAluno.equals("") || idAula.equals("")) {
+			Utils.mostrarAlerta("Os campos devem ser preenchidos!");
+		} else {
+			try {
+				Aula aula = aulaController.buscarAula(new Long(idAula));
+				Aluno aluno = alunoController.buscarAluno(cpfAluno);
+
+				aula.removerAluno(aluno);
+
+			} catch (AlunoNaoExisteException e) {
+				Utils.mostrarAlerta(e.getMessage());
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			} catch (AulaNaoExisteException e) {
+				Utils.mostrarAlerta(e.getMessage());
+			} catch (AlunoNaoEstaMarcadoNaAulaException e) {
+				Utils.mostrarAlerta(e.getMessage());
+			}
+		}
+
 	}
 
 	@FXML
@@ -198,7 +234,12 @@ public class TelaControleDeAulaController implements Initializable {
 		}
 
 		ObservableList listaProfessores = FXCollections.observableArrayList(mapaEntreIdENomeDeProdessor.keySet());
+		ObservableList listaDeTipoDeTreino = FXCollections.observableArrayList(TipoDeTreino.values());
+		ObservableList listaDeTipoDeAula = FXCollections.observableArrayList(TipoDeAula.values());
+
 		campoProfessor.setItems(listaProfessores);
+		campoTreino.setItems(listaDeTipoDeTreino);
+		campoTipoAula.setItems(listaDeTipoDeAula);
 
 	}
 

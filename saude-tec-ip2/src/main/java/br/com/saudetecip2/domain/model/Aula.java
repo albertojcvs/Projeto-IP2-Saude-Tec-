@@ -114,7 +114,7 @@ public class Aula {
 	public boolean equals(Object obj) {
 		if(obj instanceof Aula) {
 			Aula aulaParametro  = (Aula) obj;
-			return this.id.equals(aulaParametro.getId()); 
+			return this.data.compareTo(aulaParametro.getData() ) == 0 && this.professor_id.equals(aulaParametro.getProfessor());
 		}
 		return  false;
 	}

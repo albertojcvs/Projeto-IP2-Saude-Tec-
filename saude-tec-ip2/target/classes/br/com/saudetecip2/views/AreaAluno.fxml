@@ -26,8 +26,8 @@
               <columns>
                 <TableColumn fx:id="colunaData" prefWidth="151.0" text="Data" />
                 <TableColumn fx:id="colunaProfessor" prefWidth="320.0" text="Professor" />
-                  <TableColumn fx:id="colunaTipoDeAula" minWidth="0.0" prefWidth="218.0" text="Tipo de Aula" />
-                  <TableColumn fx:id="colunaTipoDeTreino" minWidth="0.0" prefWidth="310.0" text="Tipo de Treino" />
+                  <TableColumn fx:id="colunaTipoDeAula" minWidth="0.0" prefWidth="218.0" text="Tipo De Aula" />
+                  <TableColumn fx:id="colunaTipoDeTreino" minWidth="0.0" prefWidth="310.0" text="Tipo De Treino" />
               </columns>
             </TableView>
             <Text layoutX="287.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aulas agendadas">
@@ -40,7 +40,7 @@
                   <Font size="57.0" />
                </font>
             </Text>
-            <Button fx:id="botaoSair" layoutX="877.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#onBotaoSaiarClicked" prefHeight="39.0" prefWidth="94.0" text="Sair">
+            <Button fx:id="botaoSair" layoutX="877.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#onBotaoSairClicked" prefHeight="39.0" prefWidth="94.0" text="Sair">
                <font>
                   <Font size="18.0" />
                </font>
