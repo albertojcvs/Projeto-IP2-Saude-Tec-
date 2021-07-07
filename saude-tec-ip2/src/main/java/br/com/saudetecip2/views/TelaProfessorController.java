@@ -209,7 +209,7 @@ public class TelaProfessorController implements Initializable {
 		campoTipoAula.setValue(TipoDeAula.INDIVIDUAL);
 
 		campoTreino.setItems(treinos);
-		campoTreino.setValue("MUSCULAÇÃO");
+		campoTreino.setValue(TipoDeTreino.MUSCULACAO);
 	}
 
 }
