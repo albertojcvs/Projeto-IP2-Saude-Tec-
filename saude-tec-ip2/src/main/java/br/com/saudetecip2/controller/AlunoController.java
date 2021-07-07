@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import br.com.saudetecip2.domain.enums.StatusDaMensalidadeDoAluno;
 import br.com.saudetecip2.domain.model.Aluno;
 import br.com.saudetecip2.domain.service.CadastrarAlunoService;
 import br.com.saudetecip2.exceptions.AlunoNaoExisteException;
@@ -42,5 +43,8 @@ public class AlunoController {
 	
 	public Aluno buscarAluno(String cpf ) throws AlunoNaoExisteException {
 		return alunoService.buscarAluno(cpf);
+	}
+	public void mudarStatusDaMensalidadeDoAluno(String cpf,StatusDaMensalidadeDoAluno statusDaMensalidade) throws AlunoNaoExisteException {
+		alunoService.mudarStatusDaMensalidadeDoAluno(cpf, statusDaMensalidade);
 	}
 }

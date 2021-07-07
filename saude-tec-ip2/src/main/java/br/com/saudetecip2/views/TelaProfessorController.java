@@ -2,8 +2,22 @@ package br.com.saudetecip2.views;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Observable;
 import java.util.ResourceBundle;
 
+import br.com.saudetecip2.controller.Aulacontroller;
+import br.com.saudetecip2.controller.LoginFuncionarioController;
+import br.com.saudetecip2.domain.enums.TipoDeAula;
+import br.com.saudetecip2.domain.enums.TipoDeTreino;
+import br.com.saudetecip2.domain.model.Aula;
+import br.com.saudetecip2.domain.model.Funcionario;
+import br.com.saudetecip2.exceptions.AulaJaExisteException;
+import br.com.saudetecip2.exceptions.AulaNaoExisteException;
+import br.com.saudetecip2.utils.Utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,127 +35,181 @@ import javafx.scene.Parent;
 
 import javafx.fxml.Initializable;
 
-public class TelaProfessorController implements Initializable{
-	
- 	ObservableList<String> treinos = FXCollections.observableArrayList("MUSCULAÇÃO", "AERÓBICA", "DANÇA", "YOGA", "HIDROGINÁSTICA");
+public class TelaProfessorController implements Initializable {
 
-	
-	  @FXML
-	    private Text txtTitulo;
+	ObservableList<TipoDeTreino> treinos = FXCollections.observableArrayList(TipoDeTreino.values());
 
-	    @FXML
-	    private Button btnVerAulasAgendadas;
-	    
-	    @FXML
-	    private Button botaoSair;
-	    
-	    @FXML
-	    private Tab opAgendarAula;
+	LoginFuncionarioController loginFuncionarioController = LoginFuncionarioController.getInstace();
+	Aulacontroller aulaController = new Aulacontroller();
+	Funcionario funcionarioLogado = null;
 
-	    @FXML
-	    private Text txtID;
+	@FXML
+	private Text txtTitulo;
 
-	    @FXML
-	    private Label lbData;
+	@FXML
+	private Text textoNome;
 
-	    @FXML
-	    private ChoiceBox<String> campoTreino;
+	@FXML
+	private Button btnVerAulasAgendadas;
 
-	    @FXML
-	    private Label lbTreino;
+	@FXML
+	private Button botaoSair;
 
-	    @FXML
-	    private TextField campoIDAgendarAula;
+	@FXML
+	private Tab opAgendarAula;
 
-	    @FXML
-	    private DatePicker campoDataAgendarAula;
+	@FXML
+	private Label lbData;
 
-	    @FXML
-	    private Button btnAgendarAula;
+	@FXML
+	private ChoiceBox<TipoDeTreino> campoTreino;
 
-	    @FXML
-	    private Tab opRemoverAula;
+	@FXML
+	private Label lbTreino;
 
-	    @FXML
-	    private Label lbIDRemoverAula;
+	@FXML
+	private DatePicker campoDataAgendarAula;
 
-	    @FXML
-	    private TextField campoRemoverAula;
+	@FXML
+	private Button btnAgendarAula;
 
-	    @FXML
-	    private Button btnRemoverAula;
+	@FXML
+	private Tab opRemoverAula;
 
-	    @FXML
-	    private Tab opAddAlunoNaAula;
+	@FXML
+	private Label lbIDRemoverAula;
 
-	    @FXML
-	    private Label lbIDAluno;
+	@FXML
+	private TextField campoRemoverAula;
 
-	    @FXML
-	    private Label lbIDAula;
+	@FXML
+	private Button btnRemoverAula;
 
-	    @FXML
-	    private TextField campoIDAluno;
+	@FXML
+	private Tab opAddAlunoNaAula;
 
-	    @FXML
-	    private TextField campoIDAula;
+	@FXML
+	private Label lbIDAluno;
 
-	    @FXML
-	    private Button btnAdicionarAlunoNaAula;
+	@FXML
+	private Label lbIDAula;
 
-	    @FXML
-	    private Tab opRemoverAlunoDaAula;
+	@FXML
+	private TextField campoCpfAlunoAdicionar;
 
-	    @FXML
-	    private Button btnRemoverAlunoDaAula;
+	@FXML
+	private TextField campoIDAulaAdicionar;
 
-	    @FXML
-	    void adicionarAlunoNaAula(MouseEvent event) {
-	    	
-	    }
+	@FXML
+	private TextField campoCpfAlunoRemover;
 
-	    @FXML
-	    void onBotaoSairClicked() {
-	    	try { 
-				Parent novaTela = FXMLLoader.load(getClass().getResource("TelaFuncionarioView.fxml"));
-				botaoSair.getScene().setRoot(novaTela);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+	@FXML
+	private TextField campoIDAulaRemover;
+
+	@FXML
+	private Button btnAdicionarAlunoNaAula;
+
+	@FXML
+	private Tab opRemoverAlunoDaAula;
+
+	@FXML
+	private Button btnRemoverAlunoDaAula;
+
+	@FXML
+	private ChoiceBox<TipoDeAula> campoTipoAula;
+
+	@FXML
+	private TextField campoHora;
+
+	@FXML
+	private TextField campoMinutos;
+
+	@FXML
+	void adicionarAlunoNaAula(MouseEvent event) {
+
+	}
+
+	@FXML
+	void onBotaoSairClicked() {
+		Timestamp dataAula = null;
+		TipoDeAula tipoAula = campoTipoAula.getValue();
+		TipoDeTreino tipoTreino = campoTreino.getValue();
+		String hora = campoHora.getText();
+		String minutos = campoMinutos.getText();
+
+		if (campoDataAgendarAula.getValue() == null || hora.equals("") || minutos.equals("") || tipoAula == null
+				|| tipoTreino == null) {
+			Utils.mostrarAlerta("Algum dos campos está vazio");
+		} else if (Utils.checarSeStringContemApenasNumeros(hora) || Utils.checarSeStringContemApenasNumeros(minutos)) {
+			Utils.mostrarAlerta("Os campos de hora e minutos só aceitam números!");
+		} else if (campoDataAgendarAula.getValue().compareTo(LocalDate.now()) < 0) {
+			Utils.mostrarAlerta("A data não pode ser menor que a data de hoje");
+		} else if (Integer.valueOf(hora) > 23 || Integer.valueOf(hora) < 0 || Integer.valueOf(minutos) > 59
+				|| Integer.valueOf(minutos) < 0) {
+			Utils.mostrarAlerta("O valores de hora ou minutos não podem ser aceitos");
+		} else {
+			try {
+				dataAula = Timestamp.valueOf(LocalDateTime.of(campoDataAgendarAula.getValue(),
+						LocalTime.of(Integer.parseInt(hora), Integer.parseInt(minutos))));
+
+				Aula aulaParaAgendar = new Aula(dataAula, tipoAula, tipoTreino, funcionarioLogado.getId(), null);
+
+				aulaController.criarAula(aulaParaAgendar);
+
+			} catch (AulaJaExisteException e) {
+				Utils.mostrarAlerta(e.getMessage());
 			}
-	    }
-	    
-	    @FXML
-	    void agendarAula(MouseEvent event) {
-	        	
-	    	System.out.println(campoIDAgendarAula.getText());
-	    	System.out.println(campoDataAgendarAula.getValue());
-	    	System.out.println(campoTreino.getValue());
-	    	
-	    }
+		}
+	}
 
-	    @FXML
-	    void removerAlunoDaAula(MouseEvent event) {
+	@FXML
+	void agendarAula(MouseEvent event) {
 
-	    }
+	}
 
-	    @FXML
-	    void removerAula(MouseEvent event) {
+	@FXML
+	void removerAlunoDaAula(MouseEvent event) {
 
-	    }
+	}
 
-	    @FXML
-	    void verAulasAgendada(MouseEvent event) {
+	@FXML
+	void removerAula(MouseEvent event) {
+		
+		String idAula = campoRemoverAula.getText();
+		if (idAula.equals("")) {
+			Utils.mostrarAlerta("O campo de ID deve ser preenchido");
+		} else if (Utils.checarSeStringContemApenasNumeros(idAula)) {
+			Utils.mostrarAlerta("O campo de Id só aceita números!");
+		} else {
+			try {
+				aulaController.deletarAula(Long.valueOf(idAula));
+				
+			} catch (AulaNaoExisteException e) {
+				Utils.mostrarAlerta(e.getMessage());
+			}
+		}
 
-	    }
+		
+	}
+
+	@FXML
+	void verAulasAgendada(MouseEvent event) {
+
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		campoTreino.setValue("MUSCULAÇÃO");
+
+		ObservableList listaDeAulas = FXCollections.observableArrayList(TipoDeAula.values());
+
+		funcionarioLogado = loginFuncionarioController.getFuncionarioLogado();
+		textoNome.setText(funcionarioLogado.getNome());
+
+		campoTipoAula.setItems(listaDeAulas);
+		campoTipoAula.setValue(TipoDeAula.INDIVIDUAL);
+
 		campoTreino.setItems(treinos);
-		
-		
+		campoTreino.setValue("MUSCULAÇÃO");
 	}
 
 }

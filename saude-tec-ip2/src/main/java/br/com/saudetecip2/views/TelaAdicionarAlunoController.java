@@ -50,6 +50,8 @@ public class TelaAdicionarAlunoController {
     		Utils.mostrarAlerta("Algum dos campos está vazio!");
     	}else if(!(Utils.checarSeStringContemApenasNumeros(cpf))) {
     		Utils.mostrarAlerta("Cpf só pode ter números!");
+    	}else if(campoDataNascimento.getValue().compareTo(LocalDate.now()) > 0) {
+    		Utils.mostrarAlerta("Não tem como adicionar uma pessoa que ainda não  nasceu!\nA data não é válida!");
     	}else {
     		Aluno novoAluno = new Aluno(null,StatusDaMensalidadeDoAluno.PAGO,nome,cpf,dataNascimento,senha);
     		alunoController.adicionarAluno(novoAluno);
