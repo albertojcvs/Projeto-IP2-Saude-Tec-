@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saudetecip2.views.TelaAulasAgendadasProfessorController">
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView layoutY="233.0" prefHeight="467.0" prefWidth="1000.0">
+              <columns>
+                <TableColumn fx:id="colunaData" prefWidth="316.0" text="Data" />
+                <TableColumn fx:id="colunaTipoDeTreino" prefWidth="389.0" text="Tipo de Treino" />
+                  <TableColumn fx:id="colunaTipoDeAula" minWidth="0.0" prefWidth="294.0" text="Tipo de Aula" />
+              </columns>
+            </TableView>
+            <Text layoutX="281.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minhas Aulas Agendadas">
+               <font>
+                  <Font size="41.0" />
+               </font>
+            </Text>
+            <Text layoutX="22.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aulas de:">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Text>
+            <Text fx:id="textoNome" layoutX="146.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Nome do professor&quot;">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Text>
+            <Button fx:id="botaoSair" layoutX="852.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#onBotaoSairClicked" prefHeight="38.0" prefWidth="89.0" text="Sair">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
