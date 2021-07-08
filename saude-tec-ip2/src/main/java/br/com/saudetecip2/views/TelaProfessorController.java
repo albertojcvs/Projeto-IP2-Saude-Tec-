@@ -9,12 +9,16 @@ import java.time.LocalTime;
 import java.util.Observable;
 import java.util.ResourceBundle;
 
+import br.com.saudetecip2.controller.AlunoController;
 import br.com.saudetecip2.controller.Aulacontroller;
 import br.com.saudetecip2.controller.LoginFuncionarioController;
 import br.com.saudetecip2.domain.enums.TipoDeAula;
 import br.com.saudetecip2.domain.enums.TipoDeTreino;
+import br.com.saudetecip2.domain.model.Aluno;
 import br.com.saudetecip2.domain.model.Aula;
 import br.com.saudetecip2.domain.model.Funcionario;
+import br.com.saudetecip2.exceptions.AlunoNaoEstaMarcadoNaAulaException;
+import br.com.saudetecip2.exceptions.AlunoNaoExisteException;
 import br.com.saudetecip2.exceptions.AulaJaExisteException;
 import br.com.saudetecip2.exceptions.AulaNaoExisteException;
 import br.com.saudetecip2.utils.Utils;
@@ -29,10 +33,10 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-
+import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-
+import javafx.scene.Scene;
 import javafx.fxml.Initializable;
 
 public class TelaProfessorController implements Initializable {
@@ -42,6 +46,7 @@ public class TelaProfessorController implements Initializable {
 	LoginFuncionarioController loginFuncionarioController = LoginFuncionarioController.getInstace();
 	Aulacontroller aulaController = new Aulacontroller();
 	Funcionario funcionarioLogado = null;
+	AlunoController alunoController = new AlunoController();
 
 	@FXML
 	private Text txtTitulo;
@@ -131,6 +136,11 @@ public class TelaProfessorController implements Initializable {
 
 	@FXML
 	void onBotaoSairClicked() {
+		
+	}
+
+	@FXML
+	void agendarAula(MouseEvent event) {
 		Timestamp dataAula = null;
 		TipoDeAula tipoAula = campoTipoAula.getValue();
 		TipoDeTreino tipoTreino = campoTreino.getValue();
@@ -160,15 +170,49 @@ public class TelaProfessorController implements Initializable {
 				Utils.mostrarAlerta(e.getMessage());
 			}
 		}
-	}
-
-	@FXML
-	void agendarAula(MouseEvent event) {
 
 	}
 
+	private void limparCamposAbaRemoverAlunoDeAula() {
+		campoDataAgendarAula.setValue(null);
+		campoTipoAula.setValue(null);
+		campoTreino.setValue(null);
+		campoHora.setText("");
+		campoMinutos.setText("");
+	}
+
+	
+	
 	@FXML
 	void removerAlunoDaAula(MouseEvent event) {
+		String cpfAluno = campoCpfAlunoRemover.getText();
+		String idAula = campoIDAulaRemover.getText();
+
+		if (cpfAluno.equals("") || idAula.equals("")) {
+			Utils.mostrarAlerta("Os campos devem ser preenchidos!");
+		} else if (Utils.checarSeStringContemApenasNumeros(cpfAluno)
+				|| Utils.checarSeStringContemApenasNumeros(idAula)) {
+			Utils.mostrarAlerta("Os campos de CPF e Id só aceitam números!");
+		} else {
+			try {
+				Aula aula = aulaController.buscarAula(new Long(idAula));
+				Aluno aluno = alunoController.buscarAluno(cpfAluno);
+
+				aula.removerAluno(aluno);
+				
+				limparCamposAbaRemoverAlunoDeAula();
+				
+			} catch (AlunoNaoExisteException e) {
+				Utils.mostrarAlerta(e.getMessage());
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			} catch (AulaNaoExisteException e) {
+				Utils.mostrarAlerta(e.getMessage());
+			} catch (AlunoNaoEstaMarcadoNaAulaException e) {
+				Utils.mostrarAlerta(e.getMessage());
+			}
+		}
+
 
 	}
 
@@ -191,9 +235,24 @@ public class TelaProfessorController implements Initializable {
 
 		
 	}
+	void irParaTela(String caminho) {
+		try {
+			Parent telaFxml = FXMLLoader.load(getClass().getResource(caminho));
+			Scene cenaTela = new Scene(telaFxml);
+			Stage novaTela = new Stage();
+			novaTela.setScene(cenaTela);
+			btnVerAulasAgendadas.getScene().getRoot().setDisable(true);
+			novaTela.showAndWait();
+			btnVerAulasAgendadas.getScene().getRoot().setDisable(false);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	@FXML
 	void verAulasAgendada(MouseEvent event) {
+		irParaTela("HomeView.fxml");
+		//TelaAulasAgendadasProfessor.fxml
 
 	}
 
