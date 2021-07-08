@@ -12,5 +12,5 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> 
 	List<Funcionario> findAllByCargo(CargoFuncionario cargo);
 	Funcionario findByCpf(String cpf);
 	
-	Funcionario findByIdAndSenha(Long id, String senha);
+	Funcionario findByCpfAndSenha(String cpf, String senha);
 }

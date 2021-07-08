@@ -34,7 +34,7 @@ public class TelaFuncionarioController implements Initializable {
 	private Button btnVoltarParaHome;
 
 	@FXML
-	private TextField campoID;
+	private TextField campoCpf;
 
 	@FXML
 	private Label lbID;
@@ -70,16 +70,16 @@ public class TelaFuncionarioController implements Initializable {
 	@FXML
 	void logar(MouseEvent event) {
 
-		String idFuncionario = campoID.getText();
+		String cpfFuncionario = campoCpf.getText();
 		String senha = campoSenha.getText();
 
-		if (idFuncionario.equals("") || senha.equals("")) {
+		if (cpfFuncionario.equals("") || senha.equals("")) {
 			Utils.mostrarAlerta("Algum dos campos está vazio!");
 		} else if (!(Utils.checarSeStringContemApenasNumeros(senha))) {
 			Utils.mostrarAlerta("O ID só aceita números!");
 		} else {
 			try {
-				loginFuncionarioController.fazerLogin(new Long(idFuncionario), senha);
+				loginFuncionarioController.fazerLogin(cpfFuncionario, senha);
 				Funcionario funcionarioLogado = loginFuncionarioController.getFuncionarioLogado();
 				irParaTelaDoFuncionario(funcionarioLogado.getCargo());
 				

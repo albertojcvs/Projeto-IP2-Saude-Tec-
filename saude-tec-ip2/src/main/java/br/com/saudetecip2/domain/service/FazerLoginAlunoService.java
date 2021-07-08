@@ -13,10 +13,10 @@ public class FazerLoginAlunoService {
 	@Autowired
 	AlunoRepository alunoRepository;
 	
-	public Aluno fazerLogin(Long idAluno,String senhaAluno) throws ErroLoginAlunoException {
+	public Aluno fazerLogin(String cpfAluno,String senhaAluno) throws ErroLoginAlunoException {
 		
-		System.out.println(idAluno +" | "+ senhaAluno);
-		Aluno aluno = alunoRepository.findByIdAndSenha(idAluno, senhaAluno);
+		System.out.println(cpfAluno +" | "+ senhaAluno);
+		Aluno aluno = alunoRepository.findByCpfAndSenha(cpfAluno, senhaAluno);
 		
 		if(aluno == null) {
 			throw new ErroLoginAlunoException();
