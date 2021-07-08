@@ -39,7 +39,6 @@ public class LoginFuncionarioController {
 	
 	public void fazerLogin(Long id,String senha) throws ErroLoginFuncionarioException{
 		Funcionario funcionario;
-		System.out.println(id.equals(1));
 		if(id.equals(new Long(1))) {
 		 funcionario = funcionario01;
 		}else if(id.equals(new Long(2))) {
