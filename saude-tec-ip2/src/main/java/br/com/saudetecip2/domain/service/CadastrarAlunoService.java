@@ -17,15 +17,11 @@ public class CadastrarAlunoService {
   AlunoRepository alunoRepository;
   
   public void cadastrarAluno(Aluno aluno) {
-	  System.out.println("no service");
-	  System.out.println(aluno.getCpf());
-	  System.out.println(aluno.getNome());
+
     Aluno alunoExistente = alunoRepository.findByNome(aluno.getNome());
     if(alunoExistente != null && !alunoExistente.equals(aluno)) {
         
      alunoRepository.save(aluno);
-     alunoRepository.save(aluno);
-   
      
          
     }
