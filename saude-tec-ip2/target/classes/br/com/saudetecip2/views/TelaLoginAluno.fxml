@@ -29,7 +29,7 @@
             </Pane>
             <Pane layoutY="122.0" prefHeight="681.0" prefWidth="1000.0">
                <children>
-                  <TextField fx:id="campoIdAluno" alignment="CENTER" layoutX="269.0" layoutY="129.0" prefHeight="62.0" prefWidth="387.0" promptText="Id do aluno" styleClass="input">
+                  <TextField fx:id="campoCpfAluno" alignment="CENTER" layoutX="269.0" layoutY="129.0" prefHeight="62.0" prefWidth="387.0" promptText="CPF do aluno" styleClass="input">
                      <font>
                         <Font name="Consolas" size="24.0" />
                      </font>
@@ -47,7 +47,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Text layoutX="277.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: grey;" text="ID do aluno">
+                  <Text layoutX="277.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: grey;" text="CPF do aluno">
                      <font>
                         <Font size="18.0" />
                      </font>

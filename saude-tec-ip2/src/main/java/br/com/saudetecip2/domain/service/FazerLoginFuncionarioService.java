@@ -12,8 +12,8 @@ public class FazerLoginFuncionarioService {
 	@Autowired
 	FuncionarioRepository funcionarioRepository;
 	
-	public Funcionario fazerLogin(Long id, String senha) throws ErroLoginFuncionarioException {
-		Funcionario funcionario = funcionarioRepository.findByIdAndSenha(id, senha);
+	public Funcionario fazerLogin(String cpf, String senha) throws ErroLoginFuncionarioException {
+		Funcionario funcionario = funcionarioRepository.findByCpfAndSenha(cpf, senha);
 		
 		if(funcionario == null) {
 			throw new ErroLoginFuncionarioException();

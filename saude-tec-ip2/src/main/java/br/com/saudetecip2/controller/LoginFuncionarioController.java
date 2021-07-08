@@ -37,18 +37,18 @@ public class LoginFuncionarioController {
 	}
 	
 	
-	public void fazerLogin(Long id,String senha) throws ErroLoginFuncionarioException{
-		Funcionario funcionario;
-		if(id.equals(new Long(1))) {
-		 funcionario = funcionario01;
-		}else if(id.equals(new Long(2))) {
-			funcionario = funcionario02;
-		}else if(id.equals(new Long(3))){
-			funcionario = funcionario03;
-		}else {
-			throw new ErroLoginFuncionarioException();
-		}
-//		Funcionario funcionario = loginFuncionarioService.fazerLogin(id, senha);
+	public void fazerLogin(String cpf,String senha) throws ErroLoginFuncionarioException{
+//		Funcionario funcionario;
+//		if(.equals(new Long(1))) {
+//		 funcionario = funcionario01;
+//		}else if(id.equals(new Long(2))) {
+//			funcionario = funcionario02;
+//		}else if(id.equals(new Long(3))){
+//			funcionario = funcionario03;
+//		}else {
+//			throw new ErroLoginFuncionarioException();
+//		}
+		Funcionario funcionario = loginFuncionarioService.fazerLogin(cpf, senha);
 		funcionarioLogado = funcionario;
 	}
 	
