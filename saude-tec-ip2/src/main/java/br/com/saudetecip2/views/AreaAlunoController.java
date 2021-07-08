@@ -83,9 +83,9 @@ public class AreaAlunoController implements Initializable {
 	}
 
 	public void preencherTabelaDeAulas() {
-		List<Aula> aulas = aulaController.buscarAulasDoAluno(alunoLogado.getId());
-		ObservableList lista = FXCollections.observableArrayList(aulas);
-		tabelaDeAulasAgendadas.setItems(lista);
+//		List<Aula> aulas = aulaController.buscarAulasDoAluno(alunoLogado.getId());
+//		ObservableList lista = FXCollections.observableArrayList(aulas);
+//		tabelaDeAulasAgendadas.setItems(lista);
 	}
 
 	@Override

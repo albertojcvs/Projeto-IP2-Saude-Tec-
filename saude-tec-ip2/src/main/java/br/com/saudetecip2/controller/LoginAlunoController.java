@@ -36,16 +36,16 @@ public class LoginAlunoController {
 	public void fazerLogin(Long idAluno, String senhaAluno) throws ErroLoginAlunoException {
 		
 		System.out.println(idAluno + " | "+ senhaAluno);
-//		Aluno aluno = fazerLoginAlunoService.fazerLogin(idAluno, senhaAluno);
-		Aluno aluno;
-		if(idAluno.equals(new Long(1))) {
-			aluno = aluno01;
-		}else {
-			throw new ErroLoginAlunoException();
-		}
-//		if(aluno == null) {
+		Aluno aluno = fazerLoginAlunoService.fazerLogin(idAluno, senhaAluno);
+//		Aluno aluno;
+//		if(idAluno.equals(new Long(1))) {
+//			aluno = aluno01;
+//		}else {
 //			throw new ErroLoginAlunoException();
 //		}
+		if(aluno == null) {
+			throw new ErroLoginAlunoException();
+		}
 		
 		alunoLogado = aluno;
 	}

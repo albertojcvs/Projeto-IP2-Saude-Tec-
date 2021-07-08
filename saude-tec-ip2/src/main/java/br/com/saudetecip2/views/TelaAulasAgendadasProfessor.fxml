@@ -11,7 +11,7 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tabelaDeAulas" layoutY="233.0" prefHeight="467.0" prefWidth="1000.0">
+            <TableView fx:id="tabelaDeAulas" layoutY="233.0" onMouseClicked="#onMouseClickdedInTabelaDeAulas" prefHeight="467.0" prefWidth="1000.0">
               <columns>
                 <TableColumn fx:id="colunaData" prefWidth="316.0" text="Data" />
                 <TableColumn fx:id="colunaTipoDeTreino" prefWidth="389.0" text="Tipo de Treino" />

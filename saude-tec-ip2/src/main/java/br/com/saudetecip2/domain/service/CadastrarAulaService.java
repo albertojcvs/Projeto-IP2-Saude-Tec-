@@ -62,12 +62,4 @@ public class CadastrarAulaService {
 	public List<Aula> buscarAulas() {
 		return aulaRepository.findAll();
 	}
-
-	public List<Aula> buscarAulasDoProfessor(Long professorId) {
-		return aulaRepository.findByAluno(professorId);
-	}
-	
-	public List<Aula> buscarAulasDoAluno(Long alunoId) {
-		return aulaRepository.findByAluno(alunoId);
-	}
 }

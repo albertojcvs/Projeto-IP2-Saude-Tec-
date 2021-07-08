@@ -11,5 +11,5 @@ import br.com.saudetecip2.domain.model.Funcionario;
 @Repository
 public interface AulaRepository extends JpaRepository<Aula, Long> {
 //	Aula findByDataAndProfessor(LocalDateTime data, Funcionario professor);
-	List<Aula> findByAluno(Long alunoId);
+
 }
