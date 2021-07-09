@@ -40,8 +40,6 @@ public class Aulacontroller {
 		return aulaService.buscarAulas();
 	}
 	
-	public List<Aula> buscarAulaDe(Long alunoId){
-		return aulaService.buscarAulasDe(alunoId);
-	} 
+
 
 }

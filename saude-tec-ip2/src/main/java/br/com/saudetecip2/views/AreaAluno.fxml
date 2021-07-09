@@ -10,32 +10,32 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saudetecip2.views.AreaAlunoController">
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="body" stylesheets="@GlobalStyle.css" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="14.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aluno:">
+            <Text layoutX="14.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Aluno:">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <Text fx:id="textoNomeAluno" layoutX="108.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Nome do aluno&quot;">
+            <Text fx:id="textoNomeAluno" layoutX="108.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="&quot;Nome do aluno&quot;">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <TableView fx:id="tabelaDeAulasAgendadas" layoutY="340.0" prefHeight="435.0" prefWidth="1000.0">
+            <TableView fx:id="tabelaDeAulasAgendadas" layoutY="340.0" prefHeight="435.0" prefWidth="1000.0" styleClass="body">
               <columns>
-                <TableColumn fx:id="colunaData" prefWidth="151.0" text="Data" />
-                <TableColumn fx:id="colunaProfessor" prefWidth="320.0" text="Professor" />
-                  <TableColumn fx:id="colunaTipoDeAula" minWidth="0.0" prefWidth="218.0" text="Tipo De Aula" />
-                  <TableColumn fx:id="colunaTipoDeTreino" minWidth="0.0" prefWidth="310.0" text="Tipo De Treino" />
+                <TableColumn fx:id="colunaData" prefWidth="151.0" styleClass="body" text="Data" />
+                <TableColumn fx:id="colunaProfessor" prefWidth="320.0" styleClass="body" text="Professor" />
+                  <TableColumn fx:id="colunaTipoDeAula" minWidth="0.0" prefWidth="218.0" styleClass="body" text="Tipo De Aula" />
+                  <TableColumn fx:id="colunaTipoDeTreino" minWidth="0.0" prefWidth="310.0" styleClass="body" text="Tipo De Treino" />
               </columns>
             </TableView>
-            <Text layoutX="287.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aulas agendadas">
+            <Text layoutX="287.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Aulas agendadas">
                <font>
                   <Font size="57.0" />
                </font>
             </Text>
-            <Text layoutX="319.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Área do Aluno">
+            <Text layoutX="319.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Área do Aluno">
                <font>
                   <Font size="57.0" />
                </font>

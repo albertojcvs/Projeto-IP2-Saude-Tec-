@@ -31,7 +31,7 @@ public class TelaLoginAlunoController {
 	private Button botaoVoltar;
 
 	@FXML
-	private TextField campoIdAluno;
+	private TextField campoCpfAluno;
 
 	@FXML
 	private PasswordField campoSenha;
@@ -43,10 +43,10 @@ public class TelaLoginAlunoController {
 	void onBotaoEntrarClicked(MouseEvent event) {
 
 		
-		String idAluno = campoIdAluno.getText();
+		String cpfAluno = campoCpfAluno.getText();
 		String senha = campoSenha.getText();
 
-		if (idAluno.equals("") || senha.equals("")) {
+		if (cpfAluno.equals("") || senha.equals("")) {
 			Utils.mostrarAlerta("Algum dos campos está vazio!");
 		} else if (!(Utils.checarSeStringContemApenasNumeros(senha))) {
 			Utils.mostrarAlerta("O ID só aceita numéros!");
@@ -54,13 +54,12 @@ public class TelaLoginAlunoController {
 			try {
 //				FXMLLoader loader = new FXMLLoader(getClass().getResource("AreaAluno.fxml"));
 //				loader.setControllerFactory(springContext::getBean);
-				loginAlunoController.fazerLogin(new Long(idAluno), senha);
+				loginAlunoController.fazerLogin(cpfAluno, senha);
 				Parent telaAluno = FXMLLoader.load(getClass().getResource("AreaAluno.fxml"));
 				botaoEntrar.getScene().setRoot(telaAluno);
 			} catch (ErroLoginAlunoException e) {
-				Utils.mostrarAlerta("O ID e/ou a senha estão incorretos!");
+				Utils.mostrarAlerta("O CPF e/ou a senha estão incorretos!");
 			} catch (Exception e) {
-//				System.out.println("Erro!" + e);
 				e.printStackTrace();
 			}
 		}

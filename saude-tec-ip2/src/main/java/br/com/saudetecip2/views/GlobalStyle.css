@@ -1,0 +1,44 @@
+.body{
+    -fx-background-color: linear-gradient(to bottom,#004052, #002234);
+}
+.input{
+    -fx-background-color: #fff2;
+}
+.text{
+    -fx-fill: #00ff00b2; 
+}
+
+.button{
+    -fx-border-radius:16px;
+    -fx-background-color: #fff0;
+    -fx-border-width:5px;
+    -fx-border-color: #00ADA0;
+    -fx-text-fill:#00ff00b2;
+    -fx-cursor:hand;
+} 
+
+.button:hover,.button:focused{
+    -fx-border-color:#00ad70;
+} 
+
+.date-picker > .text-field {
+    -fx-background-color: #fff2;
+    -fx-background-insets: 1 0 1 1;
+    -fx-background-radius: 2 0 0 2;
+}
+
+
+}
+
+.date-picker-popup > .month-year-pane {
+    -fx-background-color: linear-gradient(to bottom,#004052, #002234);
+}
+
+.date-picker-popup > .calendar-grid {
+    -fx-background-color: linear-gradient(to bottom,#004052, #002234);
+}
+
+.date-picker-popup > * > .date-cell {
+    -fx-background-color: #fff2;
+
+}

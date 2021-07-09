@@ -83,9 +83,9 @@ public class AreaAlunoController implements Initializable {
 	}
 
 	public void preencherTabelaDeAulas() {
-		List<Aula> aulas = aulaController.buscarAulaDe(alunoLogado.getId());
-		ObservableList lista = FXCollections.observableArrayList(aulas);
-		tabelaDeAulasAgendadas.setItems(lista);
+//		List<Aula> aulas = aulaController.buscarAulasDoAluno(alunoLogado.getId());
+//		ObservableList lista = FXCollections.observableArrayList(aulas);
+//		tabelaDeAulasAgendadas.setItems(lista);
 	}
 
 	@Override
@@ -93,7 +93,7 @@ public class AreaAlunoController implements Initializable {
 
 		colunaData.setCellFactory(cell -> {
 			return new TableCell<Aula, Timestamp>() {
-				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
 
 				@Override
 				protected void updateItem(Timestamp item, boolean empty) {
