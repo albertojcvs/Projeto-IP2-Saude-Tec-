@@ -1,4 +1,4 @@
-package br.com.saudetecip2.database.arquivoimplentation;
+package br.com.saudetecip2.arquivorepository;
 
 import java.sql.Time;
 import java.sql.Timestamp;

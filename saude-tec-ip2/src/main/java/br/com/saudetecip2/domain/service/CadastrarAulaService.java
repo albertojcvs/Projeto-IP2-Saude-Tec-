@@ -8,9 +8,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import br.com.saudetecip2.database.arquivoimplentation.AlunoRepository;
-import br.com.saudetecip2.database.arquivoimplentation.Aluno_AulaRepository;
-import br.com.saudetecip2.database.arquivoimplentation.AulaRepository;
+import br.com.saudetecip2.arquivorepository.AlunoRepository;
+import br.com.saudetecip2.arquivorepository.Aluno_AulaRepository;
+import br.com.saudetecip2.arquivorepository.AulaRepository;
 import br.com.saudetecip2.domain.model.Aluno;
 import br.com.saudetecip2.domain.model.Aula;
 import br.com.saudetecip2.exceptions.AlunoJaMarcadoNaAulaException;

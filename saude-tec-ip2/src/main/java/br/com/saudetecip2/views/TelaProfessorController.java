@@ -269,7 +269,6 @@ public class TelaProfessorController implements Initializable {
 		} else {
 			try {
 				aulaController.deletarAula(idAula);
-				
 			} catch (AulaNaoExisteException e) {
 				Utils.mostrarAlerta(e.getMessage());
 			}
