@@ -19,7 +19,7 @@ public class SaudeTecIp2Application extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		stage = primaryStage;
 		//testando com a tela de gerente
-		Parent root = FXMLLoader.load(getClass().getResource("views/TelaProfessorView.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("views/TelaDeAtualizarAulasProfessor.fxml"));
 
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
