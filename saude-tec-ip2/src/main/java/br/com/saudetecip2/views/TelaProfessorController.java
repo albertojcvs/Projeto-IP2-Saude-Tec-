@@ -258,7 +258,7 @@ public class TelaProfessorController implements Initializable {
 
 	@FXML
 	void verAulasAgendada(MouseEvent event) {
-		irParaTela("HomeView.fxml");
+		irParaTela("TelaAulasAgendadasProfessor.fxml");
 		//TelaAulasAgendadasProfessor.fxml
 
 	}
