@@ -29,14 +29,14 @@ public class CadastrarFuncionarioService {
 
 
 
-	public void removerFuncionario(String id) throws FuncionarioNaoExisteException {
-		Funcionario funcionarioParaRemover = funcionarioRepository.findById(id);
+	public void removerFuncionario(String cpf) throws FuncionarioNaoExisteException {
+		Funcionario funcionarioParaRemover = funcionarioRepository.findByCpf(cpf);
 
 		if (funcionarioParaRemover == null) {
 			throw new FuncionarioNaoExisteException();
 		}
 
-		funcionarioRepository.deleteById(id);
+		funcionarioRepository.deleteById(funcionarioParaRemover.getId());
 
 	}
 

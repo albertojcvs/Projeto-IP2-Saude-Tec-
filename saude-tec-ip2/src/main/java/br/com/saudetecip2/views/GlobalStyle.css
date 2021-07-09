@@ -21,13 +21,22 @@
     -fx-border-color:#00ad70;
 } 
 
+.tab-pane{
+    -fx-background-color: #fff2;
+}
+
+.choice-box{
+    -fx-background-color: #fff2;
+}
+
+.tab{
+    -fx-background-color: #004052;
+}
+
 .date-picker > .text-field {
     -fx-background-color: #fff2;
     -fx-background-insets: 1 0 1 1;
     -fx-background-radius: 2 0 0 2;
-}
-
-
 }
 
 .date-picker-popup > .month-year-pane {

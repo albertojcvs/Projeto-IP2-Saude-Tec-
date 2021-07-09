@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.saudetecip2.database.arquivoimplentation.AlunoRepository;
 import br.com.saudetecip2.domain.enums.StatusDaMensalidadeDoAluno;
 import br.com.saudetecip2.domain.model.Aluno;
 //import br.com.saudetecip2.domain.repository.AlunoRepository;
 import br.com.saudetecip2.exceptions.AlunoNaoExisteException;
-import br.com.saudetecip2.database.arquivoimplentation.AlunoRepository;
 
 public class CadastrarAlunoService {
 	
@@ -39,9 +39,9 @@ public class CadastrarAlunoService {
 
 	}
 
-	public void removerAluno(String id) throws AlunoNaoExisteException {
-		Aluno alunoParaRemover = alunoRepository.findById(id);
-		System.out.println("ccccccccccc");
+	public void removerAluno(String cpf) throws AlunoNaoExisteException {
+		Aluno alunoParaRemover = alunoRepository.findByCpf(cpf);
+		
 		if (alunoParaRemover == null) {
 			throw new AlunoNaoExisteException();
 		}

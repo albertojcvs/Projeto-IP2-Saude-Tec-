@@ -16,38 +16,34 @@ public class ArquivoAluno_aula {
 
 	public ArquivoAluno_aula() {
 		caminho = System.getProperty("user.dir")
-				+ "/src/main/java/br/com/saudetecip2/database/databasearquivo/Aluno-Aula.txt";
+				+ "/src/main/java/br/com/saudetecip2/database/databasearquivo/Alunos-Aula.txt";
 		arquivoTexto = new File(caminho);
 
 	}
 
 
 
-	public void gravarDado(String aulaId, String aluno_id) {
+	public void gravarDado(String id,String aulaId, String alunoId) {
 		try {
 			FileWriter fw;
 			fw = new FileWriter(arquivoTexto, true);
 			BufferedWriter gravadorDeDados = new BufferedWriter(fw);
-			gravadorDeDados.write("\n");
-
+			gravadorDeDados.write(id + " " + aulaId + " " + alunoId +"\n" );
 			gravadorDeDados.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-
-	public void gravarDados() {
+	
+	public void gravarDados(List<String> dados) {
 		try {
 			FileWriter fw;
-			fw = new FileWriter(arquivoTexto, true);
+			fw = new FileWriter(arquivoTexto);
 			BufferedWriter gravadorDeDados = new BufferedWriter(fw);
-
-//			for (Funcionario funcionario : funcionarios) {
-//				gravadorDeDados.write(funcionario.getId() + " " + funcionario.getNome() + " " + funcionario.getCpf()
-//						+ " " + funcionario.getDataDeNascimento().toString() + " " + funcionario.getCargo().toString()
-//						+ " " + String.valueOf(funcionario.getSalario()) + " " + funcionario.getSenha() + "\n");
-//			}
-
+			for(String dado: dados) {
+				String[] dadoEmArray = dado.split(" ");
+				gravadorDeDados.write(dadoEmArray[0] + " " + dadoEmArray[1]+ " " + dadoEmArray[2]+"\n" );
+			}
 			gravadorDeDados.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -55,7 +51,7 @@ public class ArquivoAluno_aula {
 	}
 
 	public List<String> lerDados() {
-		ArrayList<String> funcionarios = new ArrayList<String>();
+		ArrayList<String> dados = new ArrayList<String>();
 		try {
 			FileReader fr = new FileReader(arquivoTexto);
 			BufferedReader leitorDeDados = new BufferedReader(fr);
@@ -63,7 +59,7 @@ public class ArquivoAluno_aula {
 			String linha = leitorDeDados.readLine();
 
 			while (linha != null) {
-				String[] dados = linha.split(" ");
+				dados.add(linha);
 				
 				linha = leitorDeDados.readLine();
 			}
@@ -74,7 +70,7 @@ public class ArquivoAluno_aula {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return funcionarios;
+		return dados;
 
 	}
 }

@@ -58,9 +58,6 @@ public class TelaAulasAgendadasProfessorController implements Initializable {
 	@FXML
 	private TableColumn<Aula, TipoDeAula> colunaTipoDeAula;
 
-	@FXML
-	private Text textoNome;
-
 	private void preencherTabelasDeAula() {
 //    	List<Aula> aulas = aulaController.buscarAulasDoProfessor(professorLogado.getId());
 //		ObservableList listaDeAulas = FXCollections.observableArrayList(aulas);
@@ -75,34 +72,6 @@ public class TelaAulasAgendadasProfessorController implements Initializable {
 			}
 		}
 	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-
-		colunaData.setCellFactory(cell -> {
-			return new TableCell<Aula, Timestamp>() {
-				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
-
-				@Override
-				protected void updateItem(Timestamp item, boolean empty) {
-					super.updateItem(item, empty);
-					if (!empty) {
-						setText(format.format(item));
-					} else {
-						setText("");
-						setGraphic(null);
-					}
-				}
-			};
-		});
-
-		colunaData.setCellValueFactory(new PropertyValueFactory<>("Data"));
-		colunaTipoDeAula.setCellValueFactory(new PropertyValueFactory<>("TipoDeAula"));
-		colunaTipoDeTreino.setCellValueFactory(new PropertyValueFactory<>("TipoDeTreino"));
-
-		preencherTabelasDeAula();
-
-		professorLogado = loginFuncionarioController.getFuncionarioLogado();
 
 
     @FXML
@@ -173,6 +142,33 @@ public class TelaAulasAgendadasProfessorController implements Initializable {
 			e.printStackTrace();
 		}
     }
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+		colunaData.setCellFactory(cell -> {
+			return new TableCell<Aula, Timestamp>() {
+				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
+
+				@Override
+				protected void updateItem(Timestamp item, boolean empty) {
+					super.updateItem(item, empty);
+					if (!empty) {
+						setText(format.format(item));
+					} else {
+						setText("");
+						setGraphic(null);
+					}
+				}
+			};
+		});
+
+		colunaData.setCellValueFactory(new PropertyValueFactory<>("Data"));
+		colunaTipoDeAula.setCellValueFactory(new PropertyValueFactory<>("TipoDeAula"));
+		colunaTipoDeTreino.setCellValueFactory(new PropertyValueFactory<>("TipoDeTreino"));
+
+		preencherTabelasDeAula();
+
+		professorLogado = loginFuncionarioController.getFuncionarioLogado();
 
 		textoNome.setText(professorLogado.getNome());
 

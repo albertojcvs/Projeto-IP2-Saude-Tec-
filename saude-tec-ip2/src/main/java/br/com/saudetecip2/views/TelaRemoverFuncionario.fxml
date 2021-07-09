@@ -6,22 +6,22 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saudetecip2.views.TelaRemoverFuncionarioController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" styleClass="body" stylesheets="@GlobalStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saudetecip2.views.TelaRemoverFuncionarioController">
    <children>
-      <Text layoutX="214.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID do Funcionario">
+      <Text layoutX="210.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="CPF do Funcionario">
          <font>
-            <Font size="22.0" />
+            <Font name="Constantia" size="22.0" />
          </font>
       </Text>
-      <TextField fx:id="campoId" layoutX="210.0" layoutY="216.0" prefHeight="26.0" prefWidth="180.0" />
-      <Button fx:id="botaoRemover" layoutX="202.0" layoutY="281.0" mnemonicParsing="false" onMouseDragged="#onBotaoRemoverCklcked" prefHeight="52.0" prefWidth="196.0" text="Remover Funcionario">
+      <TextField fx:id="campoCpf" layoutX="210.0" layoutY="216.0" prefHeight="26.0" prefWidth="180.0" styleClass="input" />
+      <Button fx:id="botaoRemover" layoutX="202.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#onBotaoRemoverCklcked" prefHeight="52.0" prefWidth="206.0" text="Remover Funcionario">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Text layoutX="73.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remover Funcionario" wrappingWidth="454.13671875">
+      <Text layoutX="91.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Remover Funcionario" wrappingWidth="418.13671875">
          <font>
-            <Font size="48.0" />
+            <Font name="Impact" size="48.0" />
          </font>
       </Text>
    </children>

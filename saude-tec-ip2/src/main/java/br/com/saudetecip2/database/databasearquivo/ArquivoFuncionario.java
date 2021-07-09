@@ -63,7 +63,7 @@ public class ArquivoFuncionario {
 	public void gravarDados(List<Funcionario> funcionarios) {
 		try {
 			FileWriter fw;
-			fw = new FileWriter(arquivoTexto, true);
+			fw = new FileWriter(arquivoTexto);
 			BufferedWriter gravadorDeDados = new BufferedWriter(fw);
 
 			for (Funcionario funcionario : funcionarios) {

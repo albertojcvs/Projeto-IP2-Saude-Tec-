@@ -12,21 +12,21 @@ import javafx.scene.input.MouseEvent;
 public class TelaRemoverFuncionarioController {
 	private FuncionarioController funcionarioController = new FuncionarioController();
 	@FXML
-	private TextField campoId;
+	private TextField campoCpf;
 
 	@FXML
 	private Button botaoRemover;
 
 	@FXML
 	void onBotaoRemoverCklcked(MouseEvent event) {
-		String id = campoId.getText();
-		if (id.equals("")) {
+		String cpf = campoCpf.getText();
+		if (cpf.equals("")) {
 			Utils.mostrarAlerta("O campo está vazio!");
-		} else if (!(Utils.checarSeStringContemApenasNumeros(id))) {
+		} else if (!(Utils.checarSeStringContemApenasNumeros(cpf))) {
 			Utils.mostrarAlerta("O campo só aceita números!");
 		} else {
 			try {
-				funcionarioController.removerFuncionario(id);
+				funcionarioController.removerFuncionario(cpf);
 			} catch (FuncionarioNaoExisteException e) {
 				Utils.mostrarAlerta(e.getMessage());
 			} catch (Exception e) {
