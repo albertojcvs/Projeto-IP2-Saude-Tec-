@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import br.com.saudetecip2.controller.AlunoController;
 import br.com.saudetecip2.controller.Aulacontroller;
 import br.com.saudetecip2.controller.LoginFuncionarioController;
+import br.com.saudetecip2.domain.enums.StatusDaMensalidadeDoAluno;
 import br.com.saudetecip2.domain.enums.TipoDeAula;
 import br.com.saudetecip2.domain.enums.TipoDeTreino;
 import br.com.saudetecip2.domain.model.Aluno;
@@ -132,9 +133,8 @@ public class TelaProfessorController implements Initializable {
 
 	@FXML
 	void adicionarAlunoNaAula(MouseEvent event) {
-		String cpfAluno = campoIDAulaAdicionar.getText();
+		String cpfAluno = campoCpfAlunoAdicionar.getText();
 		String idAula = campoIDAulaAdicionar.getText();
-
 		if (cpfAluno.equals("") || idAula.equals("")) {
 			Utils.mostrarAlerta("Os campos devem ser preenchidos!");
 		} else if (!(Utils.checarSeStringContemApenasNumeros(cpfAluno))
@@ -142,11 +142,19 @@ public class TelaProfessorController implements Initializable {
 			Utils.mostrarAlerta("Os campos de CPF e Id só aceitam números!");
 		} else {
 			try {
-				Aula aula = aulaController.buscarAula(idAula);
+				
 				Aluno aluno = alunoController.buscarAluno(cpfAluno);
-
-			aulaController.adicionarAlunoEmAula(cpfAluno, idAula);
-			Utils.mostrarAlerta("Aluno adicionado na aula com sucesso!");
+				
+				if(aluno.getStatusDaMensalidade() == StatusDaMensalidadeDoAluno.NAO_PAGO) {
+					Utils.mostrarAlerta("Não é possivel adicionar o aluno porque ele não pagou a mensalidade!");
+				}else {
+					
+					aulaController.adicionarAlunoEmAula(cpfAluno, idAula);
+					Utils.mostrarAlerta("Aluno adicionado na aula com sucesso!");
+					campoCpfAlunoAdicionar.setText("");
+					campoIDAulaAdicionar.setText("");
+				}
+				
 			} catch (AlunoNaoExisteException e) {
 
 				Utils.mostrarAlerta(e.getMessage());

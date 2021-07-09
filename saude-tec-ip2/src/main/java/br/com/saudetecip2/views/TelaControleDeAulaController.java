@@ -16,6 +16,7 @@ import br.com.saudetecip2.controller.AlunoController;
 import br.com.saudetecip2.controller.Aulacontroller;
 import br.com.saudetecip2.controller.FuncionarioController;
 import br.com.saudetecip2.domain.enums.CargoFuncionario;
+import br.com.saudetecip2.domain.enums.StatusDaMensalidadeDoAluno;
 import br.com.saudetecip2.domain.enums.StatusDoFuncionario;
 import br.com.saudetecip2.domain.enums.TipoDeAula;
 import br.com.saudetecip2.domain.enums.TipoDeTreino;
@@ -159,12 +160,14 @@ public class TelaControleDeAulaController implements Initializable {
 			Utils.mostrarAlerta("Os campos de CPF e Id só aceitam números!");
 		} else {
 			try {
-				Aula aula = aulaController.buscarAula(idAula);
 				Aluno aluno = alunoController.buscarAluno(cpfAluno);
-
-			aulaController.adicionarAlunoEmAula(cpfAluno, idAula);
-			Utils.mostrarAlerta("Aluno adicionado na aula com sucesso!");
-				limparCamposAbaAdicionarAlunoEmAula();
+				if(aluno.getStatusDaMensalidade() == StatusDaMensalidadeDoAluno.NAO_PAGO) {
+					Utils.mostrarAlerta("Não é possivel adicionar o aluno porque ele não pagou a mensalidade!");
+				}else {					
+					aulaController.adicionarAlunoEmAula(cpfAluno, idAula);
+					Utils.mostrarAlerta("Aluno adicionado na aula com sucesso!");
+					limparCamposAbaAdicionarAlunoEmAula();
+				}
 			} catch (AlunoNaoExisteException e) {
 
 				Utils.mostrarAlerta(e.getMessage());
