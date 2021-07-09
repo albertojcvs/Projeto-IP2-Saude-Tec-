@@ -136,19 +136,20 @@ public class TelaProfessorController implements Initializable {
 
 	@FXML
 	void onBotaoSairClicked() {
+
+		loginFuncionarioController.fazerLogout();
 		try {
-			Parent telaFuncionario = FXMLLoader.load(getClass().getResource("TelaFuncionarioView.fxml"));
-			
-			botaoSair.getScene().setRoot(telaFuncionario);
+      
+			Parent novaTela = FXMLLoader.load(getClass().getResource("TelaFuncionarioView.fxml"));
+			botaoSair.getScene().setRoot(novaTela);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	@FXML
 	void agendarAula(MouseEvent event) {
-		Timestamp dataAula = null;
+		LocalDateTime dataAula = null;
 		TipoDeAula tipoAula = campoTipoAula.getValue();
 		TipoDeTreino tipoTreino = campoTreino.getValue();
 		String hora = campoHora.getText();
@@ -166,8 +167,8 @@ public class TelaProfessorController implements Initializable {
 			Utils.mostrarAlerta("O valores de hora ou minutos não podem ser aceitos");
 		} else {
 			try {
-				dataAula = Timestamp.valueOf(LocalDateTime.of(campoDataAgendarAula.getValue(),
-						LocalTime.of(Integer.parseInt(hora), Integer.parseInt(minutos))));
+				dataAula = LocalDateTime.of(campoDataAgendarAula.getValue(),
+						LocalTime.of(Integer.parseInt(hora), Integer.parseInt(minutos)));
 
 				Aula aulaParaAgendar = new Aula(dataAula, tipoAula, tipoTreino, funcionarioLogado.getId(), null);
 
@@ -202,7 +203,7 @@ public class TelaProfessorController implements Initializable {
 			Utils.mostrarAlerta("Os campos de CPF e Id só aceitam números!");
 		} else {
 			try {
-				Aula aula = aulaController.buscarAula(new Long(idAula));
+				Aula aula = aulaController.buscarAula(idAula);
 				Aluno aluno = alunoController.buscarAluno(cpfAluno);
 
 				aula.removerAluno(aluno);
@@ -233,7 +234,7 @@ public class TelaProfessorController implements Initializable {
 			Utils.mostrarAlerta("O campo de Id só aceita números!");
 		} else {
 			try {
-				aulaController.deletarAula(Long.valueOf(idAula));
+				aulaController.deletarAula(idAula);
 				
 			} catch (AulaNaoExisteException e) {
 				Utils.mostrarAlerta(e.getMessage());
@@ -258,9 +259,8 @@ public class TelaProfessorController implements Initializable {
 
 	@FXML
 	void verAulasAgendada(MouseEvent event) {
-		irParaTela("TelaAulasAgendadasProfessor.fxml");
-		//TelaAulasAgendadasProfessor.fxml
 
+		irParaTela("TelaAulasAgendadasProfessor.fxml");
 	}
 
 	@Override

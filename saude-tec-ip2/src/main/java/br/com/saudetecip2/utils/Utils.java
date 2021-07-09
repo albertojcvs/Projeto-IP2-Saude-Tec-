@@ -14,7 +14,7 @@ public class Utils {
 	
 	public static void mostrarAlerta(String mensagem) {
 		Alert alertaErro = new Alert(AlertType.NONE, mensagem, ButtonType.OK);
-		alertaErro.setTitle("Erro!");
+		alertaErro.setTitle("Aviso!");
 		alertaErro.showAndWait();
 	}
 	

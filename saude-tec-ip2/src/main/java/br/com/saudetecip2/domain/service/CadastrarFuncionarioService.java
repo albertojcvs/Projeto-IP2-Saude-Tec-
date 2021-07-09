@@ -5,17 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.saudetecip2.database.arquivoimplentation.FuncionarioRepository;
 import br.com.saudetecip2.domain.enums.CargoFuncionario;
 import br.com.saudetecip2.domain.model.Funcionario;
-import br.com.saudetecip2.domain.repository.FuncionarioRepository;
 import br.com.saudetecip2.exceptions.FuncionarioJaExisteException;
 import br.com.saudetecip2.exceptions.FuncionarioNaoExisteException;
 
-@Service
+
 public class CadastrarFuncionarioService {
 
-	@Autowired
-	FuncionarioRepository funcionarioRepository;
+	
+	FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
 
 	public void cadastrarFucionario(Funcionario funcionario) throws FuncionarioJaExisteException {
 		Funcionario funcionarioExistente = funcionarioRepository.findByCpf(funcionario.getCpf());
@@ -27,37 +27,28 @@ public class CadastrarFuncionarioService {
 
 	}
 
-	public void removerFuncionario(Funcionario funcionario) throws FuncionarioNaoExisteException {
-		Funcionario funcionarioParaRemover = funcionarioRepository.getById(funcionario.getId());
+
+
+	public void removerFuncionario(String id) throws FuncionarioNaoExisteException {
+		Funcionario funcionarioParaRemover = funcionarioRepository.findById(id);
 
 		if (funcionarioParaRemover == null) {
 			throw new FuncionarioNaoExisteException();
 		}
 
-		funcionarioRepository.delete(funcionarioParaRemover);
-
-	}
-
-	public void removerFuncionario(Long id) throws FuncionarioNaoExisteException {
-		Funcionario funcionarioParaRemover = funcionarioRepository.getById(id);
-
-		if (funcionarioParaRemover == null) {
-			throw new FuncionarioNaoExisteException();
-		}
-
-		funcionarioRepository.delete(funcionarioParaRemover);
+		funcionarioRepository.deleteById(id);
 
 	}
 
 	public void atualizarFuncionario(Funcionario funcionario) throws FuncionarioNaoExisteException {
-		Funcionario funcionarioParaAtualizar = funcionarioRepository.getById(funcionario.getId());
+		Funcionario funcionarioParaAtualizar = funcionarioRepository.findById(funcionario.getId());
 
 		if (funcionarioParaAtualizar == null) {
 			throw new FuncionarioNaoExisteException();
 		}
 
 		funcionarioParaAtualizar = funcionario;
-		funcionarioRepository.save(funcionarioParaAtualizar);
+		funcionarioRepository.update(funcionarioParaAtualizar);
 	}
 
 	public List<Funcionario> buscarFuncionarios() {

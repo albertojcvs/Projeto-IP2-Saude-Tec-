@@ -12,20 +12,17 @@ import br.com.saudetecip2.exceptions.FuncionarioJaExisteException;
 import br.com.saudetecip2.exceptions.FuncionarioNaoExisteException;
 
 
-@Controller
+
 public class FuncionarioController {
-	@Autowired
-	CadastrarFuncionarioService funcionarioService;
+	
+	CadastrarFuncionarioService funcionarioService = new CadastrarFuncionarioService();
 
 	public void cadastrarFuncionario(Funcionario funcionario) throws FuncionarioJaExisteException {
 		funcionarioService.cadastrarFucionario(funcionario);
 	}
 
-	public void removerFuncinario(Funcionario funcionario) throws FuncionarioNaoExisteException {
-		funcionarioService.removerFuncionario(funcionario);
-	}
 	
-	public void removerFuncionario(Long id) throws FuncionarioNaoExisteException {
+	public void removerFuncionario(String id) throws FuncionarioNaoExisteException {
 		funcionarioService.removerFuncionario(id);
 	}
 

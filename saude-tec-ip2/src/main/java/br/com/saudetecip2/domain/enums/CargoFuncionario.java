@@ -6,4 +6,5 @@ import javax.persistence.Embeddable;
 public enum CargoFuncionario {
 
   PROFESSOR, GERENTE, ATENDENTE, OUTRO_CARGO
+
 }

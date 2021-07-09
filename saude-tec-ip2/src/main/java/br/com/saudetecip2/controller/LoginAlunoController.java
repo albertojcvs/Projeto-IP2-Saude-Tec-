@@ -11,11 +11,10 @@ import br.com.saudetecip2.domain.model.Aluno;
 import br.com.saudetecip2.domain.service.FazerLoginAlunoService;
 import br.com.saudetecip2.exceptions.ErroLoginAlunoException;
 
-@Controller
 public class LoginAlunoController {
-	@Autowired
-	private FazerLoginAlunoService fazerLoginAlunoService;
-	private Aluno aluno01 = new Aluno(new Long(01),StatusDaMensalidadeDoAluno.PAGO,"Andre","4444444",Date.valueOf(LocalDate.of(2002, 04, 30)),"123");
+
+	FazerLoginAlunoService fazerLoginAlunoService = new FazerLoginAlunoService();
+//	private Aluno aluno01 = new Aluno("01",StatusDaMensalidadeDoAluno.PAGO,"Andre","4444444",Date.valueOf(LocalDate.of(2002, 04, 30)),"123");
 	private static LoginAlunoController instance;
 	private Aluno alunoLogado;
 	
@@ -35,14 +34,7 @@ public class LoginAlunoController {
 	
 	public void fazerLogin(String cpfAluno, String senhaAluno) throws ErroLoginAlunoException {
 		
-		System.out.println(cpfAluno + " | "+ senhaAluno);
 		Aluno aluno = fazerLoginAlunoService.fazerLogin(cpfAluno, senhaAluno);
-//		Aluno aluno;
-//		if(idAluno.equals(new Long(1))) {
-//			aluno = aluno01;
-//		}else {
-//			throw new ErroLoginAlunoException();
-//		}
 		if(aluno == null) {
 			throw new ErroLoginAlunoException();
 		}

@@ -2,6 +2,8 @@ package br.com.saudetecip2.domain.model;
 
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -20,10 +22,10 @@ public class Aula {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private String id;
 	
 	@NotNull
-	private Timestamp data;
+	private LocalDateTime data;
 	
 	@NotNull
   	@Enumerated(EnumType.STRING)
@@ -34,11 +36,22 @@ public class Aula {
 	private TipoDeAula tipoDeAula;
 	
 	@NotNull
-	private Long professor_id;
+	private String professor_id;
 	
 	private ArrayList<Aluno> alunos;
+	
+	public Aula(String id,LocalDateTime data, TipoDeAula tipoDeAula, TipoDeTreino tipoDeTreino, String professor_id,
+			ArrayList<Aluno> alunos) {
+		this.data = data;
+		this.tipoDeAula = tipoDeAula;
+		this.tipoDeTreino = tipoDeTreino;
+		this.professor_id = professor_id;
+		this.alunos = alunos;
+		this.id = id;
+	}
 
-	public Aula(Timestamp data, TipoDeAula tipoDeAula, TipoDeTreino tipoDeTreino, Long professor_id,
+	
+	public Aula(LocalDateTime data, TipoDeAula tipoDeAula, TipoDeTreino tipoDeTreino, String professor_id,
 			ArrayList<Aluno> alunos) {
 		this.data = data;
 		this.tipoDeAula = tipoDeAula;
@@ -71,27 +84,27 @@ public class Aula {
 
 	}
 
-	public Long getProfessor() {
+	public String getProfessor() {
 		return professor_id;
 	}
 
-	public void setProfessor(Long professor_id) {
+	public void setProfessor(String professor_id) {
 		this.professor_id = professor_id;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public Timestamp getData() {
+	public LocalDateTime getData() {
 		return data;
 	}
 
-	public void setData(Timestamp data) {
+	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
 

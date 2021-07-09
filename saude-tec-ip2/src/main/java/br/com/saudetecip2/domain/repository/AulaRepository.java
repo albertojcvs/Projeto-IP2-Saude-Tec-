@@ -9,7 +9,7 @@ import br.com.saudetecip2.domain.model.Aula;
 import br.com.saudetecip2.domain.model.Funcionario;
 
 @Repository
-public interface AulaRepository extends JpaRepository<Aula, Long> {
+public interface AulaRepository extends JpaRepository<Aula, String> {
 //	Aula findByDataAndProfessor(LocalDateTime data, Funcionario professor);
 
 }

@@ -170,7 +170,7 @@ public class TelaGerenteController implements Initializable {
 	void cadastrarFuncionario(MouseEvent event) {
 		String nome = campoNome.getText();
 		String cpf = campoCPF.getText();
-		Date dataNascimento = Date.valueOf(campoDataNasc.getValue()) ;
+		LocalDate dataNascimento =campoDataNasc.getValue() ;
 		CargoFuncionario cargo = converterDeStringParaCargoFuncionario(campoCargo.getValue());
 		String senha = campoSenha.getText();
 		String salario = campoSalario.getText();
@@ -182,8 +182,7 @@ public class TelaGerenteController implements Initializable {
 			Utils.mostrarAlerta("Apenas numeros são aceitos nos campo de CPF e senha!");
 		} else {
 			try {
-				Funcionario novoFuncionario = new Funcionario(nome, cpf, dataNascimento, cargo,
-						StatusDoFuncionario.CONTRATADO, Double.parseDouble(salario), senha);
+				Funcionario novoFuncionario = new Funcionario(nome, cpf, dataNascimento, cargo, Double.parseDouble(salario), senha);
 
 				funcionarioController.cadastrarFuncionario(novoFuncionario);
 				limparCamposDeCasdatroDeFuncionario();

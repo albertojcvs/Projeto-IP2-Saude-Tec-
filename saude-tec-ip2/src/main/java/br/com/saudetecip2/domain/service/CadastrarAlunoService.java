@@ -8,54 +8,45 @@ import org.springframework.stereotype.Service;
 
 import br.com.saudetecip2.domain.enums.StatusDaMensalidadeDoAluno;
 import br.com.saudetecip2.domain.model.Aluno;
-import br.com.saudetecip2.domain.repository.AlunoRepository;
+//import br.com.saudetecip2.domain.repository.AlunoRepository;
 import br.com.saudetecip2.exceptions.AlunoNaoExisteException;
+import br.com.saudetecip2.database.arquivoimplentation.AlunoRepository;
 
-@Service
 public class CadastrarAlunoService {
-
-	@Autowired
-	AlunoRepository alunoRepository;
-
+	
+	AlunoRepository alunoRepository = new AlunoRepository();
 	public void cadastrarAluno(Aluno aluno) {
 
-		Aluno alunoExistente = alunoRepository.findByNome(aluno.getNome());
-		if (alunoExistente != null && !alunoExistente.equals(aluno)) {
-
+		Aluno alunoExistente = alunoRepository.findById(aluno.getId());
+		if (alunoExistente == null) {
 			alunoRepository.save(aluno);
-
 		}
 
 	}
 
 	public Aluno atualizarAluno(Aluno aluno) {
-		Aluno student = alunoRepository.getById(aluno.getId());
+		Aluno student = alunoRepository.findById(aluno.getId());
 		if (student != null && student.equals(aluno)) {
 			student.setCpf(aluno.getCpf());
 			student.setDataDeNascimento(aluno.getDataDeNascimento());
 			student.setId(aluno.getId());
 			student.setNome(aluno.getNome());
 			student.setStatusDaMensalidade(aluno.getStatusDaMensalidade());
+			
+			alunoRepository.update(student);
 		}
 		return student;
 
 	}
 
-	public void removerAluno(Aluno aluno) {
-		Aluno alunoExistente = alunoRepository.findByNome(aluno.getNome());
-		if (alunoExistente != null && alunoExistente.equals(aluno)) {
-			alunoRepository.delete(aluno);
-		}
-	}
-
-	public void removerAluno(Long id) throws AlunoNaoExisteException {
-		Aluno alunoParaRemover = alunoRepository.getById(id);
-
+	public void removerAluno(String id) throws AlunoNaoExisteException {
+		Aluno alunoParaRemover = alunoRepository.findById(id);
+		System.out.println("ccccccccccc");
 		if (alunoParaRemover == null) {
 			throw new AlunoNaoExisteException();
 		}
 
-		alunoRepository.delete(alunoParaRemover);
+		alunoRepository.deleteById(alunoParaRemover.getId());
 	}
 
 	public Aluno buscarAluno(String  cpf) throws AlunoNaoExisteException {
@@ -67,7 +58,7 @@ public class CadastrarAlunoService {
 	}
 	
 	public Aluno buscarAluno(Aluno aluno) throws IOException {
-		Aluno student = alunoRepository.getById(aluno.getId());
+		Aluno student = alunoRepository.findById(aluno.getId());
 		if (student == null && !student.equals(aluno)) {
 			throw new IOException("Erro!");
 		}
@@ -87,7 +78,7 @@ public class CadastrarAlunoService {
 		
 		aluno.setStatusDaMensalidade(statusDaMensalidade);
 		
-		alunoRepository.save(aluno);
+		alunoRepository.update(aluno);
 	}
 
 }

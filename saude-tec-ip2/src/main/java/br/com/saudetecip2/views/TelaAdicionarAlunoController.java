@@ -44,7 +44,7 @@ public class TelaAdicionarAlunoController {
     	String nome = campoNome.getText();
     	String cpf = campoCpf.getText();
     	String senha = campoSenha.getText();
-    	Date dataNascimento = Date.valueOf(campoDataNascimento.getValue());
+    	LocalDate dataNascimento = campoDataNascimento.getValue();
     	
     	if(nome.equals("") ||  senha.equals("")|| cpf.equals("")||dataNascimento == null) {
     		Utils.mostrarAlerta("Algum dos campos está vazio!");

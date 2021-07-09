@@ -1,6 +1,8 @@
 package br.com.saudetecip2.domain.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +16,7 @@ public class Pessoa {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private String id;
   
   @Column(length = 55)
   @NotNull
@@ -25,19 +27,25 @@ public class Pessoa {
   private String cpf;
   
   @NotNull
-  private Date dataDeNascimento;
+  private LocalDate dataDeNascimento;
   
-  public Pessoa(String nome, String cpf, Date dataDeNascimento) {
+  public Pessoa(String nome, String cpf, LocalDate dataDeNascimento) {
     this.nome = nome;
     this.cpf = cpf;
     this.dataDeNascimento = dataDeNascimento;
   }
+  public Pessoa(String id, String nome, String cpf, LocalDate dataDeNascimento) {
+	  this.id = id;  
+	  this.nome = nome;
+	    this.cpf = cpf;
+	    this.dataDeNascimento = dataDeNascimento;
+	  }
   public Pessoa() {}
-  public Long getId() {
+  public String getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(String id) {
     this.id = id;
   }
 
@@ -53,10 +61,10 @@ public class Pessoa {
   public void setCpf(String cpf) {
     this.cpf = cpf;
   }
-  public Date getDataDeNascimento() {
+  public LocalDate getDataDeNascimento() {
     return dataDeNascimento;
   }
-  public void setDataDeNascimento(Date dataDeNascimento) {
+  public void setDataDeNascimento(LocalDate dataDeNascimento) {
     this.dataDeNascimento = dataDeNascimento;
   }
   

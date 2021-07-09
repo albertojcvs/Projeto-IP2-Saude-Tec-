@@ -47,6 +47,7 @@ public class TelaFuncionarioController implements Initializable {
 
 	private void irParaTela(String caminho) {
 		try {
+			System.out.println("chegeui 3");
 			Parent outraTela = FXMLLoader.load(getClass().getResource(caminho));
 			btnLogin.getScene().setRoot(outraTela);
 		} catch (IOException e) {
@@ -55,10 +56,13 @@ public class TelaFuncionarioController implements Initializable {
 	}
 
 	private void irParaTelaDoFuncionario(CargoFuncionario cargo) {
+		System.out.println(cargo == CargoFuncionario.ATENDENTE);
+		System.out.println(cargo == CargoFuncionario.GERENTE);
+		System.out.println(cargo == CargoFuncionario.PROFESSOR);
 		if (cargo == CargoFuncionario.ATENDENTE) {
 			irParaTela("TelaAtendente.fxml");
 		}
-		if (cargo == CargoFuncionario.GERENTE) {
+		if (cargo ==  CargoFuncionario.GERENTE){
 			irParaTela("TelaGerenteView.fxml");
 		}
 		if (cargo == CargoFuncionario.PROFESSOR) {
@@ -79,8 +83,10 @@ public class TelaFuncionarioController implements Initializable {
 			Utils.mostrarAlerta("O ID só aceita números!");
 		} else {
 			try {
+				System.out.println("chegeui 1");
 				loginFuncionarioController.fazerLogin(cpfFuncionario, senha);
 				Funcionario funcionarioLogado = loginFuncionarioController.getFuncionarioLogado();
+				System.out.print(funcionarioLogado.getCargo());
 				irParaTelaDoFuncionario(funcionarioLogado.getCargo());
 				
 			} catch (ErroLoginFuncionarioException e) {

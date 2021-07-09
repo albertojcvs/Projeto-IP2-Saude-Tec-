@@ -22,6 +22,7 @@ class TesteServicoLogin {
 	@Autowired
 	AlunoRepository aluno;
 	
+	@Autowired
 	LoginAlunoController loginAluno = LoginAlunoController.getInstance();
 	
 	@Test
@@ -32,7 +33,7 @@ class TesteServicoLogin {
 		Long id = new Long(2);
 		String senha = "123";
 		try {
-			a = this.fazerLoginService.fazerLogin(id, senha);
+			a = this.fazerLoginService.fazerLogin("", senha);
 			System.out.print(a.getNome());
 		} catch (Exception e) {
 		}
@@ -46,7 +47,7 @@ class TesteServicoLogin {
 	@Test
 	void testarLoginAlunoController() {
 		try {
-			loginAluno.fazerLogin(new Long(2), "123");
+			loginAluno.fazerLogin("", "123");
 		} catch (ErroLoginAlunoException e) {
 			e.printStackTrace();
 		}

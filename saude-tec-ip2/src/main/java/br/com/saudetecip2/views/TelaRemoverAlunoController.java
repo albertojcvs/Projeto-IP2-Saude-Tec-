@@ -27,11 +27,13 @@ public class TelaRemoverAlunoController {
 			Utils.mostrarAlerta("O campo só aceita números!");
 		} else {
 			try {
-				alunoController.removerAluno(new Long(id));
+				alunoController.removerAluno(id);
+				Utils.mostrarAlerta("Aluno removido com sucesso!");
+				campoId.setText("");
 			} catch (AlunoNaoExisteException e) {
 				Utils.mostrarAlerta(e.getMessage());
 			} catch (Exception e) {
-				System.out.println("Erro!");
+				e.printStackTrace();
 			}
 		}
 	}
