@@ -6,53 +6,48 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import br.com.saudetecip2.database.arquivoimplentation.AulaRepository;
 import br.com.saudetecip2.domain.model.Aula;
-import br.com.saudetecip2.domain.repository.AulaRepository;
+
 import br.com.saudetecip2.exceptions.AulaJaExisteException;
 import br.com.saudetecip2.exceptions.AulaNaoExisteException;
 
-@Service
-public class CadastrarAulaService {
-	@Autowired
-	AulaRepository aulaRepository;
 
-//	public void cadastrarAula(Aula aula)throws AulaJaExisteException {
-//		Aula aulaExistente = aulaRepository.findByDataAndProfessor(aula.getData(), aula.getProfessor());
-//			
-//		if (aulaExistente != null) {
-//			throw new AulaJaExisteException();
-//		}
-//		aulaRepository.save(aula);
-//	}
-	public void removerAula(Aula aula) throws AulaNaoExisteException {
-		Optional<Aula> aulaExistente = aulaRepository.findById(aula.getId());
-		if (aulaExistente == null) {
-			throw new AulaNaoExisteException();
+public class CadastrarAulaService {
+
+	AulaRepository aulaRepository = new AulaRepository();
+
+	public void cadastrarAula(Aula aula)throws AulaJaExisteException {
+		Aula aulaExistente = aulaRepository.findByDataAndProfessor(aula.getData(), aula.getProfessor());
+			
+		if (aulaExistente != null) {
+			throw new AulaJaExisteException();
 		}
-		aulaRepository.delete(aula);
+		aulaRepository.save(aula);
 	}
-	public void removerAula(Long id) throws AulaNaoExisteException{
-		Aula aulaParaRemover = aulaRepository.getById(id);
+	public void removerAula(String id) throws AulaNaoExisteException{
+		Aula aulaParaRemover = aulaRepository.findById(id);
 		
 		if(aulaParaRemover == null) {
 			throw new AulaNaoExisteException();
 		}
 		
-		aulaRepository.delete(aulaParaRemover);
+		aulaRepository.deleteById(id);
 	} 
 
 	public void atualizarAula(Aula aula) throws AulaNaoExisteException {
-		Aula aulaParaAtualizar = aulaRepository.getById(aula.getId());
+		Aula aulaParaAtualizar = aulaRepository.findById(aula.getId());
 		if (aulaParaAtualizar == null) {
 			throw new AulaNaoExisteException();
 		}
 		aulaParaAtualizar = aula;
-		aulaRepository.save(aulaParaAtualizar);
+		aulaRepository.update(aulaParaAtualizar);
 	}
 
-	public Aula buscarAula(Long id) throws AulaNaoExisteException{
+	public Aula buscarAula(String id) throws AulaNaoExisteException{
 		
-		Aula aulaBuscada = aulaRepository.getById(id);
+		Aula aulaBuscada = aulaRepository.findById(id);
 		if(aulaBuscada == null) {
 			throw new AulaNaoExisteException();
 		}

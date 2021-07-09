@@ -26,7 +26,7 @@ public class TelaRemoverFuncionarioController {
 			Utils.mostrarAlerta("O campo só aceita números!");
 		} else {
 			try {
-				funcionarioController.removerFuncionario(new Long(id));
+				funcionarioController.removerFuncionario(id);
 			} catch (FuncionarioNaoExisteException e) {
 				Utils.mostrarAlerta(e.getMessage());
 			} catch (Exception e) {

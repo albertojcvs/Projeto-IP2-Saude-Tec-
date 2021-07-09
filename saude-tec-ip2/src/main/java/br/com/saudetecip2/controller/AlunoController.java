@@ -12,21 +12,19 @@ import br.com.saudetecip2.domain.model.Aluno;
 import br.com.saudetecip2.domain.service.CadastrarAlunoService;
 import br.com.saudetecip2.exceptions.AlunoNaoExisteException;
 
-@Controller
+
 public class AlunoController {
 	
-	@Autowired
-	CadastrarAlunoService alunoService;
+	
+	CadastrarAlunoService alunoService = new CadastrarAlunoService();
 	
 	
 	public void adicionarAluno(Aluno aluno) {
 		alunoService.cadastrarAluno(aluno);
 	}
 	
-	public void removerAluno(Aluno aluno) {
-		alunoService.removerAluno(aluno);
-	}
-	public void removerAluno(Long id) throws AlunoNaoExisteException {
+	public void removerAluno(String id) throws AlunoNaoExisteException {
+		System.out.println("bbbbbbbbbb");
 		alunoService.removerAluno(id);
 	}
 	

@@ -59,6 +59,7 @@ public class TelaLoginAlunoController {
 				botaoEntrar.getScene().setRoot(telaAluno);
 			} catch (ErroLoginAlunoException e) {
 				Utils.mostrarAlerta("O CPF e/ou a senha estão incorretos!");
+				e.printStackTrace();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -8,7 +8,7 @@ import br.com.saudetecip2.domain.enums.CargoFuncionario;
 import br.com.saudetecip2.domain.model.Funcionario;
 
 @Repository
-public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> {
+public interface FuncionarioRepository extends JpaRepository<Funcionario, String> {
 	List<Funcionario> findAllByCargo(CargoFuncionario cargo);
 	Funcionario findByCpf(String cpf);
 	

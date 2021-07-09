@@ -12,27 +12,23 @@ import br.com.saudetecip2.exceptions.AulaJaExisteException;
 import br.com.saudetecip2.exceptions.AulaNaoExisteException;
 
 
-@Controller
 public class Aulacontroller {
 
-	@Autowired
-	CadastrarAulaService aulaService;
+
+	CadastrarAulaService aulaService = new CadastrarAulaService();
 
 	public void criarAula(Aula aula) throws AulaJaExisteException {
-		//aulaService.cadastrarAula(aula);
+		aulaService.cadastrarAula(aula);
 	}
 
-	public void deletarAula(Aula aula) throws AulaNaoExisteException {
-		aulaService.removerAula(aula);
-	}
-	public void deletarAula(Long id) throws AulaNaoExisteException{
+	public void deletarAula(String id) throws AulaNaoExisteException{
 		aulaService.removerAula(id);
 	}
 
 	public void atualizarAula(Aula aula) throws AulaNaoExisteException {
 		aulaService.atualizarAula(aula);
 	}
-	public Aula buscarAula(Long id) throws AulaNaoExisteException {
+	public Aula buscarAula(String id) throws AulaNaoExisteException {
 		return aulaService.buscarAula(id);
 	}
 

@@ -26,8 +26,14 @@ public class Aluno extends Pessoa {
 	public Aluno() {
 	}
 
-	public Aluno(Long id, StatusDaMensalidadeDoAluno statusDaMensalidadeDoAluno, String nome, String cpf,
-			Date dataDeNascimento, String senha) {
+	public Aluno(String id, StatusDaMensalidadeDoAluno statusDaMensalidadeDoAluno, String nome, String cpf,
+			LocalDate dataDeNascimento, String senha) {
+		super(id,nome, cpf, dataDeNascimento);
+		this.senha = senha;
+		this.statusDaMensalidadeDoAluno = statusDaMensalidadeDoAluno;
+	}
+	public Aluno(StatusDaMensalidadeDoAluno statusDaMensalidadeDoAluno, String nome, String cpf,
+			LocalDate dataDeNascimento, String senha) {
 		super(nome, cpf, dataDeNascimento);
 		this.senha = senha;
 		this.statusDaMensalidadeDoAluno = statusDaMensalidadeDoAluno;

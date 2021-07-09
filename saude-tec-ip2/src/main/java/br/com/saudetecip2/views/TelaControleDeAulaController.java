@@ -47,7 +47,7 @@ public class TelaControleDeAulaController implements Initializable {
 	FuncionarioController funcionarioController = new FuncionarioController();
 	Aulacontroller aulaController = new Aulacontroller();
 	AlunoController alunoController = new AlunoController();
-	private HashMap<String, Long> mapaEntreIdENomeDeProdessor = new HashMap();
+	private HashMap<String, String> mapaEntreIdENomeDeProdessor = new HashMap();
 
 	@FXML
 	private Tab opAgendarAula;
@@ -154,12 +154,12 @@ public class TelaControleDeAulaController implements Initializable {
 
 		if (cpfAluno.equals("") || idAula.equals("")) {
 			Utils.mostrarAlerta("Os campos devem ser preenchidos!");
-		} else if (Utils.checarSeStringContemApenasNumeros(cpfAluno)
-				|| Utils.checarSeStringContemApenasNumeros(idAula)) {
+		} else if (!(Utils.checarSeStringContemApenasNumeros(cpfAluno))
+				|| !(Utils.checarSeStringContemApenasNumeros(idAula))) {
 			Utils.mostrarAlerta("Os campos de CPF e Id só aceitam números!");
 		} else {
 			try {
-				Aula aula = aulaController.buscarAula(new Long(idAula));
+				Aula aula = aulaController.buscarAula(idAula);
 				Aluno aluno = alunoController.buscarAluno(cpfAluno);
 
 				aula.adicionarAluno(aluno);
@@ -182,7 +182,7 @@ public class TelaControleDeAulaController implements Initializable {
 	@FXML
 	void agendarAula(MouseEvent event) {
 
-		Timestamp dataAula = null;
+		LocalDateTime dataAula = null;
 		String professor = campoProfessor.getValue();
 		TipoDeAula tipoAula = campoTipoAula.getValue();
 		TipoDeTreino tipoTreino = campoTreino.getValue();
@@ -192,7 +192,7 @@ public class TelaControleDeAulaController implements Initializable {
 		if (campoDataAgendarAula.getValue() == null || hora.equals("") || minutos.equals("") || professor.equals("")
 				|| tipoAula == null || tipoTreino == null) {
 			Utils.mostrarAlerta("Algum dos campos está vazio");
-		} else if (Utils.checarSeStringContemApenasNumeros(hora) || Utils.checarSeStringContemApenasNumeros(minutos)) {
+		} else if (!(Utils.checarSeStringContemApenasNumeros(hora)) || !(Utils.checarSeStringContemApenasNumeros(minutos))) {
 			Utils.mostrarAlerta("Os campos de hora e minutos só aceitam números!");
 		} else if (campoDataAgendarAula.getValue().compareTo(LocalDate.now()) < 0) {
 			Utils.mostrarAlerta("A data não pode ser menor que a data de hoje");
@@ -201,14 +201,15 @@ public class TelaControleDeAulaController implements Initializable {
 			Utils.mostrarAlerta("O valores de hora ou minutos não podem ser aceitos");
 		} else {
 			try {
-				dataAula = Timestamp.valueOf(LocalDateTime.of(campoDataAgendarAula.getValue(),
-						LocalTime.of(Integer.parseInt(hora), Integer.parseInt(minutos))));
+				dataAula = LocalDateTime.of(campoDataAgendarAula.getValue(),
+						LocalTime.of(Integer.parseInt(hora), Integer.parseInt(minutos)));
 				
-				Long idProfessor = mapaEntreIdENomeDeProdessor.get(professor);
+				String idProfessor = mapaEntreIdENomeDeProdessor.get(professor);
 				
 				Aula aulaParaAgendar = new Aula(dataAula, tipoAula, tipoTreino, idProfessor, null);
 				
 				aulaController.criarAula(aulaParaAgendar);
+				Utils.mostrarAlerta("Aula agendada com sucesso!");
 				limparCamposAbaAdicionarAula();
 				
 			} catch (AulaJaExisteException e) {
@@ -225,12 +226,12 @@ public class TelaControleDeAulaController implements Initializable {
 
 		if (cpfAluno.equals("") || idAula.equals("")) {
 			Utils.mostrarAlerta("Os campos devem ser preenchidos!");
-		} else if (Utils.checarSeStringContemApenasNumeros(cpfAluno)
-				|| Utils.checarSeStringContemApenasNumeros(idAula)) {
+		} else if (!(Utils.checarSeStringContemApenasNumeros(cpfAluno))
+				|| !(Utils.checarSeStringContemApenasNumeros(idAula))) {
 			Utils.mostrarAlerta("Os campos de CPF e Id só aceitam números!");
 		} else {
 			try {
-				Aula aula = aulaController.buscarAula(new Long(idAula));
+				Aula aula = aulaController.buscarAula(idAula);
 				Aluno aluno = alunoController.buscarAluno(cpfAluno);
 
 				aula.removerAluno(aluno);
@@ -256,12 +257,12 @@ public class TelaControleDeAulaController implements Initializable {
 		String idAula = campoRemoverAula.getText();
 		if (idAula.equals("")) {
 			Utils.mostrarAlerta("O campo de ID deve ser preenchido");
-		} else if (Utils.checarSeStringContemApenasNumeros(idAula)) {
+		} else if (!(Utils.checarSeStringContemApenasNumeros(idAula))) {
 			Utils.mostrarAlerta("O campo de Id só aceita números!");
 		} else {
 			try {
-				aulaController.deletarAula(Long.valueOf(idAula));
-				
+				aulaController.deletarAula(idAula);
+				Utils.mostrarAlerta("Aula removida com sucesso!");
 				limparCamposAbaRemoverAula();
 			} catch (AulaNaoExisteException e) {
 				Utils.mostrarAlerta(e.getMessage());

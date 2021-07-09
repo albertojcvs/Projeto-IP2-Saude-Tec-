@@ -14,15 +14,15 @@ import br.com.saudetecip2.domain.service.FazerLoginFuncionarioService;
 import br.com.saudetecip2.exceptions.ErroLoginFuncionarioException;
 
 
-@Controller
+
 public class LoginFuncionarioController {
-	@Autowired
-	private FazerLoginFuncionarioService loginFuncionarioService;
+	
+	FazerLoginFuncionarioService loginFuncionarioService = new FazerLoginFuncionarioService();
 	private Funcionario funcionarioLogado;
 	
-	private Funcionario funcionario01 = new Funcionario("Alberto", "11111111", Date.valueOf(LocalDate.of(2001,06,16)), CargoFuncionario.ATENDENTE, StatusDoFuncionario.CONTRATADO, 1000.00, "123");
-	private Funcionario funcionario02 = new Funcionario("Roberto", "22222222", Date.valueOf(LocalDate.of(1998,02,23)), CargoFuncionario.PROFESSOR, StatusDoFuncionario.CONTRATADO, 2000.00, "123");
-	private Funcionario funcionario03 = new Funcionario("Ana", "33333333", Date.valueOf(LocalDate.of(1988,05,26)), CargoFuncionario.GERENTE, StatusDoFuncionario.CONTRATADO, 3000.00, "123");
+//	private Funcionario funcionario01 = new Funcionario("Alberto", "11111111", Date.valueOf(LocalDate.of(2001,06,16)), CargoFuncionario.ATENDENTE, StatusDoFuncionario.CONTRATADO, 1000.00, "123");
+//	private Funcionario funcionario02 = new Funcionario("Roberto", "22222222", Date.valueOf(LocalDate.of(1998,02,23)), CargoFuncionario.PROFESSOR, StatusDoFuncionario.CONTRATADO, 2000.00, "123");
+//	private Funcionario funcionario03 = new Funcionario("Ana", "33333333", Date.valueOf(LocalDate.of(1988,05,26)), CargoFuncionario.GERENTE, StatusDoFuncionario.CONTRATADO, 3000.00, "123");
 	
 	
 	private static LoginFuncionarioController instance;
