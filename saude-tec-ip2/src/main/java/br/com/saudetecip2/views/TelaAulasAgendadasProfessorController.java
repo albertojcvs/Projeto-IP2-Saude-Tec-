@@ -2,11 +2,11 @@ package br.com.saudetecip2.views;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -50,7 +50,7 @@ public class TelaAulasAgendadasProfessorController implements Initializable {
 	private TableView<Aula> tabelaDeAulas;
 
 	@FXML
-	private TableColumn<Aula, Timestamp> colunaData;
+	private TableColumn<Aula, LocalDateTime> colunaData;
 
 	@FXML
 	private TableColumn<Aula, TipoDeTreino> colunaTipoDeTreino;
@@ -59,9 +59,9 @@ public class TelaAulasAgendadasProfessorController implements Initializable {
 	private TableColumn<Aula, TipoDeAula> colunaTipoDeAula;
 
 	private void preencherTabelasDeAula() {
-//    	List<Aula> aulas = aulaController.buscarAulasDoProfessor(professorLogado.getId());
-//		ObservableList listaDeAulas = FXCollections.observableArrayList(aulas);
-//		tabelaDeAulas.setItems(listaDeAulas);
+    	List<Aula> aulas = aulaController.buscarAulasDeProfessor(professorLogado.getId());
+		ObservableList listaDeAulas = FXCollections.observableArrayList(aulas);
+		tabelaDeAulas.setItems(listaDeAulas);
 	}
 
 	@FXML
@@ -146,11 +146,11 @@ public class TelaAulasAgendadasProfessorController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 		colunaData.setCellFactory(cell -> {
-			return new TableCell<Aula, Timestamp>() {
-				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
+			return new TableCell<Aula, LocalDateTime>() {
+				DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm");
 
 				@Override
-				protected void updateItem(Timestamp item, boolean empty) {
+				protected void updateItem(LocalDateTime item, boolean empty) {
 					super.updateItem(item, empty);
 					if (!empty) {
 						setText(format.format(item));
@@ -166,9 +166,10 @@ public class TelaAulasAgendadasProfessorController implements Initializable {
 		colunaTipoDeAula.setCellValueFactory(new PropertyValueFactory<>("TipoDeAula"));
 		colunaTipoDeTreino.setCellValueFactory(new PropertyValueFactory<>("TipoDeTreino"));
 
+		professorLogado = loginFuncionarioController.getFuncionarioLogado();
+
 		preencherTabelasDeAula();
 
-		professorLogado = loginFuncionarioController.getFuncionarioLogado();
 
 		textoNome.setText(professorLogado.getNome());
 

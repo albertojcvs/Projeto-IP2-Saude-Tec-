@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import br.com.saudetecip2.arquivorepository.AlunoRepository;
 import br.com.saudetecip2.arquivorepository.Aluno_AulaRepository;
 import br.com.saudetecip2.arquivorepository.AulaRepository;
+import br.com.saudetecip2.arquivorepository.FuncionarioRepository;
 import br.com.saudetecip2.domain.model.Aluno;
 import br.com.saudetecip2.domain.model.Aula;
+import br.com.saudetecip2.domain.model.Funcionario;
 import br.com.saudetecip2.exceptions.AlunoJaMarcadoNaAulaException;
 import br.com.saudetecip2.exceptions.AlunoNaoEstaMarcadoNaAulaException;
 import br.com.saudetecip2.exceptions.AlunoNaoExisteException;
@@ -25,6 +27,7 @@ public class CadastrarAulaService {
 	AulaRepository aulaRepository = new AulaRepository();
 	Aluno_AulaRepository aluno_AulaRepository = new Aluno_AulaRepository();
 	AlunoRepository alunoRepository = new AlunoRepository();
+	FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
 
 	public void cadastrarAula(Aula aula)throws AulaJaExisteException {
 		Aula aulaExistente = aulaRepository.findByDataAndProfessor(aula.getData(), aula.getProfessor());
@@ -123,5 +126,9 @@ public class CadastrarAulaService {
 		 }
 		 
 		 return aulasComAluno;
+	}
+	public List<Aula> buscarAulasDeProfessor(String id){
+		List<Aula> aulasDoProfessor = aulaRepository.findAllByProfessor(id);
+		return aulasDoProfessor;
 	}
 }

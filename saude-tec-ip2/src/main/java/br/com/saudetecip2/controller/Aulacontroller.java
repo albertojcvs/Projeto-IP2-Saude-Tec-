@@ -51,4 +51,7 @@ public class Aulacontroller {
 	}
 	
 
+	public List<Aula> buscarAulasDeProfessor(String id){
+		return aulaService.buscarAulasDeProfessor(id);
+	}
 }

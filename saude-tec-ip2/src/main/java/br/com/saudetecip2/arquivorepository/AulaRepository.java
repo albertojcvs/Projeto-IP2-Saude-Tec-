@@ -3,6 +3,7 @@ package br.com.saudetecip2.arquivorepository;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.saudetecip2.database.Repository;
@@ -77,6 +78,17 @@ public class AulaRepository implements Repository<Aula> {
 			}
 		}
 		return null;
+	}
+	public List<Aula> findAllByProfessor(String idProfessor){
+		List<Aula> aulas = arquivoTexto.lerDados();
+		
+		ArrayList<Aula> aulasDoProfessor = new ArrayList<Aula>();
+		for(Aula aula: aulas) {
+			if(aula.getProfessor().equals(idProfessor)) {
+				aulasDoProfessor.add(aula);
+			}
+		}
+		return aulasDoProfessor;
 	}
 	
 	
