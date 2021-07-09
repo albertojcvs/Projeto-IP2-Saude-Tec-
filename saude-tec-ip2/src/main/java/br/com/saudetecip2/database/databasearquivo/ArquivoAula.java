@@ -38,7 +38,7 @@ public class ArquivoAula {
 			fw = new FileWriter(arquivoTexto, true);
 			BufferedWriter gravadorDeDados = new BufferedWriter(fw);
 			gravadorDeDados.write(aula.getId() + " " + aula.getData().toString() + " " + aula.getTipoDeAula().toString()
-					+ " " + aula.getTipoDeTreino().toString() + " " + aula.getProfessor());
+					+ " " + aula.getTipoDeTreino().toString() + " " + aula.getProfessor()+"\n");
 
 			gravadorDeDados.close();
 		} catch (IOException e) {
@@ -50,11 +50,11 @@ public class ArquivoAula {
 	public void gravarDados(List<Aula> aulas) {
 		try {
 			FileWriter fw;
-			fw = new FileWriter(arquivoTexto, true);
+			fw = new FileWriter(arquivoTexto);
 			BufferedWriter gravadorDeDados = new BufferedWriter(fw);
 			for(Aula aula: aulas) {
 				gravadorDeDados.write(aula.getId() + " " + aula.getData().toString() + " " + aula.getTipoDeAula().toString()
-						+ " " + aula.getTipoDeTreino().toString() + " " + aula.getProfessor());
+						+ " " + aula.getTipoDeTreino().toString() + " " + aula.getProfessor()+"\n");
 			}
 
 			gravadorDeDados.close();

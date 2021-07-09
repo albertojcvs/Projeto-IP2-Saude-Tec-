@@ -22,8 +22,8 @@ public class FuncionarioController {
 	}
 
 	
-	public void removerFuncionario(String id) throws FuncionarioNaoExisteException {
-		funcionarioService.removerFuncionario(id);
+	public void removerFuncionario(String cpf) throws FuncionarioNaoExisteException {
+		funcionarioService.removerFuncionario(cpf);
 	}
 
 	public void atualizarFuncionario(Funcionario funcionario) throws FuncionarioNaoExisteException {

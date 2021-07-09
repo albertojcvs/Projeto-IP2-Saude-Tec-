@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -51,7 +52,7 @@ public class AreaAlunoController implements Initializable {
 	private Button botaoSair;
 
 	@FXML
-	private TableColumn<Aula, Timestamp> colunaData;
+	private TableColumn<Aula, LocalDateTime> colunaData;
 
 	@FXML
 	private TableColumn<Aula, String> colunaProfessor;
@@ -83,20 +84,20 @@ public class AreaAlunoController implements Initializable {
 	}
 
 	public void preencherTabelaDeAulas() {
-//		List<Aula> aulas = aulaController.buscarAulasDoAluno(alunoLogado.getId());
-//		ObservableList lista = FXCollections.observableArrayList(aulas);
-//		tabelaDeAulasAgendadas.setItems(lista);
+		List<Aula> aulas = aulaController.buscarAulasDeAluno(alunoLogado.getId());
+		ObservableList lista = FXCollections.observableArrayList(aulas);
+		tabelaDeAulasAgendadas.setItems(lista);
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		colunaData.setCellFactory(cell -> {
-			return new TableCell<Aula, Timestamp>() {
-				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
+			return new TableCell<Aula, LocalDateTime>() {
+				DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm");
 
 				@Override
-				protected void updateItem(Timestamp item, boolean empty) {
+				protected void updateItem(LocalDateTime item, boolean empty) {
 					super.updateItem(item, empty);
 					if (!empty) {
 						setText(format.format(item));
@@ -112,7 +113,8 @@ public class AreaAlunoController implements Initializable {
 		colunaProfessor.setCellValueFactory(new PropertyValueFactory<>("Professor"));
 		colunaTipoDeAula.setCellValueFactory(new PropertyValueFactory<>("TipoDeAula"));
 		colunaTipoDeTreino.setCellValueFactory(new PropertyValueFactory<>("TipoDeTreino"));
-
+		
+		
 		alunoLogado = loginAlunoController.getAlunoLogado();
 		textoNomeAluno.setText(alunoLogado.getNome());
 

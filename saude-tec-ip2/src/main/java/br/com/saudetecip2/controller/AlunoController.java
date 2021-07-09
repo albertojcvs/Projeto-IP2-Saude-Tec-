@@ -23,9 +23,8 @@ public class AlunoController {
 		alunoService.cadastrarAluno(aluno);
 	}
 	
-	public void removerAluno(String id) throws AlunoNaoExisteException {
-		System.out.println("bbbbbbbbbb");
-		alunoService.removerAluno(id);
+	public void removerAluno(String cpf) throws AlunoNaoExisteException {
+		alunoService.removerAluno(cpf);
 	}
 	
 	public void atualizarAluno(Aluno aluno) {

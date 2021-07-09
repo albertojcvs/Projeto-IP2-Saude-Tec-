@@ -12,7 +12,6 @@ public class FazerLoginAlunoService {
 		
 		System.out.println(cpfAluno +" || "+ senhaAluno);
 		Aluno aluno = alunoRepository.findByCpfAndSenha(cpfAluno, senhaAluno);
-		System.out.println(aluno.getNome());
 		
 		if(aluno == null) {
 			throw new ErroLoginAlunoException();

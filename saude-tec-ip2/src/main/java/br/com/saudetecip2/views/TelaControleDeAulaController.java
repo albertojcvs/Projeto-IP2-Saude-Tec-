@@ -162,13 +162,13 @@ public class TelaControleDeAulaController implements Initializable {
 				Aula aula = aulaController.buscarAula(idAula);
 				Aluno aluno = alunoController.buscarAluno(cpfAluno);
 
-				aula.adicionarAluno(aluno);
+			aulaController.adicionarAlunoEmAula(cpfAluno, idAula);
+			Utils.mostrarAlerta("Aluno adicionado na aula com sucesso!");
 				limparCamposAbaAdicionarAlunoEmAula();
 			} catch (AlunoNaoExisteException e) {
 
 				Utils.mostrarAlerta(e.getMessage());
 			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (AulaNaoExisteException e) {
 				Utils.mostrarAlerta(e.getMessage());
@@ -234,8 +234,8 @@ public class TelaControleDeAulaController implements Initializable {
 				Aula aula = aulaController.buscarAula(idAula);
 				Aluno aluno = alunoController.buscarAluno(cpfAluno);
 
-				aula.removerAluno(aluno);
-				
+				aulaController.removerAlunoDeAula(cpfAluno, idAula);
+				Utils.mostrarAlerta("Aluno removido da aula com sucesso!");
 				limparCamposAbaRemoverAlunoDeAula();
 				
 			} catch (AlunoNaoExisteException e) {

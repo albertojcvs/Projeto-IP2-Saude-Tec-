@@ -8,16 +8,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saudetecip2.views.TelaMudarStatusDePagamentoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="659.0" styleClass="body" stylesheets="@GlobalStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saudetecip2.views.TelaMudarStatusDePagamentoController">
    <children>
-      <Button fx:id="botaoMudarStatusDePagamento" layoutX="210.0" layoutY="278.0" mnemonicParsing="false" onMouseClicked="#onBotaoMudarStatusPagamentoClicked" prefHeight="65.0" prefWidth="220.0" text="Mudar o status de pagamento" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="botaoMudarStatusDePagamento" layoutX="200.0" layoutY="277.0" mnemonicParsing="false" onMouseClicked="#onBotaoMudarStatusPagamentoClicked" prefHeight="65.0" prefWidth="260.0" text="Mudar o status de pagamento" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="17.0" />
          </font>
       </Button>
-      <TextField fx:id="campoCpf" layoutX="260.0" layoutY="134.0" />
-      <RadioButton fx:id="opcaoPago" layoutX="201.0" layoutY="192.0" mnemonicParsing="false" selected="true" text="Pago">
+      <TextField fx:id="campoCpf" layoutX="220.0" layoutY="151.0" prefHeight="39.0" prefWidth="221.0" styleClass="input" />
+      <RadioButton fx:id="opcaoPago" layoutX="206.0" layoutY="220.0" mnemonicParsing="false" selected="true" text="Pago">
          <font>
             <Font size="20.0" />
          </font>
@@ -25,19 +24,19 @@
             <ToggleGroup fx:id="opcoes" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="opcaoNaoPago" layoutX="333.0" layoutY="190.0" mnemonicParsing="false" text="Não Pago" toggleGroup="$opcoes">
+      <RadioButton fx:id="opcaoNaoPago" layoutX="338.0" layoutY="218.0" mnemonicParsing="false" text="Não Pago" toggleGroup="$opcoes">
          <font>
             <Font size="20.0" />
          </font>
       </RadioButton>
-      <Text layoutX="281.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF do aluno">
+      <Text layoutX="251.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="CPF do aluno">
          <font>
-            <Font size="18.0" />
+            <Font name="Consolas" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="72.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controle do status de pagamento" wrappingWidth="514.3359375">
+      <Text layoutX="114.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Controle do status de pagamento" wrappingWidth="449.3359375">
          <font>
-            <Font size="33.0" />
+            <Font name="Impact" size="33.0" />
          </font>
       </Text>
    </children>

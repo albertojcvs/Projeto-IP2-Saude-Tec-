@@ -49,7 +49,7 @@ public class TelaMudarStatusDePagamentoController {
 
 		if (cpfAluno.equals("")) {
 			Utils.mostrarAlerta("O campo não pode ser vazio!");
-		} else if (Utils.checarSeStringContemApenasNumeros(cpfAluno)) {
+		} else if (!(Utils.checarSeStringContemApenasNumeros(cpfAluno))) {
 			Utils.mostrarAlerta("O campo só deve conter números!");
 		} else {
 			try {

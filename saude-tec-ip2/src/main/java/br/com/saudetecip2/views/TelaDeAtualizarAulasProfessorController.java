@@ -82,7 +82,7 @@ public class TelaDeAtualizarAulasProfessorController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		Aula aulaExemplo = new Aula(Timestamp.valueOf(LocalDateTime.now()), TipoDeAula.INDIVIDUAL, TipoDeTreino.MUSCULACAO, new Long(2) , null  );
+		Aula aulaExemplo = new Aula(LocalDateTime.now(), TipoDeAula.INDIVIDUAL, TipoDeTreino.MUSCULACAO, "2" , null  );
 		objAula.setAula(aulaExemplo);
 		
 		
@@ -93,9 +93,9 @@ public class TelaDeAtualizarAulasProfessorController implements Initializable{
 		campoTipo.setItems(listaAulas);
 		campoTreino.setValue(objAula.getAula().getTipoDeTreino());
     	campoTipo.setValue(objAula.getAula().getTipoDeAula());
-    	campoHora.setText(String.valueOf(objAula.getAula().getData().toLocalDateTime().getHour()));
-    	calendario.setValue(LocalDate.of(objAula.getAula().getData().toLocalDateTime().getYear(),objAula.getAula().getData().toLocalDateTime().getMonth(),objAula.getAula().getData().toLocalDateTime().getDayOfMonth()));
-    	campoMinutos.setText(String.valueOf(objAula.getAula().getData().toLocalDateTime().getMinute()));
+    	campoHora.setText(String.valueOf(objAula.getAula().getData().getHour()));
+    	calendario.setValue(LocalDate.of(objAula.getAula().getData().getYear(),objAula.getAula().getData().getMonth(),objAula.getAula().getData().getDayOfMonth()));
+    	campoMinutos.setText(String.valueOf(objAula.getAula().getData().getMinute()));
 
     	
     	

@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 
 import br.com.saudetecip2.domain.model.Aula;
 import br.com.saudetecip2.domain.service.CadastrarAulaService;
+import br.com.saudetecip2.exceptions.AlunoJaMarcadoNaAulaException;
+import br.com.saudetecip2.exceptions.AlunoNaoEstaMarcadoNaAulaException;
+import br.com.saudetecip2.exceptions.AlunoNaoExisteException;
 import br.com.saudetecip2.exceptions.AulaJaExisteException;
 import br.com.saudetecip2.exceptions.AulaNaoExisteException;
 
@@ -36,6 +39,16 @@ public class Aulacontroller {
 		return aulaService.buscarAulas();
 	}
 	
-
+	public void adicionarAlunoEmAula(String alunoCpf,String aulaId) throws AlunoJaMarcadoNaAulaException, AlunoNaoExisteException, AulaNaoExisteException {
+		aulaService.adicionarAlunoEmAula(alunoCpf, aulaId);
+	}
+	public void removerAlunoDeAula(String alunoCpf,String aulaId) throws AlunoNaoEstaMarcadoNaAulaException, AlunoNaoExisteException, AulaNaoExisteException {
+		aulaService.removerAlunoDeAula(alunoCpf, aulaId);
+	}
+	
+	public List<Aula> buscarAulasDeAluno(String id) {
+		return aulaService.buscarAulasDeAluno(id);
+	}
+	
 
 }
