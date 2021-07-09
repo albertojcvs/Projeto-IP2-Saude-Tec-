@@ -136,12 +136,13 @@ public class TelaProfessorController implements Initializable {
 
 	@FXML
 	void onBotaoSairClicked() {
+
 		loginFuncionarioController.fazerLogout();
 		try {
+      
 			Parent novaTela = FXMLLoader.load(getClass().getResource("TelaFuncionarioView.fxml"));
 			botaoSair.getScene().setRoot(novaTela);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -258,8 +259,8 @@ public class TelaProfessorController implements Initializable {
 
 	@FXML
 	void verAulasAgendada(MouseEvent event) {
-		irParaTela("HomeView.fxml");
 
+		irParaTela("TelaAulasAgendadasProfessor.fxml");
 	}
 
 	@Override
@@ -267,8 +268,8 @@ public class TelaProfessorController implements Initializable {
 
 		ObservableList listaDeAulas = FXCollections.observableArrayList(TipoDeAula.values());
 
-		funcionarioLogado = loginFuncionarioController.getFuncionarioLogado();
-		textoNome.setText(funcionarioLogado.getNome());
+		//funcionarioLogado = loginFuncionarioController.getFuncionarioLogado();
+		//textoNome.setText(funcionarioLogado.getNome());
 
 		campoTipoAula.setItems(listaDeAulas);
 		campoTipoAula.setValue(TipoDeAula.INDIVIDUAL);
