@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 import br.com.saudetecip2.domain.enums.TipoDeAula;
 import br.com.saudetecip2.domain.enums.TipoDeTreino;
 import br.com.saudetecip2.domain.model.Aula;
-
+import br.com.saudetecip2.utils.AulaSingleton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -38,6 +38,41 @@ public class TelaAulasAgendadasProfessorController implements Initializable {
     @FXML
     private Text textoNome;
     
+    @FXML
+    private TableView<Aula> tabelaDados;
+   
+    @FXML
+    void selecionarDados(MouseEvent event) {
+    	if(event.getClickCount() == 2) {
+    		if(tabelaDados.getSelectionModel().getSelectedItem() != null) {
+    			AulaSingleton objAula = AulaSingleton.getInstance();
+    			objAula.setAula(tabelaDados.getSelectionModel().getSelectedItem()); 
+    			irParaTelaAtualizarDados("TelaDeAtualizarAulasProfessor.fxml");
+        		
+
+    		}
+    		
+    		
+    	}
+
+    }
+    
+    void irParaTelaAtualizarDados(String caminho) {
+		try {
+			Parent telaFxml = FXMLLoader.load(getClass().getResource(caminho));
+			Scene cenaTela = new Scene(telaFxml);
+			Stage novaTela = new Stage();
+			novaTela.setScene(cenaTela);
+			tabelaDados.getScene().getRoot().setDisable(true);
+			novaTela.showAndWait();
+			tabelaDados.getScene().getRoot().setDisable(false);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+    
+    
+   
     void irParaTela(String caminho) {
 		try {
 			Parent telaFxml = FXMLLoader.load(getClass().getResource(caminho));

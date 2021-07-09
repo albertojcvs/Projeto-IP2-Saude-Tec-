@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saudetecip2.views.TelaDeAtualizarAulasProfessorController">
+   <children>
+      <Text fx:id="txtTitulo" layoutX="196.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dados da aula" wrappingWidth="316.13671875">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Text>
+      <Label fx:id="lbData" layoutX="76.0" layoutY="177.0" prefHeight="24.0" prefWidth="39.0" text="Data" />
+      <Label fx:id="lbHorario" layoutX="76.0" layoutY="240.0" text="Horário" />
+      <Label fx:id="lbTreino" layoutX="76.0" layoutY="292.0" text="Treino" />
+      <Label fx:id="lbTipo" layoutX="81.0" layoutY="346.0" text="Tipo" />
+      <DatePicker fx:id="calendario" layoutX="152.0" layoutY="177.0" />
+      <TextField fx:id="campoHora" layoutX="152.0" layoutY="236.0" prefHeight="25.0" prefWidth="50.0" promptText="Hora" />
+      <TextField fx:id="campoMinutos" layoutX="226.0" layoutY="236.0" prefHeight="25.0" prefWidth="59.0" promptText="Minutos" />
+      <ChoiceBox fx:id="campoTreino" layoutX="151.0" layoutY="288.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="campoTipo" layoutX="151.0" layoutY="334.0" prefWidth="150.0" />
+      <Button fx:id="btnAtualizar" layoutX="340.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#atualizarDados" text="Atualizar" />
+      <Button fx:id="btnDeletar" layoutX="448.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#deletarDado" text="Deletar" />
+   </children>
+</AnchorPane>
