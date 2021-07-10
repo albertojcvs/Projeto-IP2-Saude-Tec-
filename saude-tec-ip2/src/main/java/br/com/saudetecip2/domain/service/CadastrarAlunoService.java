@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.saudetecip2.database.arquivoimplentation.AlunoRepository;
+import br.com.saudetecip2.arquivorepository.AlunoRepository;
 import br.com.saudetecip2.domain.enums.StatusDaMensalidadeDoAluno;
 import br.com.saudetecip2.domain.model.Aluno;
 //import br.com.saudetecip2.domain.repository.AlunoRepository;

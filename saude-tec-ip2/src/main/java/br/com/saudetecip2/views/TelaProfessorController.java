@@ -12,11 +12,13 @@ import java.util.ResourceBundle;
 import br.com.saudetecip2.controller.AlunoController;
 import br.com.saudetecip2.controller.Aulacontroller;
 import br.com.saudetecip2.controller.LoginFuncionarioController;
+import br.com.saudetecip2.domain.enums.StatusDaMensalidadeDoAluno;
 import br.com.saudetecip2.domain.enums.TipoDeAula;
 import br.com.saudetecip2.domain.enums.TipoDeTreino;
 import br.com.saudetecip2.domain.model.Aluno;
 import br.com.saudetecip2.domain.model.Aula;
 import br.com.saudetecip2.domain.model.Funcionario;
+import br.com.saudetecip2.exceptions.AlunoJaMarcadoNaAulaException;
 import br.com.saudetecip2.exceptions.AlunoNaoEstaMarcadoNaAulaException;
 import br.com.saudetecip2.exceptions.AlunoNaoExisteException;
 import br.com.saudetecip2.exceptions.AulaJaExisteException;
@@ -131,7 +133,39 @@ public class TelaProfessorController implements Initializable {
 
 	@FXML
 	void adicionarAlunoNaAula(MouseEvent event) {
+		String cpfAluno = campoCpfAlunoAdicionar.getText();
+		String idAula = campoIDAulaAdicionar.getText();
+		if (cpfAluno.equals("") || idAula.equals("")) {
+			Utils.mostrarAlerta("Os campos devem ser preenchidos!");
+		} else if (!(Utils.checarSeStringContemApenasNumeros(cpfAluno))
+				|| !(Utils.checarSeStringContemApenasNumeros(idAula))) {
+			Utils.mostrarAlerta("Os campos de CPF e Id só aceitam números!");
+		} else {
+			try {
+				
+				Aluno aluno = alunoController.buscarAluno(cpfAluno);
+				
+				if(aluno.getStatusDaMensalidade() == StatusDaMensalidadeDoAluno.NAO_PAGO) {
+					Utils.mostrarAlerta("Não é possivel adicionar o aluno porque ele não pagou a mensalidade!");
+				}else {
+					
+					aulaController.adicionarAlunoEmAula(cpfAluno, idAula);
+					Utils.mostrarAlerta("Aluno adicionado na aula com sucesso!");
+					campoCpfAlunoAdicionar.setText("");
+					campoIDAulaAdicionar.setText("");
+				}
+				
+			} catch (AlunoNaoExisteException e) {
 
+				Utils.mostrarAlerta(e.getMessage());
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			} catch (AulaNaoExisteException e) {
+				Utils.mostrarAlerta(e.getMessage());
+			} catch (AlunoJaMarcadoNaAulaException e) {
+				Utils.mostrarAlerta(e.getMessage());
+			}
+		}
 	}
 
 	@FXML
@@ -158,7 +192,7 @@ public class TelaProfessorController implements Initializable {
 		if (campoDataAgendarAula.getValue() == null || hora.equals("") || minutos.equals("") || tipoAula == null
 				|| tipoTreino == null) {
 			Utils.mostrarAlerta("Algum dos campos está vazio");
-		} else if (Utils.checarSeStringContemApenasNumeros(hora) || Utils.checarSeStringContemApenasNumeros(minutos)) {
+		} else if (!(Utils.checarSeStringContemApenasNumeros(hora)) || !(Utils.checarSeStringContemApenasNumeros(minutos))) {
 			Utils.mostrarAlerta("Os campos de hora e minutos só aceitam números!");
 		} else if (campoDataAgendarAula.getValue().compareTo(LocalDate.now()) < 0) {
 			Utils.mostrarAlerta("A data não pode ser menor que a data de hoje");
@@ -198,16 +232,16 @@ public class TelaProfessorController implements Initializable {
 
 		if (cpfAluno.equals("") || idAula.equals("")) {
 			Utils.mostrarAlerta("Os campos devem ser preenchidos!");
-		} else if (Utils.checarSeStringContemApenasNumeros(cpfAluno)
-				|| Utils.checarSeStringContemApenasNumeros(idAula)) {
+		} else if (!(Utils.checarSeStringContemApenasNumeros(cpfAluno))
+				|| !(Utils.checarSeStringContemApenasNumeros(idAula))) {
 			Utils.mostrarAlerta("Os campos de CPF e Id só aceitam números!");
 		} else {
 			try {
 				Aula aula = aulaController.buscarAula(idAula);
 				Aluno aluno = alunoController.buscarAluno(cpfAluno);
 
-				aula.removerAluno(aluno);
-				
+				aulaController.removerAlunoDeAula(cpfAluno, idAula);
+				Utils.mostrarAlerta("Aluno removido com sucesso!");
 				limparCamposAbaRemoverAlunoDeAula();
 				
 			} catch (AlunoNaoExisteException e) {
@@ -230,12 +264,11 @@ public class TelaProfessorController implements Initializable {
 		String idAula = campoRemoverAula.getText();
 		if (idAula.equals("")) {
 			Utils.mostrarAlerta("O campo de ID deve ser preenchido");
-		} else if (Utils.checarSeStringContemApenasNumeros(idAula)) {
+		} else if (!(Utils.checarSeStringContemApenasNumeros(idAula))) {
 			Utils.mostrarAlerta("O campo de Id só aceita números!");
 		} else {
 			try {
 				aulaController.deletarAula(idAula);
-				
 			} catch (AulaNaoExisteException e) {
 				Utils.mostrarAlerta(e.getMessage());
 			}
@@ -259,7 +292,6 @@ public class TelaProfessorController implements Initializable {
 
 	@FXML
 	void verAulasAgendada(MouseEvent event) {
-
 		irParaTela("TelaAulasAgendadasProfessor.fxml");
 	}
 
@@ -268,8 +300,8 @@ public class TelaProfessorController implements Initializable {
 
 		ObservableList listaDeAulas = FXCollections.observableArrayList(TipoDeAula.values());
 
-		//funcionarioLogado = loginFuncionarioController.getFuncionarioLogado();
-		//textoNome.setText(funcionarioLogado.getNome());
+		funcionarioLogado = loginFuncionarioController.getFuncionarioLogado();
+		textoNome.setText(funcionarioLogado.getNome());
 
 		campoTipoAula.setItems(listaDeAulas);
 		campoTipoAula.setValue(TipoDeAula.INDIVIDUAL);

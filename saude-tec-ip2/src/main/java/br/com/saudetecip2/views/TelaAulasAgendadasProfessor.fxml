@@ -7,32 +7,31 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saudetecip2.views.TelaAulasAgendadasProfessorController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saudetecip2.views.TelaAulasAgendadasProfessorController">
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="body" stylesheets="@GlobalStyle.css" BorderPane.alignment="CENTER">
          <children>
 
-            <TableView fx:id="tabelaDados" layoutY="233.0" onMouseClicked="#selecionarDados" prefHeight="467.0" prefWidth="1000.0">
 
-            <TableView fx:id="tabelaDeAulas" layoutY="233.0" onMouseClicked="#onMouseClickdedInTabelaDeAulas" prefHeight="467.0" prefWidth="1000.0">
+            <TableView fx:id="tabelaDeAulas" layoutY="233.0" onMouseClicked="#selecionarDados" prefHeight="467.0" prefWidth="1000.0" styleClass="body">
  
               <columns>
-                <TableColumn fx:id="colunaData" prefWidth="316.0" text="Data" />
-                <TableColumn fx:id="colunaTipoDeTreino" prefWidth="389.0" text="Tipo de Treino" />
-                  <TableColumn fx:id="colunaTipoDeAula" minWidth="0.0" prefWidth="294.0" text="Tipo de Aula" />
+                <TableColumn fx:id="colunaData" prefWidth="316.0" styleClass="body" text="Data" />
+                <TableColumn fx:id="colunaTipoDeTreino" prefWidth="389.0" styleClass="body" text="Tipo de Treino" />
+                  <TableColumn fx:id="colunaTipoDeAula" minWidth="0.0" prefWidth="294.0" styleClass="body" text="Tipo de Aula" />
               </columns>
             </TableView>
-            <Text layoutX="281.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minhas Aulas Agendadas">
+            <Text layoutX="281.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Minhas Aulas Agendadas">
                <font>
                   <Font size="41.0" />
                </font>
             </Text>
-            <Text layoutX="22.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aulas de:">
+            <Text layoutX="22.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Aulas de:">
                <font>
                   <Font size="31.0" />
                </font>
             </Text>
-            <Text fx:id="textoNome" layoutX="146.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Nome do professor&quot;">
+            <Text fx:id="textoNome" layoutX="146.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="&quot;Nome do professor&quot;">
                <font>
                   <Font size="31.0" />
                </font>

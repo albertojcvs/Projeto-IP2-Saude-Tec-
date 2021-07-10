@@ -7,30 +7,29 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saudetecip2.views.TelaAdicionarAlunoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" styleClass="body" stylesheets="@GlobalStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saudetecip2.views.TelaAdicionarAlunoController">
    <children>
-      <Text layoutX="205.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adicionar Aluno" wrappingWidth="289.13671875">
+      <Text layoutX="223.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Adicionar Aluno" wrappingWidth="289.13671875">
          <font>
-            <Font size="40.0" />
+            <Font name="Impact" size="40.0" />
          </font>
       </Text>
-      <TextField fx:id="campoNome" layoutX="90.0" layoutY="180.0" prefHeight="20.0" prefWidth="180.0" />
-      <TextField fx:id="campoCpf" layoutX="90.0" layoutY="251.0" prefHeight="20.0" prefWidth="180.0" />
-      <DatePicker fx:id="campoDataNascimento" layoutX="388.0" layoutY="180.0" prefHeight="26.0" prefWidth="180.0" />
-      <Text layoutX="150.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome">
+      <TextField fx:id="campoNome" layoutX="90.0" layoutY="180.0" prefHeight="20.0" prefWidth="180.0" styleClass="input" />
+      <TextField fx:id="campoCpf" layoutX="90.0" layoutY="251.0" prefHeight="20.0" prefWidth="180.0" styleClass="input" />
+      <DatePicker fx:id="campoDataNascimento" layoutX="388.0" layoutY="180.0" prefHeight="26.0" prefWidth="180.0" styleClass="input" />
+      <Text layoutX="150.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Nome">
          <font>
-            <Font size="22.0" />
+            <Font name="Consolas" size="22.0" />
          </font>
       </Text>
-      <Text layoutX="161.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF">
+      <Text layoutX="161.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="CPF">
          <font>
-            <Font size="22.0" />
+            <Font name="Consolas" size="22.0" />
          </font>
       </Text>
-      <Text layoutX="388.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data de nascimento" wrappingWidth="180.0">
+      <Text layoutX="379.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Data de nascimento" wrappingWidth="223.0">
          <font>
-            <Font size="20.0" />
+            <Font name="Consolas" size="21.0" />
          </font>
       </Text>
       <Button fx:id="botaoAdicionar" layoutX="223.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#onBotaoAdicionarClicked" prefHeight="47.0" prefWidth="253.0" text="Adicionar">
@@ -38,11 +37,11 @@
             <Font size="22.0" />
          </font>
       </Button>
-      <Text layoutX="442.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha" wrappingWidth="73.0">
+      <Text layoutX="442.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Senha" wrappingWidth="73.0">
          <font>
-            <Font size="22.0" />
+            <Font name="Consolas" size="22.0" />
          </font>
       </Text>
-      <TextField fx:id="campoSenha" layoutX="388.0" layoutY="251.0" prefHeight="26.0" prefWidth="180.0" />
+      <TextField fx:id="campoSenha" layoutX="388.0" layoutY="251.0" prefHeight="26.0" prefWidth="180.0" styleClass="input" />
    </children>
 </Pane>

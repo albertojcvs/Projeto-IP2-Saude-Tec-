@@ -20,7 +20,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="299.0" prefWidth="600.0">
                      <children>
-                        <Text fx:id="txtID" layoutX="19.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Professor">
+                        <Text fx:id="txtID" layoutX="19.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Professor">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -51,12 +51,12 @@
                         </Label>
                         <ChoiceBox fx:id="campoTipoAula" layoutX="134.0" layoutY="186.0" prefWidth="150.0" />
                         <TextField fx:id="campoHora" layoutX="448.0" layoutY="92.0" prefHeight="25.0" prefWidth="51.0" promptText="Hora" styleClass="input" />
-                        <Text fx:id="txtID1" layoutX="319.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horario da aula" textAlignment="CENTER">
+                        <Text fx:id="txtID1" layoutX="319.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Horario da aula" textAlignment="CENTER">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="txtID11" layoutX="506.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+                        <Text fx:id="txtID11" layoutX="506.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text=":">
                            <font>
                               <Font size="19.0" />
                            </font>

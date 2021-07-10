@@ -9,23 +9,46 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saudetecip2.views.TelaDeAtualizarAulasProfessorController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="body" stylesheets="@GlobalStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.saudetecip2.views.TelaDeAtualizarAulasProfessorController">
    <children>
-      <Text fx:id="txtTitulo" layoutX="196.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dados da aula" wrappingWidth="316.13671875">
+      <Text fx:id="txtTitulo" layoutX="364.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Dados da aula" wrappingWidth="186.13671875">
          <font>
-            <Font size="31.0" />
+            <Font name="Impact" size="31.0" />
          </font>
       </Text>
-      <Label fx:id="lbData" layoutX="76.0" layoutY="177.0" prefHeight="24.0" prefWidth="39.0" text="Data" />
-      <Label fx:id="lbHorario" layoutX="76.0" layoutY="240.0" text="Horário" />
-      <Label fx:id="lbTreino" layoutX="76.0" layoutY="292.0" text="Treino" />
-      <Label fx:id="lbTipo" layoutX="81.0" layoutY="346.0" text="Tipo" />
-      <DatePicker fx:id="calendario" layoutX="152.0" layoutY="177.0" />
-      <TextField fx:id="campoHora" layoutX="152.0" layoutY="236.0" prefHeight="25.0" prefWidth="50.0" promptText="Hora" />
-      <TextField fx:id="campoMinutos" layoutX="226.0" layoutY="236.0" prefHeight="25.0" prefWidth="59.0" promptText="Minutos" />
-      <ChoiceBox fx:id="campoTreino" layoutX="151.0" layoutY="288.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="campoTipo" layoutX="151.0" layoutY="334.0" prefWidth="150.0" />
-      <Button fx:id="btnAtualizar" layoutX="340.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#atualizarDados" text="Atualizar" />
-      <Button fx:id="btnDeletar" layoutX="448.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#deletarDado" text="Deletar" />
+      <Label fx:id="lbData" layoutX="293.0" layoutY="194.0" prefHeight="32.0" prefWidth="74.0" text="Data">
+         <font>
+            <Font name="Consolas" size="28.0" />
+         </font></Label>
+      <Label fx:id="lbHorario" layoutX="293.0" layoutY="251.0" text="Horário">
+         <font>
+            <Font name="Consolas" size="28.0" />
+         </font></Label>
+      <Label fx:id="lbTreino" layoutX="293.0" layoutY="309.0" text="Treino">
+         <font>
+            <Font name="Consolas" size="28.0" />
+         </font></Label>
+      <Label fx:id="lbTipo" layoutX="293.0" layoutY="379.0" text="Tipo">
+         <font>
+            <Font name="Consolas" size="28.0" />
+         </font></Label>
+      <DatePicker fx:id="calendario" layoutX="416.0" layoutY="197.0" styleClass="input" />
+      <TextField fx:id="campoHora" layoutX="428.0" layoutY="254.0" prefHeight="25.0" prefWidth="74.0" promptText="Hora" styleClass="input" />
+      <TextField fx:id="campoMinutos" layoutX="526.0" layoutY="254.0" prefHeight="25.0" prefWidth="62.0" promptText="Minutos" styleClass="input" />
+      <ChoiceBox fx:id="campoTreino" layoutX="428.0" layoutY="311.0" prefWidth="150.0" styleClass="date-picker-popup" />
+      <ChoiceBox fx:id="campoTipo" layoutX="428.0" layoutY="381.0" prefWidth="150.0" styleClass="date-picker-popup" />
+      <Button fx:id="btnAtualizar" layoutX="302.0" layoutY="487.0" mnemonicParsing="false" onMouseClicked="#atualizarDados" prefHeight="46.0" prefWidth="108.0" text="Atualizar">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="btnDeletar" layoutX="493.0" layoutY="487.0" mnemonicParsing="false" onMouseClicked="#deletarDado" prefHeight="46.0" prefWidth="114.0" text="Deletar">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Label fx:id="lbHorario1" layoutX="504.0" layoutY="251.0" prefHeight="32.0" prefWidth="29.0" text=":">
+         <font>
+            <Font name="Consolas" size="28.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

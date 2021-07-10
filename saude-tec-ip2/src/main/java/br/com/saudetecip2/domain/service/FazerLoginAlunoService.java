@@ -1,6 +1,6 @@
 package br.com.saudetecip2.domain.service;
 
-import br.com.saudetecip2.database.arquivoimplentation.AlunoRepository;
+import br.com.saudetecip2.arquivorepository.AlunoRepository;
 import br.com.saudetecip2.domain.model.Aluno;
 import br.com.saudetecip2.exceptions.ErroLoginAlunoException;
 
