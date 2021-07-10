@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Observable;
 import java.util.ResourceBundle;
 
 import br.com.saudetecip2.controller.Aulacontroller;
@@ -88,15 +89,16 @@ public class TelaDeAtualizarAulasProfessorController implements Initializable {
 			Utils.mostrarAlerta("Todos os campos devem ser preenchidos");
 		} else if (!(Utils.checarSeStringContemApenasNumeros(hora)
 				|| !(Utils.checarSeStringContemApenasNumeros(minutos)))) {
-			Utils.mostrarAlerta("Os campos de hora e minutos devem conter apenas numeros");
+			Utils.mostrarAlerta("Os campos de hora e minutos devem conter apenas números");
 		} else {
 			try {
+				System.out.println(tipoDeTreino);
 				Aula aulaParaAtualizar = objAula.getAula();
-				Aula aula = new Aula(aulaParaAtualizar.getId(),LocalDateTime.of(data, LocalTime.of(Integer.valueOf(hora), Integer.valueOf(minutos))),
+				Aula aulaAtualizada = new Aula(aulaParaAtualizar.getId(),LocalDateTime.of(data, LocalTime.of(Integer.valueOf(hora), Integer.valueOf(minutos))),
 						tipoAula, tipoDeTreino, aulaParaAtualizar.getProfessor(), null);
-				aulaController.atualizarAula(aulaParaAtualizar);
+				aulaController.atualizarAula(aulaAtualizada);
 				Utils.mostrarAlerta("Aula atualizada com sucesso!");
-				objAula.setAula(aulaParaAtualizar);
+				objAula.setAula(aulaAtualizada);
 				carregarDadosDeAula();
 			} catch (AulaNaoExisteException e) {
 				Utils.mostrarAlerta(e.getMessage());
@@ -109,15 +111,17 @@ public class TelaDeAtualizarAulasProfessorController implements Initializable {
 	void deletarDado(MouseEvent event) {
 		try {
 			Alert alerta = new Alert(AlertType.CONFIRMATION,"Cofirmar para deletar essa aula"); 
+			alerta.showAndWait();
 			ButtonType botaoClicado = alerta.getResult();
 			if(botaoClicado == ButtonType.OK) {
 				aulaController.deletarAula(objAula.getAula().getId());
-				Stage a = (Stage) btnDeletar.getScene().getWindow();
+				Stage tela = (Stage) btnDeletar.getScene().getWindow();
 				objAula.setAula(null);
-				a.close();
+				tela.close();
 			}
 		} catch (AulaNaoExisteException e) {
 			Utils.mostrarAlerta(e.getMessage());
+
 		}
 	}
 	
@@ -131,8 +135,13 @@ public class TelaDeAtualizarAulasProfessorController implements Initializable {
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		Aula aulaExemplo = new Aula(LocalDateTime.now(), TipoDeAula.INDIVIDUAL, TipoDeTreino.MUSCULACAO, "2", null);
-		objAula.setAula(aulaExemplo);
+		
+		ObservableList listaDeTreinos = FXCollections.observableArrayList(TipoDeTreino.values());
+		ObservableList listaDeTipoDeAula = FXCollections.observableArrayList(TipoDeAula.values());
+		
+		
+		campoTreino.setItems(listaDeTreinos);
+		campoTipo.setItems(listaDeTipoDeAula);
 		carregarDadosDeAula();
 	}
 

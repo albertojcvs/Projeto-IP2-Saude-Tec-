@@ -76,22 +76,20 @@ public class TelaAulasAgendadasProfessorController implements Initializable {
 
     @FXML
     private Text textoNome;
-    
-    @FXML
-    private TableView<Aula> tabelaDados;
    
     @FXML
     void selecionarDados(MouseEvent event) {
     	if(event.getClickCount() == 2) {
-    		if(tabelaDados.getSelectionModel().getSelectedItem() != null) {
+    		System.out.println("cheoug aqui");
+    		
+    		Aula a = tabelaDeAulas.getSelectionModel().getSelectedItem();
+    		
+    		if(a != null) {
     			AulaSingleton objAula = AulaSingleton.getInstance();
-    			objAula.setAula(tabelaDados.getSelectionModel().getSelectedItem()); 
+    			objAula.setAula(tabelaDeAulas.getSelectionModel().getSelectedItem()); 
     			irParaTelaAtualizarDados("TelaDeAtualizarAulasProfessor.fxml");
         		
-
     		}
-    		
-    		
     	}
 
     }
@@ -102,9 +100,12 @@ public class TelaAulasAgendadasProfessorController implements Initializable {
 			Scene cenaTela = new Scene(telaFxml);
 			Stage novaTela = new Stage();
 			novaTela.setScene(cenaTela);
-			tabelaDados.getScene().getRoot().setDisable(true);
-			novaTela.showAndWait();
-			tabelaDados.getScene().getRoot().setDisable(false);
+			tabelaDeAulas.getScene().getRoot().setDisable(true);
+			novaTela.showAndWait();			
+			tabelaDeAulas.getScene().getRoot().setDisable(false);
+			tabelaDeAulas.getItems().clear();
+			preencherTabelasDeAula();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -112,20 +113,6 @@ public class TelaAulasAgendadasProfessorController implements Initializable {
     
     
    
-    void irParaTela(String caminho) {
-		try {
-			Parent telaFxml = FXMLLoader.load(getClass().getResource(caminho));
-			Scene cenaTela = new Scene(telaFxml);
-			Stage novaTela = new Stage();
-			novaTela.setScene(cenaTela);
-			botaoSair.getScene().getRoot().setDisable(true);
-			novaTela.showAndWait();
-			botaoSair.getScene().getRoot().setDisable(false);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-    
     @FXML
     private Button botaoSair;
 

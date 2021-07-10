@@ -57,9 +57,13 @@ public class AulaRepository implements Repository<Aula> {
 	public void update(Aula aulaParametro) {
 		List<Aula> aulas = arquivoTexto.lerDados();
 		int index = 0;
+		System.out.println(aulaParametro.getTipoDeTreino());
 		for (Aula aula : aulas) {
 			if (aula.getId().equals(aulaParametro.getId())) {
+				System.out.println("to zquai");
+				System.out.println(index+" ||"+aulaParametro.getId());
 				aulas.set(index, aulaParametro);
+				System.out.println(aulas.get(index).getTipoDeTreino());
 				break;
 			}
 			index++;
